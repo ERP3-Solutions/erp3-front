@@ -24,8 +24,14 @@
       "@data/*": [
         "./src/data/*"
       ],
-      "@domain/*": [
-        "./src/domain/*"
+      "@environment/*": [
+        "./src/environment/*"
+      ],
+      "@infrastructure/*": [
+        "./src/infrastructure/*"
+      ],
+      "@core/*": [
+        "./src/core/*"
       ],
       "@ui/shared/*": [
         "./src/ui/app/shared/*"
