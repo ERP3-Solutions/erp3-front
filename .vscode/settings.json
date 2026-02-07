@@ -1,0 +1,7 @@
+{
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "tailwindCSS.experimental.configFile": "./src/ui/styles/tailwind.css",
+  "tailwindCSS.suggestions": true
+}

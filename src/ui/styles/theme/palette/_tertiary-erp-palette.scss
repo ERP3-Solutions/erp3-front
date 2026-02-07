@@ -1,0 +1,39 @@
+$tertiary-erp-palette: (
+  0: #000000,
+  10: #1c1b1d,
+  20: #313032,
+  25: #3c3b3d,
+  30: #474649,
+  35: #535254,
+  40: #5f5e60,
+  50: #787679,
+  60: #929093,
+  70: #adaaad,
+  80: #c9c5c8,
+  90: #e5e1e4,
+  95: #f3f0f3,
+  98: #fcf8fb,
+  99: #fffbff,
+  100: #ffffff
+);
+
+$tertiary-erp-contrast: (
+  on-tertiary: #ffffff,
+  tertiary-container: #47475e,
+  on-tertiary-container: #08091d,
+  tertiary-fixed: #e1e0fd,
+  tertiary-fixed-dim: #303147,
+  on-tertiary-fixed: #ffffff,
+  on-tertiary-fixed-variant: #ffffff
+);
+
+@mixin export-tertiary-vars($prefix: "tertiary") {
+  :root {
+    @each $k, $v in $tertiary-erp-palette {
+      --#{$prefix}-#{$k}: #{$v};
+    }
+    @each $ck, $cv in $tertiary-erp-contrast {
+      --#{$prefix}-#{$ck}: #{$cv};
+    }
+  }
+}

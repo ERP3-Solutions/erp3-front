@@ -1,0 +1,39 @@
+$secondary-erp-palette: (
+  0: #000000,
+  10: #1a1c1c,
+  20: #2f3131,
+  25: #3a3c3c,
+  30: #454747,
+  35: #515353,
+  40: #5d5f5f,
+  50: #767777,
+  60: #909191,
+  70: #aaabab,
+  80: #c6c6c7,
+  90: #e2e2e2,
+  95: #f0f1f1,
+  98: #f9f9f9,
+  99: #fcfcfc,
+  100: #ffffff
+);
+
+$secondary-erp-contrast: (
+  on-secondary: #ffffff,
+  secondary-container: #47475e,
+  on-secondary-container: #08091d,
+  secondary-fixed: #e1e0fd,
+  secondary-fixed-dim: #303147,
+  on-secondary-fixed: #ffffff,
+  on-secondary-fixed-variant: #ffffff
+);
+
+@mixin export-secondary-vars($prefix: "secondary") {
+  :root {
+    @each $k, $v in $secondary-erp-palette {
+      --#{$prefix}-#{$k}: #{$v};
+    }
+    @each $ck, $cv in $secondary-erp-contrast {
+      --#{$prefix}-#{$ck}: #{$cv};
+    }
+  }
+}

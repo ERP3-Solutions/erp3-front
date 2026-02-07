@@ -1,0 +1,37 @@
+$success-erp-palette: (
+  0: #000000,
+  10: #061e0f,
+  20: #1a5b22,
+  25: #2b6f2b,
+  30: #2e7d32,
+  35: #3a8b3b,
+  40: #43a047,
+  50: #66bb6a,
+  60: #81c784,
+  70: #a5d6a7,
+  80: #c8e6c9,
+  90: #e8f5e9,
+  95: #f1fbf3,
+  98: #f8fff9,
+  99: #fbfffc,
+  100: #ffffff
+);
+
+$success-erp-contrast: (
+  on-success: #ffffff,
+  success-container: #2e7d32,
+  on-success-container: #042009,
+  success-fixed: #e8f5e9,
+  on-success-fixed: #00220a
+);
+
+@mixin export-success-vars($prefix: "success") {
+  :root {
+    @each $k, $v in $success-erp-palette {
+      --#{$prefix}-#{$k}: #{$v};
+    }
+    @each $ck, $cv in $success-erp-contrast {
+      --#{$prefix}-#{$ck}: #{$cv};
+    }
+  }
+}

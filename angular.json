@@ -26,13 +26,22 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/favicon.ico",
+              "src/ui/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              {
+                "input": "src/ui/styles/material.scss",
+                "bundleName": "styles"
+              },
+              {
+                "input": "src/ui/styles/tailwind.css",
+                "bundleName": "tailwind"
+              },
+              {
+                "input": "src/ui/styles/custom.css",
+                "bundleName": "custom"
+              }
             ],
             "scripts": []
           },
@@ -85,13 +94,13 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/favicon.ico",
+              "src/ui/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/ui/styles/material.scss",
+              "src/ui/styles/custom.scss",
+              "src/ui/styles/tailwind.css"
             ],
             "scripts": []
           }
