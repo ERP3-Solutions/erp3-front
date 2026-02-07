@@ -1,10 +1,15 @@
 import { NgModule } from "@angular/core";
-import { OrganizationRepositoryPort } from "@core/auth/port/out/organization-repository.port";
+import { AuthProvider } from "@infrastructure/auth/auth.provider";
 import { LoginWithCredentialsUseCase } from "@core/auth/application/use-case/login-with-credentials.use-case";
 import { RegisterOrganizationUseCase } from "@core/auth/application/use-case/register-organization.use-case";
-import { AuthProvider } from "@infrastructure/auth/auth.provider";
-import { LOGIN_WITH_CREDENTIALS_PORT } from "@core/auth/port/in/login-with-credentials.port";
-import { REGISTER_ORGANIZATION_PORT } from "@core/auth/port/in/register-organization.port";
+import { OrganizationRepositoryPort } from "@core/auth/port/out/organization-repository.port";
+import { UserRepositoryPort } from "@core/auth/port/out/user-repository.port";
+import { SessionStorageRepositoryPort } from "@core/shared/port/out/session-storage-repository.port";
+import { SESSION_STORAGE_TOKEN } from "@infrastructure/shared/token/out/session-storage.token";
+import { LOGIN_WITH_CREDENTIALS_TOKEN } from "./auth/token/in/login-with-credentials.token";
+import { REGISTER_ORGANIZATION_TOKEN } from "./auth/token/in/register-organization.token";
+import { ORGANIZATION_REPOSITORY_TOKEN } from "./auth/token/out/organization-repository.token";
+import { USER_REPOSITORY_TOKEN } from "./auth/token/out/user-repository.token";
 
 @NgModule({
   imports: [
@@ -12,14 +17,20 @@ import { REGISTER_ORGANIZATION_PORT } from "@core/auth/port/in/register-organiza
   ],
   providers: [
     {
-      provide: LOGIN_WITH_CREDENTIALS_PORT,
-      useFactory: (repo: OrganizationRepositoryPort) => new LoginWithCredentialsUseCase(repo),
-      deps: [OrganizationRepositoryPort]
+      provide: LOGIN_WITH_CREDENTIALS_TOKEN,
+      useFactory: (
+        userRepo: UserRepositoryPort,
+        sessionStorageRepo: SessionStorageRepositoryPort
+      ) => new LoginWithCredentialsUseCase(userRepo, sessionStorageRepo),
+      deps: [
+        USER_REPOSITORY_TOKEN,
+        SESSION_STORAGE_TOKEN
+      ]
     },
     {
-      provide: REGISTER_ORGANIZATION_PORT,
+      provide: REGISTER_ORGANIZATION_TOKEN,
       useFactory: (repo: OrganizationRepositoryPort) => new RegisterOrganizationUseCase(repo),
-      deps: [OrganizationRepositoryPort]
+      deps: [ORGANIZATION_REPOSITORY_TOKEN]
     },
   ]
 })

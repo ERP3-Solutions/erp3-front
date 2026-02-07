@@ -1,3 +1,4 @@
 export interface ICredentialsCommand {
-  // datos de organizacion
+  email: string;
+  password: string;
 }

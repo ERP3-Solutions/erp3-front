@@ -39,7 +39,7 @@
                 "bundleName": "tailwind"
               },
               {
-                "input": "src/ui/styles/custom.css",
+                "input": "src/ui/styles/custom.scss",
                 "bundleName": "custom"
               }
             ],
@@ -104,8 +104,22 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

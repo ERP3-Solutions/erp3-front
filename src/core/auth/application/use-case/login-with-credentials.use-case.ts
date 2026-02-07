@@ -1,13 +1,16 @@
-import { IRegisterOrganizationCommand } from "@core/auth/domain/command/register-organization.command";
+import { ICredentialsCommand } from "@core/auth/domain/command/credentials.command";
 import { LoginWithCredentialsPort } from "@core/auth/port/in/login-with-credentials.port";
-import { OrganizationRepositoryPort } from "@core/auth/port/out/organization-repository.port";
+import { UserRepositoryPort } from "@core/auth/port/out/user-repository.port";
+import { SessionStorageRepositoryPort } from "@core/shared/port/out/session-storage-repository.port";
 
 export class LoginWithCredentialsUseCase implements LoginWithCredentialsPort {
   public constructor(
-    private organizationRepositoryPort: OrganizationRepositoryPort
+    private userRepository: UserRepositoryPort,
+    private sessionStorageRepository: SessionStorageRepositoryPort,
   ) { }
 
-  async execute(params: IRegisterOrganizationCommand) {
-    return this.organizationRepositoryPort.registerOrganization(params);
-  };  
+  async execute(params: ICredentialsCommand) {
+    const token = await this.userRepository.loginWithCredentials(params);
+    this.sessionStorageRepository.save('token', token);
+  };
 }
