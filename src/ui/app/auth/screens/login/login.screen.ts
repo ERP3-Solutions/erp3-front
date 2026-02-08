@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { LoginWithCredentialsPort } from '@core/auth/port/in/login-with-credentials.port';
 import { AuthModule } from '@data/auth.module';
-import { LOGIN_WITH_CREDENTIALS_TOKEN } from '@data/auth/token/in/login-with-credentials.token';
+import { AuthService } from '@ui/auth/services/auth.service';
 
 @Component({
   selector: 's-auth-login',
@@ -17,10 +16,10 @@ import { LOGIN_WITH_CREDENTIALS_TOKEN } from '@data/auth/token/in/login-with-cre
   templateUrl: 'login.screen.html',
 })
 export class SAuthLogin {
-  private loginUseCase: LoginWithCredentialsPort = inject(LOGIN_WITH_CREDENTIALS_TOKEN)
+  private authService: AuthService = inject(AuthService)
 
   iniciarSesion() {
-    this.loginUseCase.execute({
+    this.authService.loginWithCredentials({
       email: '',
       password: ''
     });

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'l-auth',
@@ -16,5 +17,8 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ],
   templateUrl: './auth.layout.html',
+  providers: [
+    AuthService
+  ]
 })
 export class LAuth { }

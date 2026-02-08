@@ -14,6 +14,10 @@ const router: Routes = [
         path: 'login',
         loadComponent: () => import('./screens/login/login.screen').then(s => s.SAuthLogin)
       },
+      {
+        path: 'register',
+        loadComponent: () => import('./screens/register/register.screen').then(s => s.SAuthRegister)
+      },
     ]
   },
   {
