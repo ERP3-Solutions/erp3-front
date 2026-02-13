@@ -1,0 +1,30 @@
+$surface-erp-palette: (
+  0: #101010,
+  10: #1c1b1b,
+  20: #313030,
+  30: #474646,
+  40: #5f5e5e,
+  50: #787776,
+  60: #929090,
+  70: #adabaa,
+  80: #c9c6c5,
+  90: #e5e2e1,
+  100: #ffffff,
+);
+
+$surface-erp-contrast: (
+  on-surface: #ffffff,
+  surface-container: #48494a,
+  on-surface-container: #282a2b,
+);
+
+@mixin export-surface-vars($prefix: "surface") {
+  :root {
+    @each $k, $v in $surface-erp-palette {
+      --#{$prefix}-#{$k}: #{$v};
+    }
+    @each $ck, $cv in $surface-erp-contrast {
+      --#{$prefix}-#{$ck}: #{$cv};
+    }
+  }
+}

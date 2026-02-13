@@ -1,0 +1,30 @@
+<!-- <mat-form-field 
+  [appearance]="appearance()"
+  class="w-full"
+  [color]="color()"
+  [ngClass]="{
+    'form-field-xs': size() === 'xs',
+    'form-field-sm': size() === 'sm'
+  }">
+  @if (label()) {<mat-label>{{ label() }}</mat-label>}
+  @if (icon()) {
+    <c-app-icon 
+      class="mat-icon notranslate"
+      [color]="color()"
+      [svgIcon]="icon()" 
+      matPrefix 
+    />
+  }
+  <input 
+    [type]="type()"
+    [ngModel]="model"
+    (ngModelChange)="modelChange.emit($event)"
+    [placeholder]="placeholder()"
+    matInput
+  />
+  @if (hasSuffix()) {
+    <div class="me-1" matSuffix>
+      <ng-content select="[suffix]"></ng-content>
+    </div>
+  }
+</mat-form-field> -->

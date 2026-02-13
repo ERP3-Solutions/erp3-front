@@ -1,0 +1,80 @@
+<div class="w-full" [formGroup]="formData()">
+  <div class="relative flex flex-row items-center">
+    @if (icon() && iconModule()) {
+      <div 
+        class="absolute left-1 flex items-center"
+      >
+        <c-app-icon 
+          [svgIcon]="icon()"
+          [svgModule]="iconModule()"
+        />
+      </div>
+    }
+    <input 
+      [type]="type()"
+      [formControlName]="name()"
+      [placeholder]="placeholder()"
+      autocomplete="off"
+      class="
+        peer
+        w-full
+        px-3
+        py-3
+        text-sm
+        border
+        rounded-sm
+        transition
+        duration-300
+        ease
+        focus:outline-none
+        focus:shadow
+        bg-transparent
+        shadow-sm
+        border-secondary-40
+        hover:border-secondary-50
+        focus:border-primary-70
+        text-surface-on-surface
+      "
+      [ngClass]="{
+        'placeholder-transparent focus:placeholder-surface-70': !!textLabel()
+      }"
+    />
+    @if (!!textLabel()) {
+      <label
+        class="
+          absolute
+          pointer-events-none
+          px-1
+          left-2.5
+          top-2.5
+          text-sm
+          transition-all
+          transform
+          origin-left
+
+          peer-placeholder-shown:top-2.5
+          peer-placeholder-shown:text-sm
+          peer-placeholder-shown:scale-100
+
+          peer-focus:-top-2
+          peer-focus:text-xs
+          peer-focus:scale-90
+
+          peer-not-placeholder-shown:-top-2
+          peer-not-placeholder-shown:text-xs
+          peer-not-placeholder-shown:scale-90
+
+          bg-surface-0
+          text-secondary-50
+          peer-hover:text-secondary-70
+          peer-focus:text-primary-70
+        "
+      >
+        {{ textLabel() }}
+      </label>
+    }
+    <div class="absolute right-1 flex items-center">
+      <ng-content #sufix></ng-content>
+    </div>
+  </div>
+</div>

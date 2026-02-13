@@ -1,0 +1,36 @@
+<form class="flex flex-col gap-4 text-surface-on-surface" novalidate>
+  <div class="flex flex-col gap-2">
+    <h2 class="font-semibold text-sm sm:text-base">{{ title() }}</h2>
+    <p class="text-xs sm:text-sm font-normal mb-4">{{ subtitle() }}</p>
+    <div class="flex flex-col gap-6">
+      <!-- Input -->
+      <div class="flex flex-col gap-3">
+        <ng-content select="[inputs]"></ng-content>
+        <!-- Options -->
+        <ng-content select="[options]"></ng-content>
+      </div>
+      <!-- Button -->
+      <div class="flex flex-col gap-2">
+        <c-app-button
+          type="submit"
+          color="accent"
+          typeButton="flat"
+          [disabled]="loading()"
+        >
+          @if (loading()) {
+            super spinner
+          } @else {
+            {{ submitText() }}
+          }
+        </c-app-button>
+        <ng-content select="[secondaryButton]"></ng-content>
+      </div>
+    </div>
+  </div>
+  <footer class="flex flex-col items-center min-[420px]:flex-row min-[420px]:justify-center gap-3">
+    <p class="font-normal text-sm">{{ footerText() }}</p>
+    <a class="text-tertiary-60 hover:text-tertiary-40 transition-colors font-semibold text-sm" [routerLink]="footerLinkRouter()">
+      {{ footerTextLink() }}
+    </a>
+  </footer>
+</form>

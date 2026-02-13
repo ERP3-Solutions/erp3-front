@@ -1,0 +1,17 @@
+<button 
+  [type]="type()"
+  class="flex justify-center items-center text-primary-on-primary transition-colors cursor-pointer w-full"
+  [ngClass]="{
+    'bg-primary-20 hover:bg-primary-40 rounded px-4 py-2': typeButton() === 'flat',
+    'hover:bg-primary-primary-container rounded-full p-1': typeButton() === 'icon'
+  }"
+  (click)="click()"
+>
+  @if(icon()) {
+    <c-app-icon
+      [svgModule]="iconModule()"
+      [svgIcon]="icon()"
+    />
+  }
+  <ng-content></ng-content>
+</button>

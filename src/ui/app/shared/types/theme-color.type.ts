@@ -1,0 +1,1 @@
+export type ThemeColorType = 'primary' | 'secondary' | 'tertiary' | 'error' | 'success';
