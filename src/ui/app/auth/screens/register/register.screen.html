@@ -5,9 +5,9 @@
   [footerTextLink]="'Iniciar sesión'"
   [footerLinkRouter]="'/auth/login'"
   [submitText]="'Siguiente'"
-  [formGroup]="authService.formRegisterUser"
+  [formGroup]="registerService.formRegisterUser"
   (submit)="registrarOrganizacion()"
-  [loading]="false"
+  [loading]="registerService.loading()"
 >
   <ng-container inputs>
     <div class="flex gap-1.5">
@@ -16,14 +16,14 @@
         placeholder="Your first name"
         type="text"
         name="firstName"
-        [formData]="authService.formRegisterUser"
+        [formData]="registerService.formRegisterUser"
       ></c-app-form-field>
       <c-app-form-field 
         textLabel="Last name"
         placeholder="Your last name"
         type="text"
         name="lastName"
-        [formData]="authService.formRegisterUser"
+        [formData]="registerService.formRegisterUser"
       ></c-app-form-field>
     </div>
     <c-app-form-field 
@@ -31,7 +31,7 @@
       placeholder="Enter your email"
       type="text"
       name="email"
-      [formData]="authService.formRegisterUser"
+      [formData]="registerService.formRegisterUser"
     ></c-app-form-field>
     <div class="flex flex-col gap-1.5">
       <c-app-form-field 
@@ -39,7 +39,7 @@
         placeholder="Enter your password"
         [type]="hidePassword() ? 'password' : 'text'"
         name="password"
-        [formData]="authService.formRegisterUser"
+        [formData]="registerService.formRegisterUser"
       >
         <ng-container suffix>
           <c-app-button 
@@ -55,8 +55,8 @@
           </c-app-button>
         </ng-container>
       </c-app-form-field>
-      @if (authService.formRegisterUser.get('password')?.value) {
-        <c-auth-password-meter [password]="authService.formRegisterUser.get('password')?.value || ''" />
+      @if (registerService.formRegisterUser.get('password')?.value) {
+        <c-auth-password-meter [password]="registerService.formRegisterUser.get('password')?.value || ''" />
       }
     </div>
     <c-app-form-field 
@@ -64,7 +64,7 @@
       placeholder="Confirm your password"
       [type]="hidePassword() ? 'password' : 'text'"
       name="confirmPassword"
-      [formData]="authService.formRegisterUser"
+      [formData]="registerService.formRegisterUser"
     >
       <ng-container suffix>
         <c-app-button 

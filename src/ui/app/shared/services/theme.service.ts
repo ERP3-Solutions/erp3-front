@@ -20,8 +20,6 @@ export class ThemeService {
 
   public readonly theme = this.store.theme;
   public toggleTheme() {
-    console.log("toggling", this.theme());
-    
     this.store.setTheme(this.theme() === 'light' ? 'dark' : 'light');
     this._saveAndSetTheme();
   }

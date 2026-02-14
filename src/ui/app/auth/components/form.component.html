@@ -18,7 +18,11 @@
           [disabled]="loading()"
         >
           @if (loading()) {
-            super spinner
+            <c-app-icon 
+              className="w-6 h-6 fill-primary-on-primary animate-spin"
+              svgIcon="outlined-progress-activity"
+              svgModule="shared"
+            />
           } @else {
             {{ submitText() }}
           }
@@ -29,7 +33,7 @@
   </div>
   <footer class="flex flex-col items-center min-[420px]:flex-row min-[420px]:justify-center gap-3">
     <p class="font-normal text-sm">{{ footerText() }}</p>
-    <a class="text-tertiary-60 hover:text-tertiary-40 transition-colors font-semibold text-sm" [routerLink]="footerLinkRouter()">
+    <a class="text-tertiary-40 hover:text-tertiary-60 transition-colors font-semibold text-sm" [routerLink]="footerLinkRouter()">
       {{ footerTextLink() }}
     </a>
   </footer>

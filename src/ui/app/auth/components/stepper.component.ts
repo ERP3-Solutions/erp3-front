@@ -11,4 +11,6 @@ import { CommonModule } from '@angular/common';
     // Modulos de librerias externas
   ],
 })
-export class CAuthStepper { }
+export class CAuthStepper {
+  
+}

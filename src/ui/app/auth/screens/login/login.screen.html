@@ -5,9 +5,9 @@
   [footerTextLink]="'Registrarse'"
   [footerLinkRouter]="'/auth/register'"
   [submitText]="'Iniciar sesión'"
-  [formGroup]="authService.formLogin"
+  [formGroup]="loginService.formLogin"
   (submit)="iniciarSesion()"
-  [loading]="false"
+  [loading]="loginService.loading()"
 >
   <ng-container inputs>
     <c-app-form-field 
@@ -15,14 +15,14 @@
       placeholder="Enter your email"
       type="text"
       name="email"
-      [formData]="authService.formLogin"
+      [formData]="loginService.formLogin"
     ></c-app-form-field>
     <c-app-form-field 
       textLabel="Password"
       placeholder="Enter your password"
       [type]="hidePassword() ? 'password' : 'text'"
       name="password"
-      [formData]="authService.formLogin"
+      [formData]="loginService.formLogin"
     >
       <ng-container suffix>
         <c-app-button 

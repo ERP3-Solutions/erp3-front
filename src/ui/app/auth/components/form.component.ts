@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CAppButton } from '@ui/shared/components/button.component';
+import { CAppIcon } from '@ui/shared/components/icon.component';
 
 @Component({
   selector: 'c-auth-form',
@@ -11,6 +12,7 @@ import { CAppButton } from '@ui/shared/components/button.component';
     // Modulos de librerías externas
     // Componentes(standalone) externos
     CAppButton,
+    CAppIcon,
   ],
   templateUrl: './form.component.html',
 })
