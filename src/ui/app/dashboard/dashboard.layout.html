@@ -1,0 +1,15 @@
+<div class="flex bg-surface-10 h-full overflow-hidden">
+  <f-dashboard-sidebar [ngClass]="{
+    'transition-all duration-300 h-full': true,
+    'w-18': !sidebarService.isOpen(),
+    'w-64': sidebarService.isOpen()
+  }" />
+  <div [ngClass]="{
+    'transition-all duration-300 flex flex-col flex-1': true,
+  }">
+    <f-dashboard-header />
+    <main class="flex-1 h-0 p-6 overflow-auto">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

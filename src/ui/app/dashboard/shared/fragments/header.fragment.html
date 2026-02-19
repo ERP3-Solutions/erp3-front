@@ -1,0 +1,14 @@
+<header class="flex items-center p-3 w-full bg-surface-0">
+  <c-app-button 
+    classButton="p-2"
+    type="button"
+    typeButton="icon"
+    (clickButton)="sidebarService.toggleOpen()"
+  >
+    <c-app-icon 
+      className="w-6 h-6 fill-primary-50"
+      svgIcon="menu"
+      svgModule="dashboard"
+    />
+  </c-app-button>
+</header>

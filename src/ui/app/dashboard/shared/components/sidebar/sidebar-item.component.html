@@ -1,0 +1,23 @@
+<a 
+  [routerLink]="routerLink()" 
+  [routerLinkActiveOptions]="routerLinkActiveOptions()"
+  [queryParams]="queryParams()"
+  queryParamsHandling="merge"
+  routerLinkActive="bg-primary-on-primary-container active"
+  class="flex items-center py-2 pe-3 ps-3 w-full transition-colors hover:bg-primary-on-primary-container active:bg-primary-primary-container group relative"
+  [ngClass]="{
+    'gap-3': open(),
+  }"
+>
+  <span class="h-full w-0.5 bg-transparent absolute left-0 group-hover:bg-primary-70 group-[.active]:bg-primary-70 transition-colors">&nbsp;</span>
+  @if (icon() && iconModule()) {
+    <c-app-icon
+      className="fill-primary-60 group-[.active]:fill-primary-70 group-hover:fill-primary-70 h-6 w-6"
+      [svgIcon]="icon()!"
+      [svgModule]="iconModule()!"
+    />
+  }
+  @if (open()) {
+    <p class="text-primary-60 group-[.active]:text-primary-70 group-hover:text-primary-70 text-sm transition-colors whitespace-nowrap">{{ label() }}</p>
+  }
+</a>
