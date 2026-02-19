@@ -1,8 +1,8 @@
-<aside class="bg-surface-0 border-surface-20 border-e flex flex-col px-3 justify-between overflow-auto h-full">
+<aside class="bg-surface-0 border-surface-20 border-e flex flex-col px-3 justify-between overflow-y-auto h-full">
   <div class="flex flex-col gap-4">
-    <header class="flex gap-2 items-center justify-center h-16">
+    <header class="flex gap-2 items-center justify-center h-16 overflow-hidden">
       <img src="/ui/assets/icons/svg/logo.svg" alt="logo-svg" class="max-h-8" />
-      @if (sidebarService.isOpen()) {<h1 class="text-surface-90 font-bold text-lg text-center">ERP3</h1>}
+      @if (sidebarService.isOpen()) {<h1 class="text-surface-90 font-bold text-lg text-center whitespace-nowrap">ERP3</h1>}
     </header>
     <div class="flex flex-col gap-3">
       <c-dashboard-sidebar-group [titulo]="'Home'" [open]="sidebarService.isOpen()">

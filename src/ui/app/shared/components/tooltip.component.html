@@ -1,0 +1,11 @@
+<div 
+  class="relative bg-surface-20 rounded p-2 max-w-max"
+  [ngClass]="positionClasses[position]"
+  [ngStyle]="style"
+>
+  @if (text === undefined) {
+    <ng-content select="[body]"></ng-content>
+  } @else {
+    <p class="text-surface-on-surface text-xs">{{ text }}</p>
+  }
+</div>
