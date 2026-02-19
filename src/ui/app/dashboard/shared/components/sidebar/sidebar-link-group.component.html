@@ -1,0 +1,34 @@
+<div 
+  role="button"
+  (click)="expanded.set(!expanded())"
+  class="flex items-center gap-3 py-2 pe-3 ps-4 w-full transition-colors hover:bg-mui-white-200 hover:dark:bg-mui-black-800 relative group"
+  matRippleColor="primary"
+  matRipple
+>
+  <span class="h-full w-1 bg-primary-color absolute left-0 hidden group-hover:block">&nbsp;</span>
+  <span class="flex h-6 w-6 items-center">
+    <c-app-icon
+      className=""
+      [svgIcon]="icon()"
+      [svgModule]="iconModule()"
+    />
+  </span>
+  <p class="text-primary-color text-sm">{{ label() }}</p>
+  <c-app-icon
+    [className]="{
+      'absolute transition-transform my-auto right-4': true,
+      'rotate-180': expanded()
+    }"
+    svgIcon="expand_more"
+    svgModule="shared"
+  />
+</div>
+<div
+  class="transition-[max_height] overflow-hidden duration-300"
+  [ngClass]="{
+    'max-h-0': !expanded(),
+    'max-h-96': expanded()
+  }"
+>
+  <ng-content select="[body]"></ng-content>
+</div>

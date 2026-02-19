@@ -17,7 +17,7 @@ import { Component, computed, input } from '@angular/core';
 export class CAppIcon {
   public svgModule = input.required<string>();
   public svgIcon = input.required<string>();
-  public className = input<string>('');
+  public className = input<string | string[] | object>('');
 
   public iconRef = computed(() => `/ui/assets/icons/svg/sprites/${this.svgModule()}-sprites.svg#icon-${this.svgIcon()}`)
 }

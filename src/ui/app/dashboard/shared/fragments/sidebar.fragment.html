@@ -1,0 +1,60 @@
+<aside class="bg-surface-0 border-surface-20 border-e flex flex-col px-3 justify-between overflow-auto h-full">
+  <div class="flex flex-col gap-4">
+    <header class="flex gap-2 items-center justify-center h-16">
+      <img src="/ui/assets/icons/svg/logo.svg" alt="logo-svg" class="max-h-8" />
+      @if (sidebarService.isOpen()) {<h1 class="text-surface-90 font-bold text-lg text-center">ERP3</h1>}
+    </header>
+    <div class="flex flex-col gap-3">
+      <c-dashboard-sidebar-group [titulo]="'Home'" [open]="sidebarService.isOpen()">
+        <c-dashboard-sidebar-item
+          [label]="'Home'"
+          [routerLink]="'/dashboard/'"
+          icon="filled-dashboard"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+        <c-dashboard-sidebar-item
+          [label]="'Sales'"
+          [routerLinkActiveOptions]="{ exact: false }"
+          [routerLink]="'/dashboard/sales'"
+          icon="filled-store"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+        <c-dashboard-sidebar-item
+          [label]="'Finances'"
+          [routerLinkActiveOptions]="{ exact: false }"
+          [routerLink]="'/dashboard/finance'"
+          icon="filled-account-balance"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+        <c-dashboard-sidebar-item
+          [label]="'Logistic'"
+          [routerLinkActiveOptions]="{ exact: false }"
+          [routerLink]="'/dashboard/logistic'"
+          icon="filled-stack"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+      </c-dashboard-sidebar-group>
+      <hr class="border-surface-20 border-e">
+      <c-dashboard-sidebar-group [titulo]="'Management'" [open]="sidebarService.isOpen()">
+        <c-dashboard-sidebar-item
+          [label]="'Security'"
+          [routerLink]="'/dashboard/security'"
+          icon="filled-security"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+        <c-dashboard-sidebar-item
+          [label]="'Organization'"
+          [routerLink]="'/dashboard/organization'"
+          icon="corporation"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+      </c-dashboard-sidebar-group>
+    </div>
+  </div>
+</aside>
