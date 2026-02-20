@@ -1,60 +1,32 @@
 <aside class="bg-surface-0 border-surface-20 border-e flex flex-col px-3 justify-between overflow-y-auto h-full">
-  <div class="flex flex-col gap-4">
-    <header class="flex gap-2 items-center justify-center h-16 overflow-hidden">
-      <img src="/ui/assets/icons/svg/logo.svg" alt="logo-svg" class="max-h-8" />
-      @if (sidebarService.isOpen()) {<h1 class="text-surface-90 font-bold text-lg text-center whitespace-nowrap">ERP3</h1>}
+  <div class="flex flex-col">
+    <header class="py-3">
+      <div class="h-10 gap-2 flex items-center justify-center overflow-hidden">
+        <img src="/ui/assets/icons/svg/logo.svg" alt="logo-svg" class="max-h-8" />
+        @if (sidebarService.isOpen()) {<h1 class="text-surface-90 font-bold text-lg text-center whitespace-nowrap">ERP3</h1>}
+      </div>
     </header>
     <div class="flex flex-col gap-3">
-      <c-dashboard-sidebar-group [titulo]="'Home'" [open]="sidebarService.isOpen()">
-        <c-dashboard-sidebar-item
-          [label]="'Home'"
-          [routerLink]="'/dashboard/'"
-          icon="filled-dashboard"
-          iconModule="dashboard"
-          [open]="sidebarService.isOpen()"
-        />
-        <c-dashboard-sidebar-item
-          [label]="'Sales'"
-          [routerLinkActiveOptions]="{ exact: false }"
-          [routerLink]="'/dashboard/sales'"
-          icon="filled-store"
-          iconModule="dashboard"
-          [open]="sidebarService.isOpen()"
-        />
-        <c-dashboard-sidebar-item
-          [label]="'Finances'"
-          [routerLinkActiveOptions]="{ exact: false }"
-          [routerLink]="'/dashboard/finance'"
-          icon="filled-account-balance"
-          iconModule="dashboard"
-          [open]="sidebarService.isOpen()"
-        />
-        <c-dashboard-sidebar-item
-          [label]="'Logistic'"
-          [routerLinkActiveOptions]="{ exact: false }"
-          [routerLink]="'/dashboard/logistic'"
-          icon="filled-stack"
-          iconModule="dashboard"
-          [open]="sidebarService.isOpen()"
-        />
+    @for (group of sidebarConstant; track $index) {
+      <c-dashboard-sidebar-group
+        [titulo]="group.title"
+        [open]="sidebarService.isOpen()"
+      >
+        @for (item of group.items; track $index) {
+          <c-dashboard-sidebar-item
+            [label]="item.label"
+            [routerLink]="item.route"
+            [routerLinkActiveOptions]="item.routerLinkActiveOptions ?? { exact: false }"
+            [icon]="item.icon"
+            [iconModule]="item.iconModule"
+            [open]="sidebarService.isOpen()"
+          />
+        }
       </c-dashboard-sidebar-group>
-      <hr class="border-surface-20 border-e">
-      <c-dashboard-sidebar-group [titulo]="'Management'" [open]="sidebarService.isOpen()">
-        <c-dashboard-sidebar-item
-          [label]="'Security'"
-          [routerLink]="'/dashboard/security'"
-          icon="filled-security"
-          iconModule="dashboard"
-          [open]="sidebarService.isOpen()"
-        />
-        <c-dashboard-sidebar-item
-          [label]="'Organization'"
-          [routerLink]="'/dashboard/organization'"
-          icon="corporation"
-          iconModule="dashboard"
-          [open]="sidebarService.isOpen()"
-        />
-      </c-dashboard-sidebar-group>
+      @if ($index < sidebarConstant.length - 1) {
+        <hr class="border-surface-20 border-e">
+      }
+    }
     </div>
   </div>
 </aside>

@@ -5,7 +5,7 @@ import { SidebarService } from '../services/sidebar.service';
 import { SidebarItemsConstant } from '../constants/sidebar.constant';
 
 @Component({
-  selector: 'f-dashboard-sidebar',
+  selector: 'f-dashboard-sidebar-secondary',
   imports: [
     // Modulos de angular
     // Modulos de librerías externas
@@ -16,9 +16,9 @@ import { SidebarItemsConstant } from '../constants/sidebar.constant';
 
     // Componentes(standalone) externos
   ],
-  templateUrl: './sidebar.fragment.html',
+  templateUrl: './sidebar-secondary.fragment.html',
 })
-export class FDashboardSidebar {
+export class FDashboardSidebarSecondary {
   public sidebarService = inject(SidebarService);
   public sidebarConstant = SidebarItemsConstant;
 }

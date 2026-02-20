@@ -1,0 +1,39 @@
+<aside class="bg-surface-5 border-surface-20 border-e flex flex-col px-3 justify-between overflow-y-auto h-full">
+  <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-3">
+      <c-dashboard-sidebar-group [titulo]="'Dashboard'" [open]="sidebarService.isOpen()">
+        <c-dashboard-sidebar-item
+          [label]="'Home'"
+          [routerLink]="'/dashboard/'"
+          icon="filled-dashboard"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+        <c-dashboard-sidebar-item
+          [label]="'Sales'"
+          [routerLinkActiveOptions]="{ exact: false }"
+          [routerLink]="'/dashboard/sales'"
+          icon="filled-store"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+        <c-dashboard-sidebar-item
+          [label]="'Finances'"
+          [routerLinkActiveOptions]="{ exact: false }"
+          [routerLink]="'/dashboard/finance'"
+          icon="filled-account-balance"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+        <c-dashboard-sidebar-item
+          [label]="'Logistic'"
+          [routerLinkActiveOptions]="{ exact: false }"
+          [routerLink]="'/dashboard/logistic'"
+          icon="filled-stack"
+          iconModule="dashboard"
+          [open]="sidebarService.isOpen()"
+        />
+      </c-dashboard-sidebar-group>
+    </div>
+  </div>
+</aside>
