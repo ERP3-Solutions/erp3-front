@@ -9,9 +9,7 @@
   }">
     <f-dashboard-header />
     <div class="flex flex-1 h-full">
-      <f-dashboard-sidebar-secondary [ngClass]="{
-        'transition-all duration-300 h-full w-60': true,
-      }" />
+      <f-dashboard-sidebar-secondary/>
       <main class="flex-1 h-full p-6 overflow-auto">
         <router-outlet></router-outlet>
       </main>
