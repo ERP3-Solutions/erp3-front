@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CDashboardSidebarGroup } from '../components/sidebar/sidebar-group.component';
 import { CDashboardSidebarItem } from '../components/sidebar/sidebar-item.component';
 import { SidebarService } from '../services/sidebar.service';
+import { SidebarItemsConstant } from '../constants/sidebar.constant';
 
 @Component({
   selector: 'f-dashboard-sidebar',
@@ -19,5 +20,5 @@ import { SidebarService } from '../services/sidebar.service';
 })
 export class FDashboardSidebar {
   public sidebarService = inject(SidebarService);
-
+  public sidebarConstant = SidebarItemsConstant;
 }

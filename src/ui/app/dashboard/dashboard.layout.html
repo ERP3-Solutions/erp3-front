@@ -8,8 +8,11 @@
     'transition-all duration-300 flex flex-col flex-1': true,
   }">
     <f-dashboard-header />
-    <main class="flex-1 h-0 p-6 overflow-auto">
-      <router-outlet></router-outlet>
-    </main>
+    <div class="flex flex-1 h-full">
+      <f-dashboard-sidebar-secondary/>
+      <main class="flex-1 h-full p-6 overflow-auto">
+        <router-outlet></router-outlet>
+      </main>
+    </div>
   </div>
 </div>

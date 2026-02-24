@@ -7,6 +7,11 @@ const router: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+      },
+      {
+        path: 'home',
         loadChildren: () => import('./home/home.routes')
       },
       {

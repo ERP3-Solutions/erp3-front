@@ -4,10 +4,14 @@
   [queryParams]="queryParams()"
   queryParamsHandling="merge"
   routerLinkActive="bg-primary-on-primary-container active"
-  class="flex items-center py-2 pe-3 ps-3 w-full transition-colors hover:bg-primary-on-primary-container active:bg-primary-primary-container group relative"
+  class="flex items-center py-2 pe-3 ps-3 w-full transition-colors hover:bg-primary-on-primary-container active:bg-primary-primary-container group relative overflow-hidden"
   [ngClass]="{
     'gap-3': open(),
   }"
+  tooltipPosition="right"
+  [tooltipDisabled]="open()"
+  [tooltipText]="label()"
+  dAppTooltip
 >
   <span class="h-full w-0.5 bg-transparent absolute left-0 group-hover:bg-primary-70 group-[.active]:bg-primary-70 transition-colors">&nbsp;</span>
   @if (icon() && iconModule()) {

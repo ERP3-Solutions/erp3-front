@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, input } from '@angular/core';
 import { ActivatedRoute, IsActiveMatchOptions, Params, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CAppIcon } from '@ui/shared/components/icon.component';
+import { DAppTooltip } from '@ui/shared/directives/tooltip.directive';
 
 @Component({
   selector: 'c-dashboard-sidebar-item',
@@ -13,6 +14,7 @@ import { CAppIcon } from '@ui/shared/components/icon.component';
 
     // Componentes(standalone) externos
     CAppIcon,
+    DAppTooltip
 ],
   templateUrl: './sidebar-item.component.html',
 })

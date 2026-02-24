@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FDashboardSidebar } from './shared/fragments/sidebar.fragment';
 import { SidebarService } from './shared/services/sidebar.service';
 import { FDashboardHeader } from './shared/fragments/header.fragment';
+import { FDashboardSidebarSecondary } from './shared/fragments/sidebar-secondary.fragment';
 
 @Component({
   selector: 'l-dashboard',
@@ -14,6 +15,7 @@ import { FDashboardHeader } from './shared/fragments/header.fragment';
 
     // Modulos de capas externas
     FDashboardSidebar,
+    FDashboardSidebarSecondary,
     FDashboardHeader,
 
     // Componentes(standalone) externos

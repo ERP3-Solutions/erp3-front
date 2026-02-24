@@ -1,0 +1,22 @@
+<aside 
+  class="bg-surface-5 border-surface-20 border-e flex flex-col justify-between h-full w-0 overflow-hidden transition-all"
+  [ngClass]="{
+    'overflow-y-auto w-60 px-3': hasItems()
+  }"
+>
+  @if (hasItems()) {
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-3">
+        <c-dashboard-sidebar-group [titulo]="sidebarConstant()!.label">
+          @for (item of sidebarConstant()!.subItems; track $index) {
+            <c-dashboard-sidebar-item
+              [label]="item.label"
+              [routerLink]="item.route"
+              [routerLinkActiveOptions]="item.routerLinkActiveOptions || { exact: false }"
+            />
+          }
+        </c-dashboard-sidebar-group>
+      </div>
+    </div>
+  }
+</aside>
