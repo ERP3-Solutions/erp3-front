@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CAppButton } from '@ui/shared/components/button.component';
 import { CAppIcon } from '@ui/shared/components/icon.component';
@@ -23,5 +23,8 @@ export class CAuthForm {
   footerTextLink = input.required<string>();
   footerLinkRouter = input.required<string>();
   submitText = input.required<string>();
+  submitTextSecondary = input<string>();
   loading = input.required<boolean>();
+
+  clickSecondaryButton = output();
 }

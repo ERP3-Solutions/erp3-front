@@ -1,0 +1,50 @@
+<div class="flex flex-col gap-3">
+  <div class="flex gap-3">
+    <c-app-form-field 
+      class="flex-1"
+      textLabel="RUC"
+      placeholder="Enter your organization RUC"
+      type="text"
+      name="ruc"
+      [formData]="registerService.formRegisterOrganization"
+    ></c-app-form-field>
+    <div class="flex items-start pt-0.5">
+      <c-app-button
+        classIcon="w-6 h-6 fill-primary-on-primary"
+        type="button"
+        color="accent"
+        typeButton="flat"
+        icon="outlined-search"
+        iconModule="shared"
+      ></c-app-button>
+    </div>
+  </div>
+  <c-app-form-field 
+    textLabel="Trade name"
+    placeholder="Enter your trade name"
+    type="text"
+    name="tradeName"
+    [formData]="registerService.formRegisterOrganization"
+  ></c-app-form-field>
+  <c-app-form-field 
+    textLabel="Email"
+    placeholder="Enter your company email"
+    type="email"
+    name="email"
+    [formData]="registerService.formRegisterOrganization"
+  ></c-app-form-field>
+  <c-app-form-field 
+    textLabel="SOL user"
+    placeholder="Enter your SOL user"
+    type="text"
+    name="userSolUsername"
+    [formData]="registerService.formRegisterOrganization"
+  ></c-app-form-field>
+  <c-app-form-field 
+    textLabel="SOL password"
+    placeholder="Enter your SOL password"
+    type="password"
+    name="userSolPasswordHash"
+    [formData]="registerService.formRegisterOrganization"
+  ></c-app-form-field>
+</div>

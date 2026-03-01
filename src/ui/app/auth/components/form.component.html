@@ -27,7 +27,16 @@
             {{ submitText() }}
           }
         </c-app-button>
-        <ng-content select="[secondaryButton]"></ng-content>
+        @if (submitTextSecondary()) {
+          <c-app-button
+            type="button"
+            color="accent"
+            typeButton="stroked"
+            (clickButton)="clickSecondaryButton.emit()"
+          >
+            {{ submitTextSecondary() }}
+          </c-app-button>
+        }
       </div>
     </div>
   </div>

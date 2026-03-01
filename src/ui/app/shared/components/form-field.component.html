@@ -80,31 +80,33 @@
       <ng-content #sufix></ng-content>
     </div>
   </div>
-  <div class="px-2 pt-0.5 pb-1 text-error-40 text-xs">
-    @if(hasError('pattern')) { 
-      <p>
-        Patrón de datos invalido
-      </p> 
-    }
-    @if(hasError('required')) { 
-      <p>
-        Campo requerido
-      </p> 
-    }
-    @if(hasError('email')) { 
-      <p>
-        Correo inválido
-      </p> 
-    }
-    @if(hasError('passwordsMismatch')) { 
-      <p>
-        Las contraseñas deben ser iguales
-      </p> 
-    }
-    @for (error of getErrorsApi(); track $index) {
-      <p>
-        {{ error }}
-      </p>
-    }
-  </div>
+  @if (invalid()) {
+    <div class="px-2 pt-0.5 pb-1 text-error-40 text-xs">
+      @if(hasError('pattern')) { 
+        <p>
+          Patrón de datos invalido
+        </p> 
+      }
+      @if(hasError('required')) { 
+        <p>
+          Campo requerido
+        </p> 
+      }
+      @if(hasError('email')) { 
+        <p>
+          Correo inválido
+        </p> 
+      }
+      @if(hasError('passwordsMismatch')) { 
+        <p>
+          Las contraseñas deben ser iguales
+        </p> 
+      }
+      @for (error of getErrorsApi(); track $index) {
+        <p>
+          {{ error }}
+        </p>
+      }
+    </div>
+  }
 </div>

@@ -28,13 +28,57 @@ export class RegisterService {
     ]),
   });
 
+  public formRegisterOrganization = new FormGroup({
+    ruc: new FormControl('', [
+      Validators.required,
+    ]),
+    tradeName: new FormControl('', [
+      Validators.required,
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]),
+    userSolUsername: new FormControl('', [
+      Validators.required,
+    ]),
+    userSolPasswordHash: new FormControl('', [
+      Validators.required,
+    ]),
+  });
+
+  public formRegisterContact = new FormGroup({
+    address: new FormControl('', [
+      Validators.required,
+    ]),
+    department: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]),
+    province: new FormControl('', [
+      Validators.required,
+    ]),
+    district: new FormControl('', [
+      Validators.required,
+    ]),
+    postalCode: new FormControl('', [
+      Validators.required,
+    ]),
+    phone: new FormControl('', [
+      Validators.required,
+    ]),
+  });
+
+  validateForm(form: FormGroup) {
+    form.markAllAsTouched()
+    Object.values(form.controls).forEach(v => v.markAsDirty());
+    return form.valid;
+  }
+
   registerOrganization() {
-    this.formRegisterUser.markAllAsTouched()
-    if (this.formRegisterUser.valid) {
-      const command = this.formRegisterUser.value as IRegisterOrganizationCommand;
-      this.loading.set(true);
-      this.facade.registerOrganization(command);
-      this.loading.set(false);
-    }
+    const command = this.formRegisterUser.value as IRegisterOrganizationCommand;
+    this.loading.set(true);
+    this.facade.registerOrganization(command);
+    this.loading.set(false);
   }
 }

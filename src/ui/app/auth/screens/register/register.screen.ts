@@ -1,11 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CAuthForm } from '@ui/auth/components/form.component';
-import { CAuthPasswordMeter } from '@ui/auth/components/password-meter.component';
 import { RegisterService } from '@ui/auth/services/register/register.service';
-import { CAppButton } from '@ui/shared/components/button.component';
-import { CAppFormField } from '@ui/shared/components/form-field.component';
-import { CAppIcon } from '@ui/shared/components/icon.component';
+import { FAuthUserRegister } from './fragments/user-register/user-register.fragment';
+import { ERegisterFormSteps } from './enums/register-form-steps.enum';
+import { CAuthForm } from '@ui/auth/components/form.component';
+import { FAuthOrganizationRegister } from './fragments/organization-register/organization-register.fragment';
 
 @Component({
   selector: 's-auth-register',
@@ -14,16 +13,10 @@ import { CAppIcon } from '@ui/shared/components/icon.component';
     ReactiveFormsModule,
     FormsModule,
 
-    // Modulos de librerías externas
     // Componentes(standalone) internos
     CAuthForm,
-    CAppIcon,
-    CAppButton,
-    CAuthPasswordMeter,
-
-    // Componentes(standalone) externos
-    CAppFormField,
-    CAppIcon
+    FAuthUserRegister,
+    FAuthOrganizationRegister,
   ],
   templateUrl: 'register.screen.html',
   providers: [
@@ -31,11 +24,36 @@ import { CAppIcon } from '@ui/shared/components/icon.component';
   ]
 })
 export class SAuthRegister {
-  public registerService = inject(RegisterService)
+  public registerService = inject(RegisterService);
 
-  public hidePassword = signal<boolean>(true);
+  public step = signal<ERegisterFormSteps>(ERegisterFormSteps.ORGANIZATION_FORM);
+  public steps = ERegisterFormSteps;
 
-  registrarOrganizacion() {
-    this.registerService.registerOrganization();
+  public orderSteps = [
+    this.steps.USER_FORM,
+    this.steps.ORGANIZATION_FORM,
+    this.steps.CONTACT_FORM,
+    this.steps.SERIES_SUCURSAL_FORM,
+    this.steps.PLAN_FORM,
+  ]
+  public indexStep = computed(() => this.orderSteps.findIndex(s => s === this.step()))
+  public isLastStep = computed(() => this.indexStep() === (this.orderSteps.length - 1))
+
+  public _stepsForm = {
+    [this.steps.USER_FORM]: this.registerService.formRegisterUser,
+    [this.steps.ORGANIZATION_FORM]: this.registerService.formRegisterOrganization,
+  }
+
+  public currentForm = computed(() => (this.step() in this._stepsForm) ? this._stepsForm[this.step() as keyof typeof this._stepsForm] : undefined)
+
+  public validateStep(): void {
+    if (this.indexStep() === -1) return;
+
+    if (this.currentForm() === undefined) return;
+    const isValid = this.registerService.validateForm(this.currentForm()!);
+    if (!isValid) return;
+
+    if (this.isLastStep()) this.registerService.registerOrganization();
+    else this.step.set(this.orderSteps[this.indexStep() + 1]);
   }
 }
