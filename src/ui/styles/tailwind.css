@@ -1,1 +1,108 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* PRIMARY */
+  --color-primary-0: var(--primary-0);
+  --color-primary-10: var(--primary-10);
+  --color-primary-20: var(--primary-20);
+  --color-primary-30: var(--primary-30);
+  --color-primary-40: var(--primary-40);
+  --color-primary-50: var(--primary-50);
+  --color-primary-60: var(--primary-60);
+  --color-primary-70: var(--primary-70);
+  --color-primary-80: var(--primary-80);
+  --color-primary-90: var(--primary-90);
+  --color-primary-100: var(--primary-100);
+
+  --color-primary-on-primary: var(--primary-on-primary);
+  --color-primary-primary-container: var(--primary-primary-container);
+  --color-primary-on-primary-container: var(--primary-on-primary-container);
+
+  /* SECONDARY */
+  --color-secondary-0: var(--secondary-0);
+  --color-secondary-10: var(--secondary-10);
+  --color-secondary-20: var(--secondary-20);
+  --color-secondary-30: var(--secondary-30);
+  --color-secondary-40: var(--secondary-40);
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-60: var(--secondary-60);
+  --color-secondary-70: var(--secondary-70);
+  --color-secondary-80: var(--secondary-80);
+  --color-secondary-90: var(--secondary-90);
+  --color-secondary-100: var(--secondary-100);
+
+  --color-secondary-on-secondary: var(--secondary-on-secondary);
+  --color-secondary-secondary-container: var(--secondary-secondary-container);
+  --color-secondary-on-secondary-container: var(--secondary-on-secondary-container);
+
+  /* TERTIARY */
+  --color-tertiary-0: var(--tertiary-0);
+  --color-tertiary-10: var(--tertiary-10);
+  --color-tertiary-20: var(--tertiary-20);
+  --color-tertiary-30: var(--tertiary-30);
+  --color-tertiary-40: var(--tertiary-40);
+  --color-tertiary-50: var(--tertiary-50);
+  --color-tertiary-60: var(--tertiary-60);
+  --color-tertiary-70: var(--tertiary-70);
+  --color-tertiary-80: var(--tertiary-80);
+  --color-tertiary-90: var(--tertiary-90);
+  --color-tertiary-100: var(--tertiary-100);
+
+  --color-tertiary-on-tertiary: var(--tertiary-on-tertiary);
+  --color-tertiary-tertiary-container: var(--tertiary-tertiary-container);
+  --color-tertiary-on-tertiary-container: var(--tertiary-on-tertiary-container);
+
+  /* SURFACE */
+  --color-surface-0: var(--surface-0);
+  --color-surface-5: var(--surface-5);
+  --color-surface-10: var(--surface-10);
+  --color-surface-20: var(--surface-20);
+  --color-surface-30: var(--surface-30);
+  --color-surface-40: var(--surface-40);
+  --color-surface-50: var(--surface-50);
+  --color-surface-60: var(--surface-60);
+  --color-surface-70: var(--surface-70);
+  --color-surface-80: var(--surface-80);
+  --color-surface-90: var(--surface-90);
+  --color-surface-100: var(--surface-100);
+
+  --color-surface-on-surface: var(--surface-on-surface);
+  --color-surface-surface-container: var(--surface-surface-container);
+  --color-surface-on-surface-container: var(--surface-on-surface-container);
+
+  /* ERROR */
+  --color-error-0: var(--error-0);
+  --color-error-10: var(--error-10);
+  --color-error-20: var(--error-20);
+  --color-error-30: var(--error-30);
+  --color-error-40: var(--error-40);
+  --color-error-50: var(--error-50);
+  --color-error-60: var(--error-60);
+  --color-error-70: var(--error-70);
+  --color-error-80: var(--error-80);
+  --color-error-90: var(--error-90);
+  --color-error-100: var(--error-100);
+
+  --color-error-on-error: var(--error-on-error);
+  --color-error-error-container: var(--error-error-container);
+  --color-error-on-error-container: var(--error-on-error-container);
+
+  /* SUCCESS */
+  --color-success-0: var(--success-0);
+  --color-success-10: var(--success-10);
+  --color-success-20: var(--success-20);
+  --color-success-30: var(--success-30);
+  --color-success-40: var(--success-40);
+  --color-success-50: var(--success-50);
+  --color-success-60: var(--success-60);
+  --color-success-70: var(--success-70);
+  --color-success-80: var(--success-80);
+  --color-success-90: var(--success-90);
+  --color-success-100: var(--success-100);
+
+  --color-success-on-success: var(--success-on-success);
+  --color-success-success-container: var(--success-success-container);
+  --color-success-on-success-container: var(--success-on-success-container);
+}

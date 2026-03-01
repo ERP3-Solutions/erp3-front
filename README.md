@@ -1,59 +1,28 @@
-# Erp3Front
+# Erp3 Front
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+This project has been created with academic porpuse, in this case we'll apply an mix of architectures, starting with Hexagonal architecture (ports and adapters)
 
-## Development server
+## Project layers
 
-To start a local development server, run:
+For this project, we have some layers witch will help us to comunicate, from UI to core and finally extern applications (API or storage)
 
-```bash
-ng serve
-```
+  - **base**: A common repository or utilities, interfaces and the rest of things that you could define to supply main modules (including core module).
+  - **environment**: Here we just define the main strings connection and environment variables to our application and infrastructure.
+  - **core**: I'll dedicate a special section to explain all about this module, but keep in mind that here you'll define the use cases of all application, this module cannot depends of extern libraries or code, just provide to the rest of layers.
+  - **infrastructure**: In paralel with the core module, here we define the technologies and adapters witch core will reference to extract extern information, such as web APIs, sockets, and specific tools to make this posible.
+  - **data**: This is an intermediary between core and infrastructure, here we define (with dependency injection), the adapters to use in the core and the ports which UI layer will use to call the use cases.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Architecture
 
-## Code scaffolding
+### Ports and adapters
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+This is a very important concept that we have to understand to contribute in this project, ports and adapters... I'll give you a simple explanation: a port is a contract, an interface or an abstract class which define "what" will this function do; we dont worry about "how" it achieves (maybe we consume from an API with the HTTP protocol to obtain a list of products, bla bla bla)
 
-```bash
-ng generate component component-name
-```
+- **port**: Such I explained, a port is a contract... In this case, we'l define to comunicate the core with extern information and define It's APIs or use-cases to consume from another layer (UI), therefore, there're two ways to define a port:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+  * _**out-port**_: Imagine that we're in the core module and we wannna get a list of products, what we have to do is create an out port which will provide us of the information that we'll need... An out port is a contract which defines the data that we need from the outside, for example: repositories, consumers, clients, etc. Everything that we should call (or send data) with a specific purpose.
 
-```bash
-ng generate --help
-```
+  * _**in-port**_: This is the same that out ports, but in this case we should put our shoes in the extern services, for example, the core will expose an use-case definition, and the UI layer will use (importing from data module) to execute it's funtionality.
 
-## Building
+- **adapter**: An adapter is the implementation of a port, and could be more than once, but pointing just to an unique contract... As well, we have two types of adapters, out and in, each one adapting their own port.
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

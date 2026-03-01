@@ -1,19 +1,14 @@
 $primary-erp-palette: (
-  0: #000000,
+  0: #06070f,
   10: #191a2f,
   20: #2e2f45,
-  25: #393950,
   30: #44455c,
-  35: #505068,
   40: #5c5c75,
   50: #75758e,
   60: #8f8ea9,
   70: #a9a9c4,
   80: #c5c4e0,
   90: #e1e0fd,
-  95: #f1efff,
-  98: #fbf8ff,
-  99: #fffbff,
   100: #ffffff
 );
 
@@ -21,11 +16,6 @@ $primary-erp-contrast: (
   on-primary: #ffffff,
   primary-container: #48494a,
   on-primary-container: #282a2b,
-  inverse-primary: #c6c6c7,
-  primary-fixed: #48494a,
-  primary-fixed-dim: #313333,
-  on-primary-fixed: #ffffff,
-  on-primary-fixed-variant: #ffffff
 );
 
 @mixin export-primary-vars($prefix: "primary") {

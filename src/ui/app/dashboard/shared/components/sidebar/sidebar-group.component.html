@@ -1,0 +1,15 @@
+<section class="flex flex-col gap-2 overflow-hidden"> 
+  <header 
+    [ngClass]="{
+      'p-1 text-primary-80 text-xs font-medium whitespace-nowrap': true,
+      'text-center': !open()
+    }"
+  >
+    @if (open()) {
+      {{ titulo() }}
+    } @else {
+      {{ tituloInicial() }}
+    }
+  </header>
+  <ng-content></ng-content>
+</section>

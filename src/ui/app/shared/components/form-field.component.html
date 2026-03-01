@@ -1,0 +1,110 @@
+<div class="w-full" [formGroup]="formData()">
+  <div class="relative flex flex-row items-center">
+    @if (icon() && iconModule()) {
+      <div 
+        class="absolute left-1 flex items-center"
+      >
+        <c-app-icon 
+          [svgIcon]="icon()"
+          [svgModule]="iconModule()"
+        />
+      </div>
+    }
+    <input 
+      [type]="type()"
+      [formControlName]="name()"
+      [placeholder]="placeholder()"
+      autocomplete="off"
+      class="
+        peer
+        w-full
+        px-3
+        py-3
+        text-sm
+        border
+        rounded-sm
+        transition
+        duration-300
+        ease
+        focus:outline-none
+        focus:shadow
+        bg-transparent
+        shadow-sm
+        border-secondary-40
+        hover:border-secondary-50
+        focus:border-primary-70
+        text-surface-on-surface
+      "
+      [ngClass]="{
+        'placeholder-transparent focus:placeholder-surface-70': !!textLabel(),
+        'border-error-40 hover:border-error-50': invalid(),
+        'border-secondary-40 hover:border-secondary-50 focus:border-primary-70': !invalid(),
+      }"
+    />
+    @if (!!textLabel()) {
+      <label
+        class="
+          absolute
+          pointer-events-none
+          px-1
+          left-2.5
+          top-3
+          text-sm
+          transition-all
+          transform
+          origin-left
+
+          peer-placeholder-shown:top-3
+          peer-placeholder-shown:text-sm
+          peer-placeholder-shown:scale-100
+
+          peer-focus:-top-2
+          peer-focus:text-xs
+          peer-focus:scale-90
+
+          peer-not-placeholder-shown:-top-2
+          peer-not-placeholder-shown:text-xs
+          peer-not-placeholder-shown:scale-90
+
+          bg-surface-0
+        "
+        [ngClass]="{
+          'text-error-40 peer-focus:text-error-50': invalid(),
+          'text-secondary-50 peer-hover:text-secondary-70 peer-focus:text-primary-70': !invalid(),
+        }"
+      >
+        {{ textLabel() }}{{ isRequired() ? '*' : '' }}
+      </label>
+    }
+    <div class="absolute right-1 flex items-center">
+      <ng-content #sufix></ng-content>
+    </div>
+  </div>
+  <div class="px-2 pt-0.5 pb-1 text-error-40 text-xs">
+    @if(hasError('pattern')) { 
+      <p>
+        Patrón de datos invalido
+      </p> 
+    }
+    @if(hasError('required')) { 
+      <p>
+        Campo requerido
+      </p> 
+    }
+    @if(hasError('email')) { 
+      <p>
+        Correo inválido
+      </p> 
+    }
+    @if(hasError('passwordsMismatch')) { 
+      <p>
+        Las contraseñas deben ser iguales
+      </p> 
+    }
+    @for (error of getErrorsApi(); track $index) {
+      <p>
+        {{ error }}
+      </p>
+    }
+  </div>
+</div>

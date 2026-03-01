@@ -21,17 +21,17 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
               "src/ui/assets"
             ],
             "styles": [
               {
-                "input": "src/ui/styles/material.scss",
+                "input": "src/ui/styles/root.scss",
                 "bundleName": "styles"
               },
               {
@@ -89,16 +89,17 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
+              "src/public/",
               "src/ui/assets"
             ],
             "styles": [
-              "src/ui/styles/material.scss",
+              "src/ui/styles/root.scss",
               "src/ui/styles/custom.scss",
               "src/ui/styles/tailwind.css"
             ],

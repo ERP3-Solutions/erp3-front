@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
+import { AuthFacade } from './facades/auth.facade';
+import { AuthModule } from '@data/auth.module';
 
 @Component({
   selector: 'l-auth',
@@ -10,11 +11,14 @@ import { MatCardModule } from '@angular/material/card';
 
     // Modulos de librerías externas
     // Modulos de capas externas
+    AuthModule,
+
     // Componentes(standalone) internos
     // Componentes(standalone) externos
-
-    MatCardModule
   ],
   templateUrl: './auth.layout.html',
+  providers: [
+    AuthFacade,
+  ]
 })
 export class LAuth { }

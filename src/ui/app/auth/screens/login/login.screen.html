@@ -1,3 +1,42 @@
-<button (click)="iniciarSesion()">
-  click para iniciar sesion
-</button>
+<c-auth-form
+  [title]="'Welcome again'"
+  [subtitle]="'Please enter your account details'"
+  [footerText]="'¿No tienes una cuenta?'"
+  [footerTextLink]="'Registrarse'"
+  [footerLinkRouter]="'/auth/register'"
+  [submitText]="'Iniciar sesión'"
+  [formGroup]="loginService.formLogin"
+  (submit)="iniciarSesion()"
+  [loading]="loginService.loading()"
+>
+  <ng-container inputs>
+    <c-app-form-field 
+      textLabel="Email"
+      placeholder="Enter your email"
+      type="text"
+      name="email"
+      [formData]="loginService.formLogin"
+    ></c-app-form-field>
+    <c-app-form-field 
+      textLabel="Password"
+      placeholder="Enter your password"
+      [type]="hidePassword() ? 'password' : 'text'"
+      name="password"
+      [formData]="loginService.formLogin"
+    >
+      <ng-container suffix>
+        <c-app-button 
+          type="button"
+          typeButton="icon"
+          (clickButton)="hidePassword.set(!hidePassword())" 
+        >
+          <c-app-icon 
+            className="w-6 h-6 fill-primary-50"
+            [svgIcon]="hidePassword() ? 'outlined-visibility_off' : 'outlined-visibility'"
+            svgModule="auth"
+          />
+        </c-app-button>
+      </ng-container>
+    </c-app-form-field>
+  </ng-container>
+</c-auth-form>

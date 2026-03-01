@@ -1,9 +1,13 @@
 @use "./palette/primary-erp-palette";
 @use "./palette/secondary-erp-palette";
-@use "./palette/red-erp-palette";
+@use "./palette/tertiary-erp-palette";
+@use "./palette/surface-erp-palette";
+@use "./palette/error-erp-palette";
 @use "./palette/success-erp-palette";
 
 @include primary-erp-palette.export-primary-vars();
 @include secondary-erp-palette.export-secondary-vars();
-@include red-erp-palette.export-red-vars();
+@include tertiary-erp-palette.export-tertiary-vars();
+@include surface-erp-palette.export-surface-vars();
+@include error-erp-palette.export-error-vars();
 @include success-erp-palette.export-success-vars();

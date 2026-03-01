@@ -1,35 +1,41 @@
-import { Component, inject } from '@angular/core';
-import { RegisterOrganizationPort } from '@core/auth/port/in/register-organization.port';
-import { AuthModule } from '@data/auth.module';
-import { REGISTER_ORGANIZATION_TOKEN } from '@data/auth/token/in/register-organization.token';
+import { Component, inject, signal } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CAuthForm } from '@ui/auth/components/form.component';
+import { CAuthPasswordMeter } from '@ui/auth/components/password-meter.component';
+import { RegisterService } from '@ui/auth/services/register/register.service';
+import { CAppButton } from '@ui/shared/components/button.component';
+import { CAppFormField } from '@ui/shared/components/form-field.component';
+import { CAppIcon } from '@ui/shared/components/icon.component';
 
 @Component({
   selector: 's-auth-register',
   imports: [
     // Modulos de angular
-    // Modulos de librerías externas
-    AuthModule,
+    ReactiveFormsModule,
+    FormsModule,
 
-    // Modulos de capas externas
+    // Modulos de librerías externas
     // Componentes(standalone) internos
+    CAuthForm,
+    CAppIcon,
+    CAppButton,
+    CAuthPasswordMeter,
+
     // Componentes(standalone) externos
+    CAppFormField,
+    CAppIcon
   ],
   templateUrl: 'register.screen.html',
+  providers: [
+    RegisterService
+  ]
 })
 export class SAuthRegister {
-  private registerUseCase: RegisterOrganizationPort = inject(REGISTER_ORGANIZATION_TOKEN)
+  public registerService = inject(RegisterService)
 
-  iniciarSesion() {
-    this.registerUseCase.execute({
-      email: '',
-      password: '',
-      confirmPassword: '',
-      firstName: '',
-      lastName: '',
-      organizationDirection: '',
-      organizationName: '',
-      organizationPhone: '',
-      organizationRuc: ''
-    });
+  public hidePassword = signal<boolean>(true);
+
+  registrarOrganizacion() {
+    this.registerService.registerOrganization();
   }
 }

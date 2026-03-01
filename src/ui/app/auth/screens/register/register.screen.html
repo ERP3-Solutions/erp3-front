@@ -1,3 +1,84 @@
-<button (click)="iniciarSesion()">
-  click para registrarse
-</button>
+<c-auth-form
+  [title]="'Bienvenido a AMS'"
+  [subtitle]="'Por favor, ingrese sus datos de usuario'"
+  [footerText]="'¿Ya tienes una cuenta?'"
+  [footerTextLink]="'Iniciar sesión'"
+  [footerLinkRouter]="'/auth/login'"
+  [submitText]="'Siguiente'"
+  [formGroup]="registerService.formRegisterUser"
+  (submit)="registrarOrganizacion()"
+  [loading]="registerService.loading()"
+>
+  <ng-container inputs>
+    <div class="flex gap-1.5">
+      <c-app-form-field 
+        textLabel="First name"
+        placeholder="Your first name"
+        type="text"
+        name="firstName"
+        [formData]="registerService.formRegisterUser"
+      ></c-app-form-field>
+      <c-app-form-field 
+        textLabel="Last name"
+        placeholder="Your last name"
+        type="text"
+        name="lastName"
+        [formData]="registerService.formRegisterUser"
+      ></c-app-form-field>
+    </div>
+    <c-app-form-field 
+      textLabel="Email"
+      placeholder="Enter your email"
+      type="text"
+      name="email"
+      [formData]="registerService.formRegisterUser"
+    ></c-app-form-field>
+    <div class="flex flex-col gap-1.5">
+      <c-app-form-field 
+        textLabel="Password"
+        placeholder="Enter your password"
+        [type]="hidePassword() ? 'password' : 'text'"
+        name="password"
+        [formData]="registerService.formRegisterUser"
+      >
+        <ng-container suffix>
+          <c-app-button 
+            type="button"
+            typeButton="icon"
+            (click)="hidePassword.set(!hidePassword())" 
+          >
+            <c-app-icon 
+              className="w-6 h-6 fill-primary-50"
+              [svgIcon]="hidePassword() ? 'outlined-visibility_off' : 'outlined-visibility'"
+              svgModule="auth"
+            />
+          </c-app-button>
+        </ng-container>
+      </c-app-form-field>
+      @if (registerService.formRegisterUser.get('password')?.value) {
+        <c-auth-password-meter [password]="registerService.formRegisterUser.get('password')?.value || ''" />
+      }
+    </div>
+    <c-app-form-field 
+      textLabel="Confirm password"
+      placeholder="Confirm your password"
+      [type]="hidePassword() ? 'password' : 'text'"
+      name="confirmPassword"
+      [formData]="registerService.formRegisterUser"
+    >
+      <ng-container suffix>
+        <c-app-button 
+          type="button"
+          typeButton="icon"
+          (click)="hidePassword.set(!hidePassword())" 
+        >
+          <c-app-icon 
+            className="w-6 h-6 fill-primary-50"
+            [svgIcon]="hidePassword() ? 'outlined-visibility_off' : 'outlined-visibility'"
+            svgModule="auth"
+          />
+        </c-app-button>
+      </ng-container>
+    </c-app-form-field>
+  </ng-container>
+</c-auth-form>

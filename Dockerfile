@@ -1,23 +1,10 @@
-FROM node:20.19-alpine AS build
-
+FROM node:20-alpine AS build
 WORKDIR /app
-
 COPY package*.json ./
-
 RUN npm install
-
 COPY . .
+RUN npm run build
 
-RUN npm install -g @angular/cli
-
-RUN ng build --configuration=production
-
-FROM nginx:stable-alpine
-
+FROM nginx:alpine AS final
+COPY --from=build /app/dist/erp3-front/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-COPY --from=build /app/dist/academy-front /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
