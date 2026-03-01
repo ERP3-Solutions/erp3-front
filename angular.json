@@ -39,7 +39,7 @@
                 "bundleName": "tailwind"
               },
               {
-                "input": "src/ui/styles/custom.css",
+                "input": "src/ui/styles/custom.scss",
                 "bundleName": "custom"
               }
             ],
@@ -104,11 +104,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "be123a4c-4d74-4710-a555-6ae3848969f3"
+    "schematicCollections": [
+      "angular-eslint"
+    ],
+    "analytics": "528906e6-c7d7-4b5a-9a45-a36b47842acf"
   }
 }

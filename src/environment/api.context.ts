@@ -1,0 +1,1 @@
+export const SECURITY_API = 'http://localhost:5260/api/v1'
