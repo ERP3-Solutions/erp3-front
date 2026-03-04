@@ -5,6 +5,8 @@ import { FAuthUserRegister } from './fragments/user-register/user-register.fragm
 import { ERegisterFormSteps } from './enums/register-form-steps.enum';
 import { CAuthForm } from '@ui/auth/components/form.component';
 import { FAuthOrganizationRegister } from './fragments/organization-register/organization-register.fragment';
+import { FAuthContactRegister } from './fragments/contact-register/contact-register.fragment';
+import { TranslateService } from '@ui/shared/services/translate.service';
 
 @Component({
   selector: 's-auth-register',
@@ -17,6 +19,7 @@ import { FAuthOrganizationRegister } from './fragments/organization-register/org
     CAuthForm,
     FAuthUserRegister,
     FAuthOrganizationRegister,
+    FAuthContactRegister,
   ],
   templateUrl: 'register.screen.html',
   providers: [
@@ -24,9 +27,10 @@ import { FAuthOrganizationRegister } from './fragments/organization-register/org
   ]
 })
 export class SAuthRegister {
+  public translate = inject(TranslateService);
   public registerService = inject(RegisterService);
 
-  public step = signal<ERegisterFormSteps>(ERegisterFormSteps.ORGANIZATION_FORM);
+  public step = signal<ERegisterFormSteps>(ERegisterFormSteps.CONTACT_FORM);
   public steps = ERegisterFormSteps;
 
   public orderSteps = [
@@ -42,6 +46,7 @@ export class SAuthRegister {
   public _stepsForm = {
     [this.steps.USER_FORM]: this.registerService.formRegisterUser,
     [this.steps.ORGANIZATION_FORM]: this.registerService.formRegisterOrganization,
+    [this.steps.CONTACT_FORM]: this.registerService.formRegisterContact,
   }
 
   public currentForm = computed(() => (this.step() in this._stepsForm) ? this._stepsForm[this.step() as keyof typeof this._stepsForm] : undefined)

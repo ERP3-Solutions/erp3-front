@@ -8,6 +8,7 @@ export class RegisterService {
   private readonly facade: AuthFacade = inject(AuthFacade);
 
   public loading = signal<boolean>(false);
+  public loadingLoadRuc = signal<boolean>(false);
 
   public formRegisterUser = new FormGroup({
     firstName: new FormControl('', [
@@ -53,7 +54,6 @@ export class RegisterService {
     ]),
     department: new FormControl('', [
       Validators.required,
-      Validators.email
     ]),
     province: new FormControl('', [
       Validators.required,
@@ -80,5 +80,21 @@ export class RegisterService {
     this.loading.set(true);
     this.facade.registerOrganization(command);
     this.loading.set(false);
+  }
+
+  async loadOrganizationByRuc(): Promise<void> {
+    const ruc = this.formRegisterOrganization.get('ruc')?.value;
+    if (!ruc) return;
+    this.loadingLoadRuc.set(true);
+    try {
+      const company = await this.facade.obtainOrganizationByRuc(ruc);
+      this.formRegisterOrganization.patchValue({
+        tradeName: company.razonSocial
+      })
+    } catch (e) {
+      console.error(e);
+    } finally {
+      this.loadingLoadRuc.set(false);
+    }
   }
 }

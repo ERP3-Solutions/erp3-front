@@ -10,11 +10,16 @@
     ></c-app-form-field>
     <div class="flex items-start pt-0.5">
       <c-app-button
-        classIcon="w-6 h-6 fill-primary-on-primary"
+        [classIcon]="{
+          'w-6 h-6 fill-primary-on-primary': true,
+          'animate-spin': registerService.loadingLoadRuc()
+        }"
+        [disabled]="registerService.loadingLoadRuc()"
         type="button"
         color="accent"
         typeButton="flat"
-        icon="outlined-search"
+        [icon]="registerService.loadingLoadRuc() ? 'outlined-progress-activity' : 'outlined-search'"
+        (clickButton)="registerService.loadOrganizationByRuc()"
         iconModule="shared"
       ></c-app-button>
     </div>

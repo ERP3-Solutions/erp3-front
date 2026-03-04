@@ -1,50 +1,48 @@
 <div class="flex flex-col gap-3">
-  <div class="flex gap-3">
+  <c-app-form-field 
+    textLabel="Department"
+    placeholder="Enter your department"
+    type="text"
+    name="department"
+    [formData]="registerService.formRegisterContact"
+  ></c-app-form-field>
+  <div class="flex items-start gap-3">
     <c-app-form-field 
-      class="flex-1"
-      textLabel="RUC"
-      placeholder="Enter your organization RUC"
+      textLabel="Province"
+      placeholder="Enter the province"
       type="text"
-      name="ruc"
-      [formData]="registerService.formRegisterOrganization"
+      name="province"
+      [formData]="registerService.formRegisterContact"
     ></c-app-form-field>
-    <div class="flex items-start pt-0.5">
-      <c-app-button
-        classIcon="w-6 h-6 fill-primary-on-primary"
-        type="button"
-        color="accent"
-        typeButton="flat"
-        icon="outlined-search"
-        iconModule="shared"
-      ></c-app-button>
-    </div>
+    <c-app-form-field 
+      textLabel="District"
+      placeholder="Enter your district"
+      type="text"
+      name="district"
+      [formData]="registerService.formRegisterContact"
+    ></c-app-form-field>
   </div>
   <c-app-form-field 
-    textLabel="Trade name"
-    placeholder="Enter your trade name"
+    textLabel="Address"
+    placeholder="Enter your organization address"
     type="text"
-    name="tradeName"
-    [formData]="registerService.formRegisterOrganization"
+    name="address"
+    [formData]="registerService.formRegisterContact"
   ></c-app-form-field>
-  <c-app-form-field 
-    textLabel="Email"
-    placeholder="Enter your company email"
-    type="email"
-    name="email"
-    [formData]="registerService.formRegisterOrganization"
-  ></c-app-form-field>
-  <c-app-form-field 
-    textLabel="SOL user"
-    placeholder="Enter your SOL user"
-    type="text"
-    name="userSolUsername"
-    [formData]="registerService.formRegisterOrganization"
-  ></c-app-form-field>
-  <c-app-form-field 
-    textLabel="SOL password"
-    placeholder="Enter your SOL password"
-    type="password"
-    name="userSolPasswordHash"
-    [formData]="registerService.formRegisterOrganization"
-  ></c-app-form-field>
+  <div class="flex items-start gap-3">
+    <c-app-form-field 
+      textLabel="Postal Code"
+      placeholder="Enter your postal code"
+      type="text"
+      name="postalCode"
+      [formData]="registerService.formRegisterContact"
+    ></c-app-form-field>
+    <c-app-form-field 
+      textLabel="Phone"
+      placeholder="Enter your organization phone"
+      type="tel"
+      name="phone"
+      [formData]="registerService.formRegisterContact"
+    ></c-app-form-field>
+  </div>
 </div>

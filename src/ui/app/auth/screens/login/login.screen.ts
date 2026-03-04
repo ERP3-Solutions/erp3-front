@@ -5,6 +5,7 @@ import { CAuthForm } from '@ui/auth/components/form.component';
 import { CAppFormField } from '@ui/shared/components/form-field.component';
 import { CAppIcon } from '@ui/shared/components/icon.component';
 import { CAppButton } from '@ui/shared/components/button.component';
+import { TranslateService } from '@ui/shared/services/translate.service';
 
 @Component({
   selector: 's-auth-login',
@@ -29,6 +30,7 @@ import { CAppButton } from '@ui/shared/components/button.component';
   ]
 })
 export class SAuthLogin {
+  public translate = inject(TranslateService);
   public loginService = inject(LoginService)
 
   public hidePassword = signal<boolean>(true);

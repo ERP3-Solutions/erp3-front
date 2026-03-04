@@ -1,14 +1,14 @@
 @if (currentForm() !== undefined) {
   <c-auth-form
-    [title]="'Bienvenido a AMS'"
-    [subtitle]="'Por favor, ingrese sus datos de usuario'"
-    [footerText]="'¿Ya tienes una cuenta?'"
-    [footerTextLink]="'Iniciar sesión'"
+    [title]="translate.tSignal('auth.screens.register.title')()"
+    [subtitle]="translate.tSignal('auth.screens.register.subtitle')()"
+    [footerText]="translate.tSignal('auth.screens.register.footer-text')()"
+    [footerTextLink]="translate.tSignal('auth.screens.register.footer-text-link')()"
     [footerLinkRouter]="'/auth/login'"
-    [submitText]="'Siguiente'"
+    [submitText]="isLastStep() ? translate.tSignal('auth.screens.register.register-button')() : translate.tSignal('auth.screens.register.next-button')()"
     [formGroup]="currentForm()!"
     (submit)="validateStep()"
-    [submitTextSecondary]="indexStep() > 0 ? 'Volver' : ''"
+    [submitTextSecondary]="indexStep() > 0 ? translate.tSignal('auth.screens.register.back-button')() : ''"
     (clickSecondaryButton)="step.set(orderSteps[indexStep() - 1])"
     [loading]="registerService.loading()"
   >
@@ -19,6 +19,9 @@
         }
         @case (steps.ORGANIZATION_FORM) {
           <f-auth-organization-register />
+        }
+        @case (steps.CONTACT_FORM) {
+          <f-auth-contact-register />
         }
       }
     </ng-container>

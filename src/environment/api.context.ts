@@ -1,1 +1,3 @@
-export const SECURITY_API = 'http://localhost:5260/api/v1'
+const API_HOST = 'https://erp-api.celerisys.com'
+
+export const API_URL = `${API_HOST}/api`

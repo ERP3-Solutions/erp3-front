@@ -1,0 +1,62 @@
+{
+  "screens": {
+    "register": {
+      "title": "Bienvenido a ERP3",
+      "subtitle-user-register": "Por favor, ingrese sus datos de usuario",
+      "subtitle-organization-register": "Por favor, ingrese los datos de su organización",
+      "subtitle-contact-register": "Por favor, ingrese sus datos de contacto",
+      "footer-text": "¿Ya tienes una cuenta?",
+      "footer-text-link": "Iniciar sesión",
+      "next-button": "Siguiente",
+      "register-button": "Registrarse",
+      "back-button": "Volver",
+      "inputs": {
+        "first-name_label": "Nombres",
+        "first-name_placeholder": "Ingrese sus nombres",
+        "last-name_label": "Apellidos",
+        "last-name_placeholder": "Ingrese sus apellidos",
+        "email_label": "Correo",
+        "email_placeholder": "Ingrese su correo",
+        "password_label": "Contraseña",
+        "password_placeholder": "Ingrese su contraseña",
+        "confirm-password_label": "Confirmar contraseña",
+        "confirm-password_placeholder": "Repita su contraseña",
+        "ruc_label": "RUC",
+        "ruc_placeholder": "Ingrese el RUC de su organización",
+        "trade-name_label": "Nombre comercial",
+        "trade-name_placeholder": "Ingrese el nombre comercial",
+        "organization-email_label": "Correo de la empresa",
+        "organization-email_placeholder": "Ingrese el correo de la empresa",
+        "sol-user_label": "Usuario SOL",
+        "sol-user_placeholder": "Ingrese su usuario SOL",
+        "sol-password_label": "Clave SOL",
+        "sol-password_placeholder": "Ingrese su clave SOL",
+        "department_label": "Departamento",
+        "department_placeholder": "Ingrese el departamento",
+        "province_label": "Provincia",
+        "province_placeholder": "Ingrese la provincia",
+        "district_label": "Distrito",
+        "district_placeholder": "Ingrese el distrito",
+        "address_label": "Dirección",
+        "address_placeholder": "Ingrese la dirección de la organización",
+        "postal-code_label": "Código postal",
+        "postal-code_placeholder": "Ingrese el código postal",
+        "phone_label": "Teléfono",
+        "phone_placeholder": "Ingrese el teléfono de la organización"
+      }
+    },
+    "login": {
+      "title": "Bienvenido de nuevo",
+      "subtitle": "Por favor, ingrese sus credenciales",
+      "footer-text": "¿No tienes una cuenta?",
+      "footer-text-link": "Registrarse",
+      "login-button": "Iniciar sesión",
+      "inputs": {
+        "email_label": "Correo",
+        "email_placeholder": "Ingrese su correo",
+        "password_label": "Contraseña",
+        "password_placeholder": "Ingrese su contraseña"
+      }
+    }
+  }
+}

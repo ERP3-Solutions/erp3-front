@@ -1,25 +1,25 @@
 <c-auth-form
-  [title]="'Welcome again'"
-  [subtitle]="'Please enter your account details'"
-  [footerText]="'¿No tienes una cuenta?'"
-  [footerTextLink]="'Registrarse'"
+  [title]="translate.tSignal('auth.screens.login.title')()"
+  [subtitle]="translate.tSignal('auth.screens.login.subtitle')()"
+  [footerText]="translate.tSignal('auth.screens.login.footer-text')()"
+  [footerTextLink]="translate.tSignal('auth.screens.login.footer-text-link')()"
   [footerLinkRouter]="'/auth/register'"
-  [submitText]="'Iniciar sesión'"
+  [submitText]="translate.tSignal('auth.screens.login.login-button')()"
   [formGroup]="loginService.formLogin"
   (submit)="iniciarSesion()"
   [loading]="loginService.loading()"
 >
   <ng-container inputs>
     <c-app-form-field 
-      textLabel="Email"
-      placeholder="Enter your email"
+      [textLabel]="translate.tSignal('auth.screens.login.inputs.email_label')()"
+      [placeholder]="translate.tSignal('auth.screens.login.inputs.email_placeholder')()"
       type="text"
       name="email"
       [formData]="loginService.formLogin"
     ></c-app-form-field>
     <c-app-form-field 
-      textLabel="Password"
-      placeholder="Enter your password"
+      [textLabel]="translate.tSignal('auth.screens.login.inputs.password_label')()"
+      [placeholder]="translate.tSignal('auth.screens.login.inputs.password_placeholder')()"
       [type]="hidePassword() ? 'password' : 'text'"
       name="password"
       [formData]="loginService.formLogin"

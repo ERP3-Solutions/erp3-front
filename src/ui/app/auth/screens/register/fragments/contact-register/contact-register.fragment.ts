@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegisterService } from '@ui/auth/services/register/register.service';
-import { CAppButton } from '@ui/shared/components/button.component';
 import { CAppFormField } from '@ui/shared/components/form-field.component';
 
 @Component({
@@ -16,7 +15,6 @@ import { CAppFormField } from '@ui/shared/components/form-field.component';
 
     // Componentes(standalone) externos
     CAppFormField,
-    CAppButton
   ],
   templateUrl: './contact-register.fragment.html',
 })
