@@ -1,8 +1,8 @@
 import { Component, effect, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AuthFacade } from './facades/auth.facade';
 import { AuthModule } from '@data/auth.module';
 import { TranslateService } from '@ui/shared/services/translate.service';
+import { AuthFacade } from './facades/auth.facade';
 
 @Component({
   selector: 'l-auth',

@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from "@angular/core";
-import { AuthFacade } from "../../facades/auth.facade";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ICredentialsCommand } from "@core/auth/domain/command/credentials.command";
+import { AuthFacade } from "@ui/auth/facades/auth.facade";
 
 @Injectable()
 export class LoginService {

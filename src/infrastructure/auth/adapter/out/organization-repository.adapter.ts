@@ -15,14 +15,14 @@ export class OrganizationRepositoryAdapter implements OrganizationRepositoryPort
   private organizationUrl = `${API_URL}/v1/organizations`
 
   async registerOrganization(params: IRegisterOrganizationCommand) {
-    await firstValueFrom(this._httpClient.post<void>(API_URL, params));
+    await firstValueFrom(this._httpClient.post<void>(this.organizationUrl, params));
   }
 
   async obtainOrganizationInfoByRUC(ruc: string): Promise<ICompanyRucEntity> {
     const response = await firstValueFrom(
       this._httpClient.get<IApiResponseDTO<ICompanyRucEntity>>(`${this.rucUrl}/${ruc}`)
     );
-    if (!response.success) throw new Error("")
+    if (!response.success) throw new Error(response.message)
     return response.data;
   }
 }

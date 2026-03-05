@@ -1,45 +1,36 @@
-<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-3 w-84">
   <c-app-form-field 
-    textLabel="Department"
-    placeholder="Enter your department"
+    [textLabel]="translate.tSignal('auth.screens.register.inputs.organization-email_label')()"
+    [placeholder]="translate.tSignal('auth.screens.register.inputs.organization-email_placeholder')()"
+    type="email"
+    name="email"
+    [formData]="registerService.formRegisterContact"
+  ></c-app-form-field>
+  <c-app-form-field 
+    [textLabel]="translate.tSignal('auth.screens.register.inputs.sol-user_label')()"
+    [placeholder]="translate.tSignal('auth.screens.register.inputs.sol-user_placeholder')()"
     type="text"
-    name="department"
+    name="userSolUsername"
+    [formData]="registerService.formRegisterContact"
+  ></c-app-form-field>
+  <c-app-form-field 
+    [textLabel]="translate.tSignal('auth.screens.register.inputs.sol-password_label')()"
+    [placeholder]="translate.tSignal('auth.screens.register.inputs.sol-password_placeholder')()"
+    type="password"
+    name="userSolPasswordHash"
     [formData]="registerService.formRegisterContact"
   ></c-app-form-field>
   <div class="flex items-start gap-3">
     <c-app-form-field 
-      textLabel="Province"
-      placeholder="Enter the province"
-      type="text"
-      name="province"
-      [formData]="registerService.formRegisterContact"
-    ></c-app-form-field>
-    <c-app-form-field 
-      textLabel="District"
-      placeholder="Enter your district"
-      type="text"
-      name="district"
-      [formData]="registerService.formRegisterContact"
-    ></c-app-form-field>
-  </div>
-  <c-app-form-field 
-    textLabel="Address"
-    placeholder="Enter your organization address"
-    type="text"
-    name="address"
-    [formData]="registerService.formRegisterContact"
-  ></c-app-form-field>
-  <div class="flex items-start gap-3">
-    <c-app-form-field 
-      textLabel="Postal Code"
-      placeholder="Enter your postal code"
+      [textLabel]="translate.tSignal('auth.screens.register.inputs.postal-code_label')()"
+      [placeholder]="translate.tSignal('auth.screens.register.inputs.postal-code_placeholder')()"
       type="text"
       name="postalCode"
       [formData]="registerService.formRegisterContact"
     ></c-app-form-field>
     <c-app-form-field 
-      textLabel="Phone"
-      placeholder="Enter your organization phone"
+      [textLabel]="translate.tSignal('auth.screens.register.inputs.phone_label')()"
+      [placeholder]="translate.tSignal('auth.screens.register.inputs.phone_placeholder')()"
       type="tel"
       name="phone"
       [formData]="registerService.formRegisterContact"

@@ -1,4 +1,4 @@
-<div class="w-full" [formGroup]="formData()">
+<div class="w-full">
   <div class="relative flex flex-row items-center">
     @if (icon() && iconModule()) {
       <div 
@@ -12,7 +12,8 @@
     }
     <input 
       [type]="type()"
-      [formControlName]="name()"
+      [ngModel]="control()?.value"
+      (ngModelChange)="control()?.setValue($event)"
       [placeholder]="placeholder()"
       autocomplete="off"
       class="

@@ -1,11 +1,12 @@
 import { Injectable, inject, computed, Signal } from '@angular/core';
 import { TranslateStore } from '../stores/translate.store';
 import { LangType } from '../types/lang.type';
+import { isDevMode } from '@angular/core';
 
 const LS_KEY_LANG = 'ui.lang';
 const LS_KEY_TRANSLATIONS = 'ui.translations';
-const DEFAULT_LANG: LangType = 'en-US';
-const FALLBACK_LANG: LangType = 'en-US';
+const DEFAULT_LANG: LangType = 'es-ES';
+const FALLBACK_LANG: LangType = 'es-ES';
 
 @Injectable({ providedIn: 'root' })
 export class TranslateService {
@@ -15,7 +16,10 @@ export class TranslateService {
   constructor() {
     const savedLang = this._readLangFromStorage();
     if (savedLang) this.store.setLang(savedLang);
-    void this._initRestore();
+
+    if (!isDevMode()) {
+      this._initRestore();
+    }
   }
 
   private async _initRestore(): Promise<void> {

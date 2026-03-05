@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RegisterService } from '@ui/auth/services/register/register.service';
+import { RegisterService } from '@ui/auth/screens/register/services/register.service';
 import { CAppFormField } from '@ui/shared/components/form-field.component';
+import { TranslateService } from '@ui/shared/services/translate.service';
 
 @Component({
   selector: 'f-auth-contact-register',
@@ -19,5 +20,7 @@ import { CAppFormField } from '@ui/shared/components/form-field.component';
   templateUrl: './contact-register.fragment.html',
 })
 export class FAuthContactRegister {
+  public translate = inject(TranslateService);
+
   public registerService = inject(RegisterService)
 }

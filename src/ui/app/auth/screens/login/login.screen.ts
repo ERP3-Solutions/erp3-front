@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { LoginService } from '@ui/auth/services/login/login.service';
+import { LoginService } from '@ui/auth/screens/login/services/login.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CAuthForm } from '@ui/auth/components/form.component';
 import { CAppFormField } from '@ui/shared/components/form-field.component';
@@ -26,7 +26,7 @@ import { TranslateService } from '@ui/shared/services/translate.service';
   ],
   templateUrl: 'login.screen.html',
   providers: [
-    LoginService
+    LoginService,
   ]
 })
 export class SAuthLogin {

@@ -27,4 +27,5 @@ export class CAuthForm {
   loading = input.required<boolean>();
 
   clickSecondaryButton = output();
+  clickPrimaryButton = output();
 }

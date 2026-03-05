@@ -1,0 +1,23 @@
+<div class="flex flex-col gap-3 w-96">
+  @for (formGroup of seriesForms.controls; track $index) {
+    <div class="flex items-start gap-3">
+      <p class="text-xs text-primary-80 min-w-24 pt-3">
+        {{ translate.tSignal(PathTranslatesTypeDocument[formGroup.value.typeDocument])() }}
+      </p>
+      <c-app-form-field 
+        [textLabel]="translate.tSignal('auth.screens.register.inputs.serie_label')()"
+        [placeholder]="translate.tSignal('auth.screens.register.inputs.serie_placeholder')()"
+        type="text"
+        name="serie"
+        [formData]="formGroup"
+      ></c-app-form-field>
+      <c-app-form-field 
+        [textLabel]="translate.tSignal('auth.screens.register.inputs.correlativo_label')()"
+        [placeholder]="translate.tSignal('auth.screens.register.inputs.correlativo_placeholder')()"
+        type="text"
+        name="correlativo"
+        [formData]="formGroup"
+      ></c-app-form-field>
+    </div>
+  }
+</div>

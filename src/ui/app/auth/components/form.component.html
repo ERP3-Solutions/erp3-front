@@ -12,9 +12,10 @@
       <!-- Button -->
       <div class="flex flex-col gap-2">
         <c-app-button
-          type="submit"
+          type="button"
           color="accent"
           typeButton="flat"
+          (clickButton)="clickPrimaryButton.emit()"
           [disabled]="loading()"
         >
           @if (loading()) {

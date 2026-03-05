@@ -1,27 +1,32 @@
 @if (currentForm() !== undefined) {
   <c-auth-form
     [title]="translate.tSignal('auth.screens.register.title')()"
-    [subtitle]="translate.tSignal('auth.screens.register.subtitle')()"
+    [subtitle]="translate.tSignal(PathTranslationFormConstant[step()])()"
     [footerText]="translate.tSignal('auth.screens.register.footer-text')()"
     [footerTextLink]="translate.tSignal('auth.screens.register.footer-text-link')()"
     [footerLinkRouter]="'/auth/login'"
     [submitText]="isLastStep() ? translate.tSignal('auth.screens.register.register-button')() : translate.tSignal('auth.screens.register.next-button')()"
-    [formGroup]="currentForm()!"
-    (submit)="validateStep()"
+    (clickPrimaryButton)="validateStep()"
     [submitTextSecondary]="indexStep() > 0 ? translate.tSignal('auth.screens.register.back-button')() : ''"
-    (clickSecondaryButton)="step.set(orderSteps[indexStep() - 1])"
+    (clickSecondaryButton)="step.set(OrderStepsFormConstant[indexStep() - 1])"
     [loading]="registerService.loading()"
   >
     <ng-container inputs>
       @switch (step()) {
-        @case (steps.USER_FORM) {
+        @case (StepsFormEnum.USER_FORM) {
           <f-auth-user-register />
         }
-        @case (steps.ORGANIZATION_FORM) {
+        @case (StepsFormEnum.ORGANIZATION_FORM) {
           <f-auth-organization-register />
         }
-        @case (steps.CONTACT_FORM) {
+        @case (StepsFormEnum.CONTACT_FORM) {
           <f-auth-contact-register />
+        }
+        @case (StepsFormEnum.SERIES_SUCURSAL_FORM) {
+          <f-auth-series-register />
+        }
+        @case (StepsFormEnum.PLAN_FORM) {
+          <f-auth-plan-register />
         }
       }
     </ng-container>
