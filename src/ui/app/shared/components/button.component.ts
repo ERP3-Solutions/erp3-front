@@ -22,10 +22,6 @@ export class CAppButton {
   public disabled = input<boolean>(false)
   public iconModule = input<string>('')
   public icon = input<string>('')
+  public classIcon = input<string | string[] | object>('')
   public clickButton = output()
-
-  click() {
-    this.clickButton.emit()
-  }
-
 }

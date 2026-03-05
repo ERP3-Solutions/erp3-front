@@ -1,0 +1,66 @@
+<div class="flex flex-col gap-3 w-84">
+  <div class="flex gap-3">
+    <c-app-form-field 
+      class="flex-1"
+      [textLabel]="translate.tSignal('auth.screens.register.inputs.ruc_label')()"
+      [placeholder]="translate.tSignal('auth.screens.register.inputs.ruc_placeholder')()"
+      type="text"
+      name="ruc"
+      [formData]="registerService.formRegisterOrganization"
+    ></c-app-form-field>
+    <div class="flex items-start pt-0.5">
+      <c-app-button
+        [classIcon]="{
+          'w-6 h-6 fill-primary-on-primary': true,
+          'animate-spin': registerService.loadingLoadRuc()
+        }"
+        [disabled]="registerService.loadingLoadRuc()"
+        type="button"
+        color="accent"
+        typeButton="flat"
+        [icon]="registerService.loadingLoadRuc() ? 'outlined-progress-activity' : 'outlined-search'"
+        (clickButton)="registerService.loadOrganizationByRuc()"
+        iconModule="shared"
+      ></c-app-button>
+    </div>
+  </div>
+  <c-app-form-field 
+    [textLabel]="translate.tSignal('auth.screens.register.inputs.company-name_label')()"
+    [placeholder]="translate.tSignal('auth.screens.register.inputs.company-name_placeholder')()"
+    type="text"
+    name="companyName"
+    [formData]="registerService.formRegisterOrganization"
+  ></c-app-form-field>
+  <div class="flex items-start gap-3">
+    <c-app-form-field 
+      [textLabel]="translate.tSignal('auth.screens.register.inputs.department_label')()"
+      [placeholder]="translate.tSignal('auth.screens.register.inputs.department_placeholder')()"
+      type="text"
+      name="department"
+      [formData]="registerService.formRegisterOrganization"
+    ></c-app-form-field>
+    <c-app-form-field 
+      [textLabel]="translate.tSignal('auth.screens.register.inputs.province_label')()"
+      [placeholder]="translate.tSignal('auth.screens.register.inputs.province_placeholder')()"
+      type="text"
+      name="province"
+      [formData]="registerService.formRegisterOrganization"
+    ></c-app-form-field>
+  </div>
+  <div class="flex items-start gap-3">
+    <c-app-form-field 
+      [textLabel]="translate.tSignal('auth.screens.register.inputs.district_label')()"
+      [placeholder]="translate.tSignal('auth.screens.register.inputs.district_placeholder')()"
+      type="text"
+      name="district"
+      [formData]="registerService.formRegisterOrganization"
+    ></c-app-form-field>
+    <c-app-form-field 
+      [textLabel]="translate.tSignal('auth.screens.register.inputs.address_label')()"
+      [placeholder]="translate.tSignal('auth.screens.register.inputs.address_placeholder')()"
+      type="text"
+      name="address"
+      [formData]="registerService.formRegisterOrganization"
+    ></c-app-form-field>
+  </div>
+</div>

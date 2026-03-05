@@ -1,0 +1,63 @@
+{
+  "screens": {
+    "register": {
+      "title": "Welcome to ERP3",
+      "subtitle-user-register": "Please enter your user information",
+      "subtitle-organization-register": "Please enter your organization details",
+      "subtitle-contact-register": "Please enter your contact information",
+      "footer-text": "Already have an account?",
+      "footer-text-link": "Sign in",
+      "next-button": "Next",
+      "register-button": "Register",
+      "back-button": "Back",
+      "inputs": {
+        "first-name_label": "First name",
+        "first-name_placeholder": "Enter your first name",
+        "last-name_label": "Last name",
+        "last-name_placeholder": "Enter your last name",
+        "email_label": "Email",
+        "email_placeholder": "Enter your email",
+        "password_label": "Password",
+        "password_placeholder": "Enter your password",
+        "confirm-password_label": "Confirm password",
+        "confirm-password_placeholder": "Repeat your password",
+        "ruc_label": "RUC",
+        "ruc_placeholder": "Enter your organization RUC",
+        "trade-name_label": "Trade name",
+        "trade-name_placeholder": "Enter your trade name",
+        "organization-email_label": "Company email",
+        "organization-email_placeholder": "Enter your company email",
+        "sol-user_label": "SOL user",
+        "sol-user_placeholder": "Your SOL user",
+        "sol-password_label": "SOL password",
+        "sol-password_placeholder": "Your SOL password",
+        "department_label": "Department",
+        "department_placeholder": "Enter your department",
+        "province_label": "Province",
+        "province_placeholder": "Enter the province",
+        "district_label": "District",
+        "district_placeholder": "Enter your district",
+        "address_label": "Address",
+        "address_placeholder": "Enter your organization address",
+        "postal-code_label": "Postal code",
+        "postal-code_placeholder": "Enter your postal code",
+        "phone_label": "Phone",
+        "phone_placeholder": "Enter your organization phone"
+      }
+    },
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Please enter your credentials",
+      "footer-text": "Don't have an account?",
+      "footer-text-link": "Register",
+      "next-button": "Next",
+      "login-button": "Sign in",
+      "inputs": {
+        "email_label": "Email",
+        "email_placeholder": "Enter your email",
+        "password_label": "Password",
+        "password_placeholder": "Enter your password"
+      }
+    }
+  }
+}

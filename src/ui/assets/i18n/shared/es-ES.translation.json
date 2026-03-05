@@ -1,0 +1,10 @@
+{
+  "document-types": {
+    "factura": "Factura",
+    "boleta": "Boleta",
+    "nota-credito": "Nota de crédito",
+    "nota-debito": "Nota de débito",
+    "guia-remision": "Guía de remisión",
+    "comprobante-retencion": "Comprobante de retención"
+  }
+}

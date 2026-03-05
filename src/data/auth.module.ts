@@ -10,6 +10,8 @@ import { LOGIN_WITH_CREDENTIALS_TOKEN } from "./auth/token/in/login-with-credent
 import { REGISTER_ORGANIZATION_TOKEN } from "./auth/token/in/register-organization.token";
 import { ORGANIZATION_REPOSITORY_TOKEN } from "./auth/token/out/organization-repository.token";
 import { USER_REPOSITORY_TOKEN } from "./auth/token/out/user-repository.token";
+import { OBTAIN_ORGANIZATION_BY_RUC_TOKEN } from "./auth/token/in/obtain-organization-by-ruc.token";
+import { ObtainOrganizationByRucUseCase } from "@core/auth/application/use-case/obtain-organization-by-ruc.use-case";
 
 @NgModule({
   imports: [
@@ -30,6 +32,11 @@ import { USER_REPOSITORY_TOKEN } from "./auth/token/out/user-repository.token";
     {
       provide: REGISTER_ORGANIZATION_TOKEN,
       useFactory: (repo: OrganizationRepositoryPort) => new RegisterOrganizationUseCase(repo),
+      deps: [ORGANIZATION_REPOSITORY_TOKEN]
+    },
+    {
+      provide: OBTAIN_ORGANIZATION_BY_RUC_TOKEN,
+      useFactory: (repo: OrganizationRepositoryPort) => new ObtainOrganizationByRucUseCase(repo),
       deps: [ORGANIZATION_REPOSITORY_TOKEN]
     },
   ]

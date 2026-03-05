@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CAppIcon } from './icon.component';
 
 @Component({
@@ -31,11 +31,12 @@ export class CAppFormField {
   public placeholder = input<string>('');
   public options = input<string[]>([]);
   public name = input<string>('');
-  public formData = input.required<FormGroup>();
+  public formData = input<AbstractControl>();
+  public formModel = input<AbstractControl>();
   public appearance = input<'fill' | 'outline'>('outline');
 
   public control = computed(() =>
-    this.formData().get(this.name() || '')
+    this.formModel() || this.formData()?.get(this.name() || '')
   );
 
   public isRequired = computed(() =>
@@ -43,24 +44,24 @@ export class CAppFormField {
   );
 
   invalid() {
-    const control = this.formData().get(this.name() || '')
-    if (control !== null) {
-      return (control!.touched && control!.dirty) && control.invalid;
+    const control = this.control() || this.formData()?.get(this.name() || '')
+    if (control) {
+      return (control!.touched && control!.dirty) && control!.invalid;
     }
     return false;
   }
 
   hasError(code: string): boolean {
-    const control = this.formData().get(this.name() || '')
-    if (control !== null) {
+    const control = this.control() || this.formData()?.get(this.name() || '')
+    if (control) {
       return (control!.touched && control!.dirty) && control!.hasError(code);
     }
     return false;
   }
 
   getErrorsApi(): string[] {
-    const control = this.formData().get(this.name() || '')
-    if (control !== null) {
+    const control = this.control() || this.formData()?.get(this.name() || '')
+    if (control) {
       return (control!.touched && control!.dirty) && control!.getError('errorsApi') || [];
     }
     return [];

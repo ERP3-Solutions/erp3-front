@@ -1,84 +1,34 @@
-<c-auth-form
-  [title]="'Bienvenido a AMS'"
-  [subtitle]="'Por favor, ingrese sus datos de usuario'"
-  [footerText]="'¿Ya tienes una cuenta?'"
-  [footerTextLink]="'Iniciar sesión'"
-  [footerLinkRouter]="'/auth/login'"
-  [submitText]="'Siguiente'"
-  [formGroup]="registerService.formRegisterUser"
-  (submit)="registrarOrganizacion()"
-  [loading]="registerService.loading()"
->
-  <ng-container inputs>
-    <div class="flex gap-1.5">
-      <c-app-form-field 
-        textLabel="First name"
-        placeholder="Your first name"
-        type="text"
-        name="firstName"
-        [formData]="registerService.formRegisterUser"
-      ></c-app-form-field>
-      <c-app-form-field 
-        textLabel="Last name"
-        placeholder="Your last name"
-        type="text"
-        name="lastName"
-        [formData]="registerService.formRegisterUser"
-      ></c-app-form-field>
-    </div>
-    <c-app-form-field 
-      textLabel="Email"
-      placeholder="Enter your email"
-      type="text"
-      name="email"
-      [formData]="registerService.formRegisterUser"
-    ></c-app-form-field>
-    <div class="flex flex-col gap-1.5">
-      <c-app-form-field 
-        textLabel="Password"
-        placeholder="Enter your password"
-        [type]="hidePassword() ? 'password' : 'text'"
-        name="password"
-        [formData]="registerService.formRegisterUser"
-      >
-        <ng-container suffix>
-          <c-app-button 
-            type="button"
-            typeButton="icon"
-            (click)="hidePassword.set(!hidePassword())" 
-          >
-            <c-app-icon 
-              className="w-6 h-6 fill-primary-50"
-              [svgIcon]="hidePassword() ? 'outlined-visibility_off' : 'outlined-visibility'"
-              svgModule="auth"
-            />
-          </c-app-button>
-        </ng-container>
-      </c-app-form-field>
-      @if (registerService.formRegisterUser.get('password')?.value) {
-        <c-auth-password-meter [password]="registerService.formRegisterUser.get('password')?.value || ''" />
+@if (currentForm() !== undefined) {
+  <c-auth-form
+    [title]="translate.tSignal('auth.screens.register.title')()"
+    [subtitle]="translate.tSignal(PathTranslationFormConstant[step()])()"
+    [footerText]="translate.tSignal('auth.screens.register.footer-text')()"
+    [footerTextLink]="translate.tSignal('auth.screens.register.footer-text-link')()"
+    [footerLinkRouter]="'/auth/login'"
+    [submitText]="isLastStep() ? translate.tSignal('auth.screens.register.register-button')() : translate.tSignal('auth.screens.register.next-button')()"
+    (clickPrimaryButton)="validateStep()"
+    [submitTextSecondary]="indexStep() > 0 ? translate.tSignal('auth.screens.register.back-button')() : ''"
+    (clickSecondaryButton)="step.set(OrderStepsFormConstant[indexStep() - 1])"
+    [loading]="registerService.loading()"
+  >
+    <ng-container inputs>
+      @switch (step()) {
+        @case (StepsFormEnum.USER_FORM) {
+          <f-auth-user-register />
+        }
+        @case (StepsFormEnum.ORGANIZATION_FORM) {
+          <f-auth-organization-register />
+        }
+        @case (StepsFormEnum.CONTACT_FORM) {
+          <f-auth-contact-register />
+        }
+        @case (StepsFormEnum.SERIES_SUCURSAL_FORM) {
+          <f-auth-series-register />
+        }
+        @case (StepsFormEnum.PLAN_FORM) {
+          <f-auth-plan-register />
+        }
       }
-    </div>
-    <c-app-form-field 
-      textLabel="Confirm password"
-      placeholder="Confirm your password"
-      [type]="hidePassword() ? 'password' : 'text'"
-      name="confirmPassword"
-      [formData]="registerService.formRegisterUser"
-    >
-      <ng-container suffix>
-        <c-app-button 
-          type="button"
-          typeButton="icon"
-          (click)="hidePassword.set(!hidePassword())" 
-        >
-          <c-app-icon 
-            className="w-6 h-6 fill-primary-50"
-            [svgIcon]="hidePassword() ? 'outlined-visibility_off' : 'outlined-visibility'"
-            svgModule="auth"
-          />
-        </c-app-button>
-      </ng-container>
-    </c-app-form-field>
-  </ng-container>
-</c-auth-form>
+    </ng-container>
+  </c-auth-form>
+}

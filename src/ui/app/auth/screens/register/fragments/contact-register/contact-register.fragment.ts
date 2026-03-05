@@ -1,0 +1,26 @@
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RegisterService } from '@ui/auth/screens/register/services/register.service';
+import { CAppFormField } from '@ui/shared/components/form-field.component';
+import { TranslateService } from '@ui/shared/services/translate.service';
+
+@Component({
+  selector: 'f-auth-contact-register',
+  imports: [
+    // Modulos de angular
+    ReactiveFormsModule,
+    FormsModule,
+
+    // Modulos de librerías externas
+    // Componentes(standalone) internos
+
+    // Componentes(standalone) externos
+    CAppFormField,
+  ],
+  templateUrl: './contact-register.fragment.html',
+})
+export class FAuthContactRegister {
+  public translate = inject(TranslateService);
+
+  public registerService = inject(RegisterService)
+}

@@ -1,0 +1,39 @@
+<div class="flex flex-col gap-3 w-84">
+  <c-app-form-field 
+    [textLabel]="translate.tSignal('auth.screens.register.inputs.organization-email_label')()"
+    [placeholder]="translate.tSignal('auth.screens.register.inputs.organization-email_placeholder')()"
+    type="email"
+    name="email"
+    [formData]="registerService.formRegisterContact"
+  ></c-app-form-field>
+  <c-app-form-field 
+    [textLabel]="translate.tSignal('auth.screens.register.inputs.sol-user_label')()"
+    [placeholder]="translate.tSignal('auth.screens.register.inputs.sol-user_placeholder')()"
+    type="text"
+    name="userSolUsername"
+    [formData]="registerService.formRegisterContact"
+  ></c-app-form-field>
+  <c-app-form-field 
+    [textLabel]="translate.tSignal('auth.screens.register.inputs.sol-password_label')()"
+    [placeholder]="translate.tSignal('auth.screens.register.inputs.sol-password_placeholder')()"
+    type="password"
+    name="userSolPasswordHash"
+    [formData]="registerService.formRegisterContact"
+  ></c-app-form-field>
+  <div class="flex items-start gap-3">
+    <c-app-form-field 
+      [textLabel]="translate.tSignal('auth.screens.register.inputs.postal-code_label')()"
+      [placeholder]="translate.tSignal('auth.screens.register.inputs.postal-code_placeholder')()"
+      type="text"
+      name="postalCode"
+      [formData]="registerService.formRegisterContact"
+    ></c-app-form-field>
+    <c-app-form-field 
+      [textLabel]="translate.tSignal('auth.screens.register.inputs.phone_label')()"
+      [placeholder]="translate.tSignal('auth.screens.register.inputs.phone_placeholder')()"
+      type="tel"
+      name="phone"
+      [formData]="registerService.formRegisterContact"
+    ></c-app-form-field>
+  </div>
+</div>
