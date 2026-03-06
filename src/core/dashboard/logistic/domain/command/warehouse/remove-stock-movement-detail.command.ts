@@ -1,3 +1,4 @@
 export interface IRemoveStockMovementDetailCommand {
-    stockMovementDetailId: string
+  stockMovementId: string;
+  stockMovementDetailId: string;
 }

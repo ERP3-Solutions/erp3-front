@@ -1,4 +1,4 @@
-import { StockMovement } from "@core/dashboard/logistic/domain/entity/warehouse/stock-movement.entity";
+import { IStockMovement } from "@core/dashboard/logistic/domain/entity/warehouse/stock-movement.entity";
 import { IGetStockMovementQuery } from "@core/dashboard/logistic/domain/query/stock-movements/get-stock-movement.query";
 import { GetStockMovementPort } from "@core/dashboard/logistic/port/in/warehouse/get-stock-movement.port";
 import { StockMovementRepositoryPort } from "@core/dashboard/logistic/port/out/stock-movement-repository.port";
@@ -8,7 +8,7 @@ export class GetStockMovementUseCase implements GetStockMovementPort{
         private stockMovementRepositoryPort: StockMovementRepositoryPort
     ){}
 
-    async execute(params: IGetStockMovementQuery): Promise<StockMovement> {
+    async execute(params: IGetStockMovementQuery): Promise<IStockMovement> {
         return this.stockMovementRepositoryPort.getStockMovement(params);
     }
 }

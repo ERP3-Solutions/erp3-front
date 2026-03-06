@@ -1,5 +1,5 @@
 import { UseCase } from "@base/use-case";
 import { IDeleteStockMovementCommand } from "@core/dashboard/logistic/domain/command/warehouse/detele-stock-movement.command";
-import { StockMovement } from "@core/dashboard/logistic/domain/entity/warehouse/stock-movement.entity";
+import { IStockMovement } from "@core/dashboard/logistic/domain/entity/warehouse/stock-movement.entity";
 
-export type DeleteStockMovementPort  = UseCase<IDeleteStockMovementCommand, StockMovement>;
+export type DeleteStockMovementPort  = UseCase<IDeleteStockMovementCommand, IStockMovement>;

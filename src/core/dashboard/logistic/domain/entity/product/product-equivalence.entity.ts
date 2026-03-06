@@ -4,7 +4,7 @@ import { IProductEntity } from './product.entity';
 import { TypeAffectation } from './type-afecction.entity';
 
 export interface IProductEquivalenceEntity extends Entity {
-  name: string ;
+  name: string;
   price: number;
 
   factor: number;

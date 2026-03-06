@@ -1,5 +1,5 @@
 import { UseCase } from "@base/use-case";
 import { IUpdateWarehouseCommand } from "@core/dashboard/logistic/domain/command/warehouse/update-warehouse.command";
-import { Warehouse } from "@core/dashboard/logistic/domain/entity/warehouse/warehouse.entity";
+import { IWarehouse } from "@core/dashboard/logistic/domain/entity/warehouse/warehouse.entity";
 
-export type UpdateWarehousePort  = UseCase<IUpdateWarehouseCommand, Warehouse>
+export type UpdateWarehousePort  = UseCase<IUpdateWarehouseCommand, IWarehouse>

@@ -4,30 +4,30 @@ import { IRegisteredStockMovementCommand } from "../../domain/command/warehouse/
 import { IRemoveStockMovementDetailCommand } from "../../domain/command/warehouse/remove-stock-movement-detail.command";
 import { IUpdateStockMovementDetailCommand } from "../../domain/command/warehouse/update-stock-movement-detail.command";
 import { IUpdateStockMovementCommand } from "../../domain/command/warehouse/update-stock-movement.command";
-import { StockMovement } from "../../domain/entity/warehouse/stock-movement.entity";
+import { IStockMovement } from "../../domain/entity/warehouse/stock-movement.entity";
 import { IGetStockMovementExcelQuery } from "../../domain/query/stock-movements/get-stock-movement-excel";
 import { IGetStockMovementPdfQuery } from "../../domain/query/stock-movements/get-stock-movement-pdf";
 import { IGetStockMovementQuery } from "../../domain/query/stock-movements/get-stock-movement.query";
 import { IListStockMovementQuery } from "../../domain/query/stock-movements/list-stock-movement.query";
 
 export interface StockMovementRepositoryPort{
-  addStockMovementDetail(command: IAddStockMovementDetailCommand): Promise<StockMovement>;
+  addStockMovementDetail(command: IAddStockMovementDetailCommand): Promise<IStockMovement>;
   
-  deleteStockMovement(command: IDeleteStockMovementCommand): Promise<StockMovement>;
+  deleteStockMovement(command: IDeleteStockMovementCommand): Promise<IStockMovement>;
   
-  getStockMovement(query: IGetStockMovementQuery): Promise<StockMovement>;
+  getStockMovement(query: IGetStockMovementQuery): Promise<IStockMovement>;
   
   getStockMovementExcel(query: IGetStockMovementExcelQuery): Promise<Blob>;
   
   getStockMovementPdf(query: IGetStockMovementPdfQuery): Promise<Blob>;
   
-  listStockMovement(query: IListStockMovementQuery): Promise<StockMovement[]>;
+  listStockMovement(query: IListStockMovementQuery): Promise<IStockMovement[]>;
  
-  registerStockMovement(command: IRegisteredStockMovementCommand): Promise<StockMovement>;
+  registerStockMovement(command: IRegisteredStockMovementCommand): Promise<IStockMovement>;
  
-  removeStockMovementDetail(command: IRemoveStockMovementDetailCommand): Promise<StockMovement>;
+  removeStockMovementDetail(command: IRemoveStockMovementDetailCommand): Promise<IStockMovement>;
  
-  updateStockMovement(command: IUpdateStockMovementCommand): Promise<StockMovement>;
+  updateStockMovement(command: IUpdateStockMovementCommand): Promise<IStockMovement>;
  
-  updateStockMovementDetail(command: IUpdateStockMovementDetailCommand): Promise<StockMovement>;
+  updateStockMovementDetail(command: IUpdateStockMovementDetailCommand): Promise<IStockMovement>;
 }

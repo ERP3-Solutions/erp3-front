@@ -1,5 +1,5 @@
-import { IRegisterProductEquivalenceCommand } from "../../domain/command/product/register-product-equivalence.command";
-import { IRegisterProductVariantsCommand } from "../../domain/command/product/register-product-variants.command";
+import { IRegisterProductEquivalenceCommand } from "../../domain/command/product/register-product-equivalence/register-product-equivalence.command";
+import { IRegisterProductVariantsCommand } from "../../domain/command/product/register-product-variant/register-product-variants.command";
 import { IRegisterProductCommand } from "../../domain/command/product/register-product.command";
 import { IUpdateProductCommand } from "../../domain/command/product/update-product.command";
 import { IProductEntity } from "../../domain/entity/product/product.entity";

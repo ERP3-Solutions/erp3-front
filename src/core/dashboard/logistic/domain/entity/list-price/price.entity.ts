@@ -1,9 +1,9 @@
 import { Entity } from '@core/shared/domain/entity/base.entity';
 
-export class PriceEntity implements Entity {
-  id: string = '';
-  logUserCreated: string = '';
-  createdOnUtc: Date = new Date();
-  logUserUpdated: string = '';
-  updateOnUtc: Date = new Date();
+export interface IPriceEntity extends Entity {
+  id: string;
+  logUserCreated: string;
+  createdOnUtc: Date;
+  logUserUpdated: string;
+  updateOnUtc: Date;
 }

@@ -1,4 +1,4 @@
-import { IRegisterProductVariantsCommand } from "@core/dashboard/logistic/domain/command/product/register-product-variants.command";
+import { IRegisterProductVariantsCommand } from "@core/dashboard/logistic/domain/command/product/register-product-variant/register-product-variants.command";
 import { IProductEntity } from "@core/dashboard/logistic/domain/entity/product/product.entity";
 import { RegisterProductVariantsPort } from "@core/dashboard/logistic/port/in/product/register-product-variants.port";
 import { ProductRepositoryPort } from "@core/dashboard/logistic/port/out/products-repository.port";
