@@ -16,7 +16,7 @@ export interface UserRepositoryPort{
     
     enableUser(command: IEnableUserCommand) : Promise<IUserEntity>;
     
-    listUser(query: IListUserQuery) : Promise<IUserEntity>;
+    listUser(query: IListUserQuery) : Promise<IUserEntity[]>;
     
     registerUser(command: IRegisterUserCommand) : Promise<IUserEntity>;
     

@@ -3,7 +3,7 @@ import { inject } from "@angular/core";
 import { IDeleteWarehouseCommand } from "@core/dashboard/logistic/domain/command/warehouse/delete-warehouse.command";
 import { IRegisterWarehouseCommand } from "@core/dashboard/logistic/domain/command/warehouse/register-warehouse.command";
 import { IUpdateWarehouseCommand } from "@core/dashboard/logistic/domain/command/warehouse/update-warehouse.command";
-import { IWarehouse } from "@core/dashboard/logistic/domain/entity/warehouse/warehouse.entity";
+import { IWarehouseEntity } from "@core/dashboard/logistic/domain/entity/warehouse/warehouse.entity";
 import { IGetWarehouseQuery } from "@core/dashboard/logistic/domain/query/warehouse/get-warehouse.query";
 import { IListWarehouseQuery } from "@core/dashboard/logistic/domain/query/warehouse/list-warehouse.query";
 import { WarehouseRepositoryPort } from "@core/dashboard/logistic/port/out/warehouse-repository.port";
@@ -23,9 +23,9 @@ export class WarehouseRepositoryAdapter implements WarehouseRepositoryPort {
 
   private warehouseUrl = `${API_URL}/v1/warehouses`;
 
-  async getWarehouse(query: IGetWarehouseQuery): Promise<IWarehouse> {
+  async getWarehouse(query: IGetWarehouseQuery): Promise<IWarehouseEntity> {
     const response = await firstValueFrom(
-      this._httpClient.get<IApiResponseDTO<IWarehouse>>(
+      this._httpClient.get<IApiResponseDTO<IWarehouseEntity>>(
         `${this.warehouseUrl}/${query.warehouseId}`,
       ),
     );
@@ -33,7 +33,7 @@ export class WarehouseRepositoryAdapter implements WarehouseRepositoryPort {
     return response.data;
   }
 
-  async listWarehouse(query: IListWarehouseQuery): Promise<IWarehouse[]> {
+  async listWarehouse(query: IListWarehouseQuery): Promise<IWarehouseEntity[]> {
     const params: Record<string, string | number> = {
       organizationId: query.organizationId,
       createdFrom: query.createdAtFrom,
@@ -44,7 +44,7 @@ export class WarehouseRepositoryAdapter implements WarehouseRepositoryPort {
     if (query.search != null) params['search'] = query.search;
 
     const response = await firstValueFrom(
-      this._httpClient.get<IApiResponseDTO<IPagedResult<IWarehouse>>>(
+      this._httpClient.get<IApiResponseDTO<IPagedResult<IWarehouseEntity>>>(
         this.warehouseUrl,
         { params },
       ),
@@ -55,9 +55,9 @@ export class WarehouseRepositoryAdapter implements WarehouseRepositoryPort {
 
   async registerWarehouse(
     command: IRegisterWarehouseCommand,
-  ): Promise<IWarehouse> {
+  ): Promise<IWarehouseEntity> {
     const response = await firstValueFrom(
-      this._httpClient.post<IApiResponseDTO<IWarehouse>>(
+      this._httpClient.post<IApiResponseDTO<IWarehouseEntity>>(
         this.warehouseUrl,
         command,
       ),
@@ -68,10 +68,10 @@ export class WarehouseRepositoryAdapter implements WarehouseRepositoryPort {
 
   async updateWarehouse(
     command: IUpdateWarehouseCommand,
-  ): Promise<IWarehouse> {
+  ): Promise<IWarehouseEntity> {
     const { warehouseId, ...body } = command;
     const response = await firstValueFrom(
-      this._httpClient.put<IApiResponseDTO<IWarehouse>>(
+      this._httpClient.put<IApiResponseDTO<IWarehouseEntity>>(
         `${this.warehouseUrl}/${warehouseId}`,
         body,
       ),
@@ -82,9 +82,9 @@ export class WarehouseRepositoryAdapter implements WarehouseRepositoryPort {
 
   async deleteWarehouse(
     command: IDeleteWarehouseCommand,
-  ): Promise<IWarehouse> {
+  ): Promise<IWarehouseEntity> {
     const response = await firstValueFrom(
-      this._httpClient.delete<IApiResponseDTO<IWarehouse>>(
+      this._httpClient.delete<IApiResponseDTO<IWarehouseEntity>>(
         `${this.warehouseUrl}/${command.warehouseId}`,
       ),
     );
