@@ -1,0 +1,1 @@
+export interface IGetStockMovementExcelQuery {stockMovementId: string}
