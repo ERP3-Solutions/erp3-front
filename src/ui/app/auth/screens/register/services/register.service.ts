@@ -139,7 +139,40 @@ export class RegisterService {
   }
 
   public registerOrganization() {
-    const command = this.formRegisterUser.value as IRegisterOrganizationCommand;
+    const userForm = this.formRegisterUser.value;
+    const orgForm = this.formRegisterOrganization.value;
+    const contactForm = this.formRegisterContact.value;
+    const seriesForm = this.formSeriesOrganization.value;
+    const planForm = this.formPlanOrganization.value;
+
+    const command = {
+      name: userForm.firstName ?? '',
+      lastName: userForm.lastName ?? '',
+      emailAddres: userForm.emailAddress ?? '',
+      password: userForm.password ?? '',
+      tradeName: orgForm.companyName ?? '',
+      companyName: orgForm.companyName ?? '',
+      email: contactForm.email ?? '',
+      phone: contactForm.phone ?? '',
+      ruc: orgForm.ruc ?? '',
+      userSolPasswordHash: contactForm.userSolPasswordHash ?? '',
+      userSolUsername: contactForm.userSolUsername ?? '',
+      street: orgForm.address ?? '',
+      addressReference: orgForm.address ?? '',
+      district: orgForm.district ?? '',
+      province: orgForm.province ?? '',
+      department: orgForm.department ?? '',
+      postalCode: contactForm.postalCode ?? '',
+      legalEntityType: 1,
+      planId: planForm.planId ?? '',
+      planExpirationDate: planForm.planExpirationDate ?? new Date(),
+      defaultSeries: seriesForm.defaultSeries?.map(serie => ({
+        lastConsecutive: serie.correlativo ?? 0,
+        seriesCode: serie.serie ?? '',
+        typeDocument: serie.typeDocument ?? 0
+      })) ?? []
+    } as IRegisterOrganizationCommand;
+
     this.loading.set(true);
     this.facade.registerOrganization(command);
     this.loading.set(false);

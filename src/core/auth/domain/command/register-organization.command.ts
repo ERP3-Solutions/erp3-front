@@ -1,11 +1,28 @@
 export interface IRegisterOrganizationCommand {
-  firstName: string;
-  lastName: string;
+  tradeName: string;
+  companyName: string;
   email: string;
+  phone: string;
+  ruc: string;
+  userSolUsername: string;
+  userSolPasswordHash: string;
+  street: string;
+  district: string;
+  province: string;
+  department: string;
+  addressReference: string;
+  postalCode: string;
+  name: string;
+  lastName: string;
+  emailAddres: string;
   password: string;
-  confirmPassword: string;
-  organizationName: string;
-  organizationDirection: string;
-  organizationPhone: string;
-  organizationRuc: string;
+  legalEntityType: number;
+  planId: string;
+  planExpirationDate: Date;
+  defaultSeries: {
+    seriesCode: string;
+    typeDocument: number;
+    lastConsecutive: number;
+  }[]
+
 }
