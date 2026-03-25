@@ -62,6 +62,9 @@
         "email_placeholder": "Ingrese su correo",
         "password_label": "Contraseña",
         "password_placeholder": "Ingrese su contraseña"
+      },
+      "errors": {
+        "user-not-found": "Usuario no encontrado"
       }
     }
   }

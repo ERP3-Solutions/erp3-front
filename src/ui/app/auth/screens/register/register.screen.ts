@@ -42,7 +42,7 @@ export class SAuthRegister {
   public translate = inject(TranslateService);
   public registerService = inject(RegisterService);
 
-  public step = signal<ERegisterFormSteps>(ERegisterFormSteps.PLAN_FORM);
+  public step = signal<ERegisterFormSteps>(ERegisterFormSteps.USER_FORM);
 
   public indexStep = computed(() => this.OrderStepsFormConstant.findIndex(s => s === this.step()))
   public isLastStep = computed(() => this.indexStep() === (this.OrderStepsFormConstant.length - 1))

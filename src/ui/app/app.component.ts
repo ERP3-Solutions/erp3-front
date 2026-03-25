@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { ThemeService } from './shared/services/theme.service';
 import { OverlayService } from './shared/services/overlay.service';
 import { TranslateService } from './shared/services/translate.service';
-import { SharedModule } from '@data/shared.module';
 
 @Component({
   selector: 'app-root',

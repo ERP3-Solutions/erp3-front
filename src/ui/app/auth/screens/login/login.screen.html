@@ -5,8 +5,7 @@
   [footerTextLink]="translate.tSignal('auth.screens.login.footer-text-link')()"
   [footerLinkRouter]="'/auth/register'"
   [submitText]="translate.tSignal('auth.screens.login.login-button')()"
-  [formGroup]="loginService.formLogin"
-  (submit)="iniciarSesion()"
+  (clickPrimaryButton)="iniciarSesion()"
   [loading]="loginService.loading()"
 >
   <ng-container inputs>

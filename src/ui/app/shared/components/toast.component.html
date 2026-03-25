@@ -1,0 +1,14 @@
+<div
+  class="fixed z-50 px-4 py-2 rounded shadow-lg text-sm transition-all duration-300"
+  [ngClass]="[
+    positionClasses[position],
+    typeClasses[type]
+  ]"
+  [ngStyle]="style"
+>
+  @if (text === undefined) {
+    <ng-content select="[body]"></ng-content>
+  } @else {
+    <p class="text-surface-on-surface text-xs">{{ text }}</p>
+  }
+</div>

@@ -1,0 +1,3 @@
+export const LoginErrors = {
+  USER_NOT_FOUND: 'USER_NOT_FOUND'
+}

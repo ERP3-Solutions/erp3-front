@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { TooltipPositionType } from '../types/position.type';
 
 @Component({
   selector: 'c-app-tooltip',
@@ -16,10 +17,10 @@ import { Component, Input } from '@angular/core';
 })
 export class CAppTooltip {
   @Input() text!: string;
-  @Input() position!: 'top' | 'bottom' | 'left' | 'right';
+  @Input() position!: TooltipPositionType;
   @Input() style!: Record<string, string>;
 
-  public positionClasses = {
+  public positionClasses: Record<TooltipPositionType, string> = {
     top: `
     before:content-[''] before:absolute before:left-1/2 before:-translate-x-1/2
     before:top-full before:border-6 before:border-transparent
