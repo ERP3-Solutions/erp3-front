@@ -1,18 +1,21 @@
+import { UseCase } from "@base/use-case";
 import { SessionErrors } from "../errors/session.errors";
 import { RefreshSessionPort } from "@core/shared/port/in/refresh-session.port";
-import { RefreshUseCaseExecutorPort } from "@core/shared/port/in/refresh-use-case-executor.port";
 
-export class RefreshUseCaseExecutor<T> implements RefreshUseCaseExecutorPort<T> {
-  constructor(private refreshTokenUseCase: RefreshSessionPort) { }
+export class RefreshUseCaseExecutor<I, O> implements UseCase<I, O> {
+  constructor(
+    private refreshTokenUseCase: RefreshSessionPort,
+    private useCase: UseCase<I, O>
+  ) { }
 
-  async execute(useCase: () => Promise<T>): Promise<T> {
+  async execute(params: I): Promise<O> {
     try {
-      return await useCase();
+      return await this.useCase.execute(params);
     } catch (e) {
       const err = (e as keyof typeof SessionErrors)
       if (err && err === SessionErrors.SESSION_EXPIRED) {
         await this.refreshTokenUseCase.execute();
-        return await useCase();
+        return await this.useCase.execute(params);
       }
 
       throw e;

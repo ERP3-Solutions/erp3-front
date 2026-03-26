@@ -6,7 +6,8 @@ import { ObtainRolesByOrganizationUseCase } from "@core/roles/application/use-ca
 import { ROLE_REPOSITORY_TOKEN } from "./roles/token/out/role-repository.token";
 import { SharedModule } from "./shared.module";
 import { RefreshUseCaseExecutor } from "@core/shared/application/executor/refresh-use-case.executor";
-import { IRoleEntity } from "@core/roles/domain/entity/role.entity";
+import { RefreshSessionPort } from "@core/shared/port/in/refresh-session.port";
+import { REFRESH_SESSION_TOKEN } from "./shared/token/in/refresh-session.token";
 
 @NgModule({
   imports: [
@@ -18,9 +19,12 @@ import { IRoleEntity } from "@core/roles/domain/entity/role.entity";
       provide: OBTAIN_ROLES_BY_ORGANIZATION_TOKEN,
       useFactory: (
         repo: RoleRepositoryPort,
-        executor: RefreshUseCaseExecutor<IRoleEntity[]>
-      ) => new ObtainRolesByOrganizationUseCase(repo, executor),
-      deps: [ROLE_REPOSITORY_TOKEN]
+        refreshUseCase: RefreshSessionPort
+      ) => new RefreshUseCaseExecutor(refreshUseCase, new ObtainRolesByOrganizationUseCase(repo)),
+      deps: [
+        ROLE_REPOSITORY_TOKEN,
+        REFRESH_SESSION_TOKEN
+      ]
     },
   ]
 })

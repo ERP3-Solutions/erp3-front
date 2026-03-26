@@ -16,7 +16,6 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
     });
     return next(clonedRequest).pipe(
       catchError((error: HttpErrorResponse) => {
-
         if (error.status === HttpStatusCode.Unauthorized) {
           return throwError(() => SessionErrors.SESSION_EXPIRED);
         }

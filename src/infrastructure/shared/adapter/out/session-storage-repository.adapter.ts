@@ -22,7 +22,7 @@ export class SessionStorageRepositoryAdapter implements SessionStorageRepository
     }
 
     try {
-      return JSON.parse(raw) as T;
+      return raw as T;
     } catch {
       throw new Error(
         `SessionStorage: failed to parse value for key "${key}"`
