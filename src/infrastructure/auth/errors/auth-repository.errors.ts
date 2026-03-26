@@ -1,5 +1,5 @@
 import { LoginErrors } from "@core/auth/application/errors/login.errors";
 
-export const UserRepositoryErrors = {
+export const AuthRepositoryErrors = {
   ['Users.NotFoundByEmail']: LoginErrors.USER_NOT_FOUND
 }

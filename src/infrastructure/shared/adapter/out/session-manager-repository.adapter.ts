@@ -3,7 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { IAuthTokenDTO } from "@core/auth/domain/dto/IAuthToken.dto";
 import { SessionManagerRepositoryPort } from "@core/shared/port/out/session-manager-repository.port";
 import { API_URL } from "@environment/api.context";
-import { UserRepositoryErrors } from "@infrastructure/auth/errors/user-repository.errors";
+import { AuthRepositoryErrors } from "@infrastructure/auth/errors/auth-repository.errors";
 import { IApiErrorDTO } from "@infrastructure/shared/dto/api-error.dto";
 import { IApiResponseDTO } from "@infrastructure/shared/dto/api-response.dto";
 import { firstValueFrom } from "rxjs";
@@ -20,8 +20,8 @@ export class SessionManagerRepositoryAdapter implements SessionManagerRepository
       return data;
     } catch (e: unknown) {
       const err = ((e as HttpErrorResponse).error) as IApiErrorDTO;
-      if (err && Object.hasOwn(UserRepositoryErrors, err.title)) {
-        throw UserRepositoryErrors[err.title as keyof typeof UserRepositoryErrors]
+      if (err && Object.hasOwn(AuthRepositoryErrors, err.title)) {
+        throw AuthRepositoryErrors[err.title as keyof typeof AuthRepositoryErrors]
       }
       throw e;
     }

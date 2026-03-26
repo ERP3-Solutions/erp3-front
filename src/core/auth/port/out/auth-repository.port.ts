@@ -1,7 +1,7 @@
 import { ICredentialsCommand } from "@core/auth/domain/command/credentials.command";
 import { IAuthTokenDTO } from "@core/auth/domain/dto/IAuthToken.dto";
 
-export interface UserRepositoryPort {
+export interface AuthRepositoryPort {
   /**
    * @throws LoginErrors.USER_NOT_FOUND
    * 

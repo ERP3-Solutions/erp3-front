@@ -1,29 +1,29 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { IRoleEntity } from "@core/roles/domain/entity/role.entity";
-import { RoleRepositoryPort } from "@core/roles/port/out/role-repository.port";
+import { IUserEntity } from "@core/users/domain/entity/user.entity";
+import { UserRepositoryPort } from "@core/users/port/out/user-repository.port";
 import { API_URL } from "@environment/api.context";
-import { RoleRepositoryErrors } from "@infrastructure/roles/errors/role-repository.errors";
+import { AuthRepositoryErrors } from "@infrastructure/auth/errors/auth-repository.errors";
 import { IApiErrorDTO } from "@infrastructure/shared/dto/api-error.dto";
 import { IApiResponseDTO } from "@infrastructure/shared/dto/api-response.dto";
 import { firstValueFrom } from "rxjs";
 
 @Injectable()
-export class RoleRepositoryAdapter implements RoleRepositoryPort {
+export class UserRepositoryAdapter implements UserRepositoryPort {
   private _httpClient: HttpClient = inject(HttpClient)
 
-  private rolesUrl = `${API_URL}/v1/roles`
+  private usersUrl = `${API_URL}/v1/users`
 
-  async obtainRolesByOrganization(): Promise<IRoleEntity[]> {
+  async obtainUsersByOrganization(): Promise<IUserEntity[]> {
     try {
       const { data } = await firstValueFrom(
-        this._httpClient.get<IApiResponseDTO<IRoleEntity[]>>(this.rolesUrl)
+        this._httpClient.get<IApiResponseDTO<IUserEntity[]>>(this.usersUrl)
       );
       return data;
     } catch (e: unknown) {
       const err = ((e as HttpErrorResponse).error) as IApiErrorDTO;
-      if (err && Object.hasOwn(RoleRepositoryErrors, err.title)) {
-        throw RoleRepositoryErrors[err.title as keyof typeof RoleRepositoryErrors]
+      if (err && Object.hasOwn(AuthRepositoryErrors, err.title)) {
+        throw AuthRepositoryErrors[err.title as keyof typeof AuthRepositoryErrors]
       }
       throw e;
     }
