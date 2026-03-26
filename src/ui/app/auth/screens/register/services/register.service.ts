@@ -1,8 +1,8 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import { IRegisterOrganizationCommand } from "@core/auth/domain/command/register-organization.command";
+import { IPlanEntity } from "@core/plans/domain/entity/plan.entity";
 import { TypeDocumentConstant } from "@core/shared/application/constant/type-document.constant";
-import { IPlanEntity } from "@core/shared/domain/entity/plan.entity";
 import { AuthFacade } from "@ui/auth/facades/auth.facade";
 
 @Injectable()

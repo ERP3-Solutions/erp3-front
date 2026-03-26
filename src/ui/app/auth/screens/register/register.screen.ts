@@ -12,13 +12,18 @@ import { OrderStepsConstant } from './constants/order-steps.constant';
 import { FAuthSeriesRegister } from './fragments/series-register/series-register.fragment';
 import { FAuthPlanRegister } from './fragments/plan-register/plan-register.fragment';
 import { validateForm } from '@ui/shared/utils/validate-form.util';
+import { PlansModule } from '@data/plans.module';
 
 @Component({
   selector: 's-auth-register',
   imports: [
+
     // Modulos de angular
     ReactiveFormsModule,
     FormsModule,
+
+    // Modulos de capas externas
+    PlansModule,
 
     // Componentes(standalone) internos
     CAuthForm,
@@ -29,7 +34,7 @@ import { validateForm } from '@ui/shared/utils/validate-form.util';
     FAuthPlanRegister,
   ],
   templateUrl: 'register.screen.html',
-  
+
   providers: [
     RegisterService,
   ]

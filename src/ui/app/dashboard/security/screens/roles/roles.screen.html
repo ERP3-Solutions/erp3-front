@@ -1,1 +1,7 @@
-roles
+<div class="">
+  @if (typeView() === ETypeView.CARD) {
+  <f-security-roles-cards />
+} @else {
+  <f-security-roles-grid />
+}
+</div>

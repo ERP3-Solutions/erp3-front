@@ -32,7 +32,6 @@ export class FDashboardSidebarSecondary {
   constructor() {
     effect(() => {
       const events = this.events();
-      console.log(events);
       if (events?.type === EventType.NavigationEnd) 
         this.url.set(events.url.split('?')[0]);
     })

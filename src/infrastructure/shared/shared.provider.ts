@@ -2,9 +2,9 @@ import { provideHttpClient, withFetch, withInterceptors } from "@angular/common/
 import { NgModule } from "@angular/core";
 import { tokenInterceptor } from "./interceptor/token.interceptor";
 import { SessionStorageRepositoryAdapter } from "./adapter/out/session-storage-repository.adapter";
-import { SESSION_STORAGE_TOKEN } from "./token/out/session-storage.token";
-import { PLAN_REPOSITORY_TOKEN } from "@data/shared/token/out/plan-repository.token";
-import { PlanRepositoryAdapter } from "./adapter/out/plan-repository.adapter";
+import { SESSION_STORAGE_REPOSITORY_TOKEN } from "@data/shared/token/out/session-storage-repository.token";
+import { SESSION_MANAGER_REPOSITORY_TOKEN } from "@data/shared/token/out/session-manager-repository.token";
+import { SessionManagerRepositoryAdapter } from "./adapter/out/session-manager-repository.adapter";
 
 @NgModule({
   providers: [
@@ -15,12 +15,12 @@ import { PlanRepositoryAdapter } from "./adapter/out/plan-repository.adapter";
       ]),
     ),
     {
-      provide: SESSION_STORAGE_TOKEN,
+      provide: SESSION_STORAGE_REPOSITORY_TOKEN,
       useClass: SessionStorageRepositoryAdapter
     },
     {
-      provide: PLAN_REPOSITORY_TOKEN,
-      useClass: PlanRepositoryAdapter
+      provide: SESSION_MANAGER_REPOSITORY_TOKEN,
+      useClass: SessionManagerRepositoryAdapter
     },
   ]
 })

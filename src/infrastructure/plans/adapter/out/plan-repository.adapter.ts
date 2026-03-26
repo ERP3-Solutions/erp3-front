@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { IPlanEntity } from "@core/shared/domain/entity/plan.entity";
-import { PlanRepositoryPort } from "@core/shared/port/out/plan-repository.port";
+import { IPlanEntity } from "@core/plans/domain/entity/plan.entity";
+import { PlanRepositoryPort } from "@core/plans/port/out/plan-repository.port";
 import { API_URL } from "@environment/api.context";
 import { IApiResponseDTO } from "@infrastructure/shared/dto/api-response.dto";
 import { firstValueFrom } from "rxjs";

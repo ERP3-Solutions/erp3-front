@@ -1,6 +1,6 @@
 export interface SessionStorageRepositoryPort {
-  save<T>(key: string, object: T): Promise<void>;
-  remove(key: string): Promise<void>;
-  clear(): Promise<void>;
-  get<T>(token: string): Promise<T | null>;
+  save<T>(key: string, object: T): void;
+  remove(key: string): void;
+  clear(): void;
+  get<T>(token: string): T | null;
 }

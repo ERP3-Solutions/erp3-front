@@ -6,6 +6,11 @@ const router: Routes = [
     loadComponent: () => import('./security.layout').then(l => l.LSecurity),
     children: [
       {
+        path: '',
+        redirectTo: 'users',
+        pathMatch: 'full'
+      },
+      {
         path: 'users',
         loadComponent: () => import('./screens/users/users.screen').then(l => l.SSecurityUsers),
       },

@@ -1,5 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { LoginErrors } from "@core/auth/application/errors/login.errors";
 import { ICredentialsCommand } from "@core/auth/domain/command/credentials.command";
 import { AuthFacade } from "@ui/auth/facades/auth.facade";
@@ -11,6 +12,7 @@ export class LoginService {
   private readonly facade: AuthFacade = inject(AuthFacade);
   private readonly toast: ToastService = inject(ToastService);
   private readonly translate: TranslateService = inject(TranslateService);
+  private readonly router = inject(Router);
 
   public loading = signal<boolean>(false);
 
@@ -35,6 +37,7 @@ export class LoginService {
       this.loading.set(true);
       try {
         await this.facade.loginWithCredentials(command);
+        this.router.navigateByUrl('/dashboard');
       } catch(e: unknown) {
         const err = e as keyof typeof LoginErrors;
         if (err === LoginErrors.USER_NOT_FOUND) {

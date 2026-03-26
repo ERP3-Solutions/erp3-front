@@ -13,11 +13,11 @@ import { firstValueFrom } from "rxjs";
 export class UserRepositoryAdapter implements UserRepositoryPort {
   private _httpClient: HttpClient = inject(HttpClient)
 
-  private authUrl = `${API_URL}/v1/auth/login`
+  private authUrl = `${API_URL}/v1/auth`
 
   async loginWithCredentials(params: ICredentialsCommand) {
     try {
-      const { data } = await firstValueFrom(this._httpClient.post<IApiResponseDTO<IAuthTokenDTO>>(this.authUrl, params));
+      const { data } = await firstValueFrom(this._httpClient.post<IApiResponseDTO<IAuthTokenDTO>>(`${this.authUrl}/login`, params));
       return data;
     } catch (e: unknown) {
       const err = ((e as HttpErrorResponse).error) as IApiErrorDTO;

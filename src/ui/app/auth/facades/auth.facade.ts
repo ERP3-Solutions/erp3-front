@@ -7,8 +7,8 @@ import { ObtainOrganizationByRucPort } from "@core/auth/port/in/obtain-organizat
 import { REGISTER_ORGANIZATION_TOKEN } from "@data/auth/token/in/register-organization.token";
 import { OBTAIN_ORGANIZATION_BY_RUC_TOKEN } from "@data/auth/token/in/obtain-organization-by-ruc.token";
 import { IRegisterOrganizationCommand } from "@core/auth/domain/command/register-organization.command";
-import { ObtainPlansPort } from "@core/shared/port/in/obtain-plans.port";
-import { OBTAIN_PLANS_TOKEN } from "@data/shared/token/in/obtain-plans.token";
+import { ObtainPlansPort } from "@core/plans/port/in/obtain-plans.port";
+import { OBTAIN_PLANS_TOKEN } from "@data/plans/token/in/obtain-plans.token";
 
 @Injectable()
 export class AuthFacade {

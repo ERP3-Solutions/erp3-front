@@ -4,9 +4,9 @@ import { SessionStorageRepositoryPort } from "@core/shared/port/out/session-stor
 @Injectable()
 export class SessionStorageRepositoryAdapter implements SessionStorageRepositoryPort {
 
-  async save<T>(key: string, value: T): Promise<void> {
+  save<T>(key: string, value: T): void {
     try {
-      localStorage.setItem(key, JSON.stringify(value));
+      localStorage.setItem(key, typeof value !== 'string' ? JSON.stringify(value) : value);
     } catch {
       throw new Error(
         `SessionStorage: failed to save key "${key}"`
@@ -14,7 +14,7 @@ export class SessionStorageRepositoryAdapter implements SessionStorageRepository
     }
   }
 
-  async get<T>(key: string): Promise<T | null> {
+  get<T>(key: string): T | null {
     const raw = localStorage.getItem(key);
 
     if (!raw) {
@@ -30,11 +30,11 @@ export class SessionStorageRepositoryAdapter implements SessionStorageRepository
     }
   }
 
-  async remove(key: string): Promise<void> {
+  remove(key: string): void {
     localStorage.removeItem(key);
   }
 
-  async clear(): Promise<void> {
+  clear(): void {
     localStorage.clear();
   }
 }

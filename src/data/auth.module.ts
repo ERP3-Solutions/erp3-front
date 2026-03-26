@@ -5,17 +5,19 @@ import { RegisterOrganizationUseCase } from "@core/auth/application/use-case/reg
 import { OrganizationRepositoryPort } from "@core/auth/port/out/organization-repository.port";
 import { UserRepositoryPort } from "@core/auth/port/out/user-repository.port";
 import { SessionStorageRepositoryPort } from "@core/shared/port/out/session-storage-repository.port";
-import { SESSION_STORAGE_TOKEN } from "@infrastructure/shared/token/out/session-storage.token";
 import { LOGIN_WITH_CREDENTIALS_TOKEN } from "./auth/token/in/login-with-credentials.token";
 import { REGISTER_ORGANIZATION_TOKEN } from "./auth/token/in/register-organization.token";
 import { ORGANIZATION_REPOSITORY_TOKEN } from "./auth/token/out/organization-repository.token";
 import { USER_REPOSITORY_TOKEN } from "./auth/token/out/user-repository.token";
 import { OBTAIN_ORGANIZATION_BY_RUC_TOKEN } from "./auth/token/in/obtain-organization-by-ruc.token";
 import { ObtainOrganizationByRucUseCase } from "@core/auth/application/use-case/obtain-organization-by-ruc.use-case";
+import { SESSION_STORAGE_REPOSITORY_TOKEN } from "./shared/token/out/session-storage-repository.token";
+import { SharedModule } from "./shared.module";
 
 @NgModule({
   imports: [
-    AuthProvider
+    SharedModule,
+    AuthProvider,
   ],
   providers: [
     {
@@ -26,7 +28,7 @@ import { ObtainOrganizationByRucUseCase } from "@core/auth/application/use-case/
       ) => new LoginWithCredentialsUseCase(userRepo, sessionStorageRepo),
       deps: [
         USER_REPOSITORY_TOKEN,
-        SESSION_STORAGE_TOKEN
+        SESSION_STORAGE_REPOSITORY_TOKEN
       ]
     },
     {

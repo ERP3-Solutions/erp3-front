@@ -1,8 +1,8 @@
 import { ICredentialsCommand } from "@core/auth/domain/command/credentials.command";
 import { LoginWithCredentialsPort } from "@core/auth/port/in/login-with-credentials.port";
 import { UserRepositoryPort } from "@core/auth/port/out/user-repository.port";
+import { AUTH_ACCESS_TOKEN, AUTH_REFRESH_TOKEN } from "@core/shared/application/constant/auth-tokens.constant";
 import { SessionStorageRepositoryPort } from "@core/shared/port/out/session-storage-repository.port";
-import { AUTH_ACCESS_TOKEN, AUTH_REFRESH_TOKEN } from "../constant/auth-tokens.constant";
 
 export class LoginWithCredentialsUseCase implements LoginWithCredentialsPort {
   public constructor(

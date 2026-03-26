@@ -1,5 +1,5 @@
 import { InjectionToken } from "@angular/core";
-import { ObtainPlansPort } from "@core/shared/port/in/obtain-plans.port";
+import { ObtainPlansPort } from "@core/plans/port/in/obtain-plans.port";
 
 export const OBTAIN_PLANS_TOKEN =
   new InjectionToken<ObtainPlansPort>(
