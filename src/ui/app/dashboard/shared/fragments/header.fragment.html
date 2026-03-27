@@ -1,4 +1,4 @@
-<header class="flex items-center p-3 w-full bg-surface-0 border-surface-20 border-b">
+<header class="flex items-center p-3 pe-6 w-full bg-surface-0 border-surface-20 border-b">
   <c-app-button 
     classButton="p-2"
     type="button"
@@ -11,4 +11,47 @@
       svgModule="dashboard"
     />
   </c-app-button>
+
+  <nav aria-label="Breadcrumb">
+    <ol class="flex items-center gap-2 text-sm">
+      <li>
+        <a routerLink="/dashboard" 
+            class="flex items-center gap-1.5 text-surface-60 hover:text-surface-90 transition-colors">
+          <c-app-icon className="w-4 h-4" svgIcon="home" svgModule="dashboard" />
+          <span>Dashboard</span>
+        </a>
+      </li>
+
+      @for (crumb of breadcrumbs; track $index; let last = $last) {
+        <li class="flex items-center gap-2">
+          <span class="text-surface-40">›</span>
+          
+          @if (!last) {
+            <a [routerLink]="crumb.url"
+                class="text-surface-60 hover:text-primary-60 font-medium transition-colors">
+              {{ crumb.label }}
+            </a>
+          } @else {
+            <span class="text-surface-90 font-semibold">
+              {{ crumb.label }}
+            </span>
+          }
+        </li>
+      }
+    </ol>
+  </nav>
+
+  <div class="ms-auto">
+    <c-app-button 
+      classButton="p-2"
+      type="button"
+      typeButton="icon"
+    >
+      <c-app-icon 
+        className="w-6 h-6 fill-primary-50"
+        svgIcon="outlined-language"
+        svgModule="dashboard"
+      />
+    </c-app-button>
+  </div>
 </header>

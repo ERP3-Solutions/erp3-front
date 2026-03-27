@@ -12,27 +12,33 @@ const router: Routes = [
       },
       {
         path: 'home',
-        loadChildren: () => import('./home/home.routes')
+        loadChildren: () => import('./home/home.routes'),
+        data: { breadcrumb: 'Home' }
       },
       {
         path: 'sales',
-        loadChildren: () => import('./sales/sales.routes')
+        loadChildren: () => import('./sales/sales.routes'),
+        data: { breadcrumb: 'Sales' }
       },
       {
         path: 'finance',
-        loadChildren: () => import('./finance/finance.routes')
+        loadChildren: () => import('./finance/finance.routes'),
+        data: { breadcrumb: 'Finance' }
       },
       {
         path: 'logistic',
-        loadChildren: () => import('./logistic/logistic.routes')
+        loadChildren: () => import('./logistic/logistic.routes'),
+        data: { breadcrumb: 'Logistic' }
       },
       {
         path: 'organization',
-        loadChildren: () => import('./organization/organization.routes')
+        loadChildren: () => import('./organization/organization.routes'),
+        data: { breadcrumb: 'Organization' }
       },
       {
         path: 'security',
-        loadChildren: () => import('./security/security.routes')
+        loadChildren: () => import('./security/security.routes'),
+        data: { breadcrumb: 'Security' }
       }
     ]
   },

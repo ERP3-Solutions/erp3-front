@@ -22,7 +22,7 @@ import { RolesService } from './services/roles.service';
   ]
 })
 export class SSecurityRoles { 
-  public typeView = signal<ETypeView>(ETypeView.CARD);
+  public typeView = signal<ETypeView>(ETypeView.GRID);
   public ETypeView = ETypeView;
   public rolesService = inject(RolesService);
 

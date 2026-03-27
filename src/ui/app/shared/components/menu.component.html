@@ -1,0 +1,33 @@
+<div
+  class="menu-panel bg-surface-0 border border-surface-20 rounded-2xl shadow-xl py-2 min-w-[180px] overflow-hidden z-50"
+  [ngStyle]="style"
+>
+  <!-- Si se pasa contenido personalizado -->
+  @if (templateRef) {
+    <ng-container *ngTemplateOutlet="templateRef"></ng-container>
+  } 
+  <!-- Si se usan items -->
+  @else if (items.length > 0) {
+    @for (item of items; track item.label) {
+      <button
+        *ngIf="!item.separator"
+        (click)="onItemClick(item)"
+        class="w-full px-4 py-2.5 text-left text-surface-80 hover:bg-surface-10 flex items-center gap-3 transition-colors disabled:opacity-50"
+        [disabled]="item.disabled"
+      >
+        @if (item.icon) {
+          <c-app-icon 
+            [className]="'w-4 h-4 fill-surface-60'" 
+            [svgIcon]="item.icon"
+            [svgModule]="item.iconModule || 'dashboard'">
+          </c-app-icon>
+        }
+        <span class="text-sm font-medium">{{ item.label }}</span>
+      </button>
+
+      @if (item.separator) {
+        <div class="h-px bg-surface-20 my-1 mx-2"></div>
+      }
+    }
+  }
+</div>

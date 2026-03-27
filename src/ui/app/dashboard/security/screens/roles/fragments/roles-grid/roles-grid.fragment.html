@@ -9,7 +9,8 @@
     </div>
     
     <button 
-      (click)="onCreateRole()"
+      #menuTrigger
+      (click)="openMenu(menuTrigger)"
       class="flex items-center gap-2 px-4 py-2 bg-primary-60 hover:bg-primary-70 text-primary-on-primary rounded-lg font-medium transition-colors">
       <span class="text-lg leading-none">+</span>
       <span>Nuevo Rol</span>
