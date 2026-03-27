@@ -1,7 +1,11 @@
 <div class="">
   @if (typeView() === ETypeView.CARD) {
-  <f-security-roles-cards />
+  <f-security-roles-cards 
+    [roles]="rolesService.roles()"
+  />
 } @else {
-  <f-security-roles-grid />
+  <f-security-roles-grid 
+    [roles]="rolesService.roles()"
+  />
 }
 </div>

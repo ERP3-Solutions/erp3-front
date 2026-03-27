@@ -1,9 +1,115 @@
-Aqui grilla de roles
+<div class="flex flex-col h-full bg-surface-0">
+  <!-- Header con título y contador -->
+  <div class="flex items-center justify-between px-6 py-4 border-b border-surface-20 bg-surface-5">
+    <div>
+      <h1 class="text-xl font-semibold text-surface-90">Roles</h1>
+      <p class="text-surface-60 text-sm">
+        {{ roles().length }} roles registrados
+      </p>
+    </div>
+    
+    <button 
+      (click)="onCreateRole()"
+      class="flex items-center gap-2 px-4 py-2 bg-primary-60 hover:bg-primary-70 text-primary-on-primary rounded-lg font-medium transition-colors">
+      <span class="text-lg leading-none">+</span>
+      <span>Nuevo Rol</span>
+    </button>
+  </div>
 
-<table>
-  <thead>
+  <!-- Tabla Responsive -->
+  <div class="flex-1 overflow-auto">
+    <table class="w-full min-w-full divide-y divide-surface-20">
+      <thead class="bg-surface-10 sticky top-0 z-10">
+        <tr>
+          <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">Nombre</th>
+          <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">Descripción</th>
+          <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">Permisos</th>
+          <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">Creado</th>
+          <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">Actualizado</th>
+          <th class="px-6 py-4 w-24 text-center text-sm font-medium text-surface-70">Acciones</th>
+        </tr>
+      </thead>
+      
+      <tbody class="divide-y divide-surface-20 bg-surface-0">
+        @for (role of roles(); track role.id) {
+          <tr class="hover:bg-surface-5 transition-colors group">
+            <!-- Nombre -->
+            <td class="px-6 py-4">
+              <div class="font-medium text-surface-90">{{ role.name }}</div>
+            </td>
 
-  </thead>
-  <tbody></tbody>
-  <tfoot></tfoot>
-</table>
+            <!-- Descripción -->
+            <td class="px-6 py-4">
+              <p class="text-surface-70 line-clamp-2 text-sm">
+                {{ role.description || 'Sin descripción' }}
+              </p>
+            </td>
+
+            <!-- Permisos -->
+            <td class="px-6 py-4">
+              <div class="flex flex-wrap gap-1">
+                @for (perm of role.permissions | slice:0:3; track perm.code) {
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-10 text-primary-70">
+                    {{ perm.name }}
+                  </span>
+                }
+                @if (role.permissions.length > 3) {
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-20 text-surface-70">
+                    +{{ role.permissions.length - 3 }}
+                  </span>
+                }
+              </div>
+            </td>
+
+            <!-- Creado -->
+            <td class="px-6 py-4 text-sm text-surface-60">
+              {{ role.createdOnUtc | date:'dd/MM/yyyy HH:mm' }}
+              <div class="text-xs text-surface-50">{{ role.logUserCreated }}</div>
+            </td>
+
+            <!-- Actualizado -->
+            <td class="px-6 py-4 text-sm text-surface-60">
+              {{ role.updateOnUtc | date:'dd/MM/yyyy HH:mm' }}
+              <div class="text-xs text-surface-50">{{ role.logUserUpdated }}</div>
+            </td>
+
+            <!-- Acciones -->
+            <td class="px-6 py-4">
+              <div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button 
+                  (click)="onEditRole(role)"
+                  class="p-2 text-surface-60 hover:text-primary-60 hover:bg-surface-10 rounded-lg transition-colors">
+                  ✏️
+                </button>
+                <button 
+                  (click)="onDeleteRole(role)"
+                  class="p-2 text-surface-60 hover:text-error-60 hover:bg-surface-10 rounded-lg transition-colors">
+                  🗑️
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <!-- Estado vacío -->
+    @if (roles.length === 0) {
+      <div class="flex flex-col items-center justify-center h-96 text-center">
+        <div class="w-16 h-16 bg-surface-10 rounded-2xl flex items-center justify-center mb-4">
+          <span class="text-4xl">🔐</span>
+        </div>
+        <h3 class="text-surface-80 font-medium mb-1">No hay roles registrados</h3>
+        <p class="text-surface-60 max-w-xs">Crea tu primer rol para comenzar a asignar permisos.</p>
+      </div>
+    }
+  </div>
+
+  <!-- Footer (opcional) -->
+  <div class="px-6 py-3 border-t border-surface-20 bg-surface-5 text-xs text-surface-50 flex justify-between items-center">
+    <div>Mostrando {{ roles().length }} roles</div>
+    <div class="flex gap-4">
+      <!-- Aquí puedes agregar paginación más adelante -->
+    </div>
+  </div>
+</div>
