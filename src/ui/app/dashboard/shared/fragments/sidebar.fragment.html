@@ -9,12 +9,12 @@
     <div class="flex flex-col gap-3">
     @for (group of sidebarConstant; track $index) {
       <c-dashboard-sidebar-group
-        [titulo]="group.title"
+        [titulo]="translateService.tSignal(group.title)()"
         [open]="sidebarService.isOpen()"
       >
         @for (item of group.items; track $index) {
           <c-dashboard-sidebar-item
-            [label]="item.label"
+            [label]="translateService.tSignal(item.label)()"
             [routerLink]="item.route"
             [routerLinkActiveOptions]="item.routerLinkActiveOptions ?? { exact: false }"
             [icon]="item.icon"

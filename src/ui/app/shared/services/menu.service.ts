@@ -11,6 +11,8 @@ export class MenuService {
   private overlayService = inject(OverlayService);
   private currentMenuRef: ComponentRef<CAppMenu> | null = null;
 
+  private closeFunction: VoidFunction | null = null;
+
   open(
     triggerElement: HTMLElement,
     template?: TemplateRef<unknown>
@@ -43,6 +45,8 @@ export class MenuService {
       document.removeEventListener('click', closeOnOutsideClick);
     };
 
+    this.closeFunction = closeMenu;
+
     const closeOnOutsideClick = (event: MouseEvent) => {
       if (!menuRef.location.nativeElement.contains(event.target as Node)) {
         closeMenu();
@@ -52,5 +56,11 @@ export class MenuService {
     setTimeout(() => {
       document.addEventListener('click', closeOnOutsideClick);
     }, 150);
+  }
+
+  close() {
+    if (this.closeFunction) {
+      this.closeFunction();
+    }
   }
 }

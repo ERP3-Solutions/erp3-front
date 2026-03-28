@@ -3,6 +3,7 @@ import { CDashboardSidebarGroup } from '../components/sidebar/sidebar-group.comp
 import { CDashboardSidebarItem } from '../components/sidebar/sidebar-item.component';
 import { SidebarService } from '../services/sidebar.service';
 import { SidebarItemsConstant } from '../constants/sidebar.constant';
+import { TranslateService } from '@ui/shared/services/translate.service';
 
 @Component({
   selector: 'f-dashboard-sidebar',
@@ -20,5 +21,6 @@ import { SidebarItemsConstant } from '../constants/sidebar.constant';
 })
 export class FDashboardSidebar {
   public sidebarService = inject(SidebarService);
+  public translateService = inject(TranslateService);
   public sidebarConstant = SidebarItemsConstant;
 }

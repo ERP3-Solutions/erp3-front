@@ -15,7 +15,7 @@ export class TranslateService {
   private store = inject(TranslateStore);
   readonly langSignal: Signal<LangType> = computed(() => this.store.getLang());
   readonly langPathsTranslate: [string, string][] = Object.entries({
-    "en-US": 'Ingles',
+    "en-US": 'English',
     "es-ES": 'Español',
   })
 

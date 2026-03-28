@@ -1,23 +1,24 @@
-import { inject, Injectable } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject, filter } from 'rxjs';
 import { BreadCrumbItem } from '../interfaces/bread-brumb-item.interface';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreadcrumbService {
   private router = inject(Router)
-  private breadcrumbsSubject = new BehaviorSubject<BreadCrumbItem[]>([]);
-  public breadcrumbs$ = this.breadcrumbsSubject.asObservable();
+  public routerEvents = toSignal(this.router.events);
+  public breadCrumbs = signal<BreadCrumbItem[]>([]);
 
   constructor() {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      const breadcrumbs = this.buildBreadcrumbs(this.router.routerState.snapshot.root);
-      this.breadcrumbsSubject.next(breadcrumbs);
-    });
+    effect(() => {
+      const event = this.routerEvents();
+      if (event && event instanceof NavigationEnd) {
+        const routes = this.buildBreadcrumbs(this.router.routerState.snapshot.root);
+        this.breadCrumbs.set(routes);
+      }
+    })
   }
 
   private buildBreadcrumbs(
@@ -25,11 +26,9 @@ export class BreadcrumbService {
     url = '',
     breadcrumbs: BreadCrumbItem[] = []
   ): BreadCrumbItem[] {
-
-    // Construir la URL correctamente
     const routePath = route.url.map(segment => segment.path).join('/');
     if (routePath) {
-      url += (url ? '/' : '') + routePath;
+      url += '/' + routePath;
     }
 
     if (route.data?.['breadcrumb']) {
@@ -49,9 +48,5 @@ export class BreadcrumbService {
     }
 
     return breadcrumbs;
-  }
-
-  getCurrentBreadcrumbs(): BreadCrumbItem[] {
-    return this.breadcrumbsSubject.value;
   }
 }

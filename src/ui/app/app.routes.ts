@@ -12,7 +12,8 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.routes')
+    loadChildren: () => import('./dashboard/dashboard.routes'),
+    data: { breadcrumb: 'dashboard.fragments_sidebar.dashboard' }
   },
   {
     path: '**',

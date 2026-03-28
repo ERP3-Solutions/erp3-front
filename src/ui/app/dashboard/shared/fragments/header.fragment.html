@@ -14,26 +14,18 @@
 
   <nav aria-label="Breadcrumb">
     <ol class="flex items-center gap-2 text-sm">
-      <li>
-        <a routerLink="/dashboard" 
-            class="flex items-center gap-1.5 text-surface-60 hover:text-surface-90 transition-colors">
-          <c-app-icon className="w-4 h-4" svgIcon="home" svgModule="dashboard" />
-          <span>Dashboard</span>
-        </a>
-      </li>
-
-      @for (crumb of breadcrumbs; track $index; let last = $last) {
+      @for (crumb of breadCrumbService.breadCrumbs(); track $index; let last = $last) {
         <li class="flex items-center gap-2">
           <span class="text-surface-40">›</span>
           
           @if (!last) {
             <a [routerLink]="crumb.url"
                 class="text-surface-60 hover:text-primary-60 font-medium transition-colors">
-              {{ crumb.label }}
+              {{ translateService.tSignal(crumb.label)() }}
             </a>
           } @else {
             <span class="text-surface-90 font-semibold">
-              {{ crumb.label }}
+              {{ translateService.tSignal(crumb.label)() }}
             </span>
           }
         </li>
@@ -60,11 +52,17 @@
 </header>
 
 <ng-template #optionsLanguage>
-  <ul>
+  <div class="select">
     @for (language of translateService.langPathsTranslate; track $index) {
-      <li class="" (click)="changeTranslate(language[0])">
+      <div 
+        class="select-option min-w-32" 
+        [ngClass]="{
+          'active': language[0] === translateService.langSignal()
+        }"
+        (click)="changeTranslate(language[0])"
+      >
         {{ language[1] }}
-      </li>
+      </div>
     }
-  </ul>
+  </div>
 </ng-template>

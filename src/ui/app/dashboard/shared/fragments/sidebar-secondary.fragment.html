@@ -7,10 +7,10 @@
   @if (hasItems()) {
     <div class="flex flex-col gap-4">
       <div class="flex flex-col gap-3">
-        <c-dashboard-sidebar-group [titulo]="sidebarConstant()!.label">
+        <c-dashboard-sidebar-group [titulo]="translateService.tSignal(sidebarConstant()!.label)()">
           @for (item of sidebarConstant()!.subItems; track $index) {
             <c-dashboard-sidebar-item
-              [label]="item.label"
+              [label]="translateService.tSignal(item.label)()"
               [routerLink]="item.route"
               [routerLinkActiveOptions]="item.routerLinkActiveOptions || { exact: false }"
             />

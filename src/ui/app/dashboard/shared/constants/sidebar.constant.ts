@@ -2,87 +2,87 @@ import { SidebarRouterGroupInterface } from "../interfaces/sidebar-router-group.
 
 export const SidebarItemsConstant: SidebarRouterGroupInterface[] = [
   {
-    title: 'Dashboard',
+    title: 'dashboard.fragments_sidebar.dashboard',
     items: [
       {
-        label: 'Home',
+        label: 'dashboard.fragments_sidebar.home',
         route: '/dashboard/home',
         icon: 'filled-dashboard',
         iconModule: 'dashboard',
         routerLinkActiveOptions: { exact: false },
       },
       {
-        label: 'Sales',
+        label: 'dashboard.fragments_sidebar.sales',
         route: '/dashboard/sales',
         icon: 'filled-store',
         iconModule: 'dashboard',
         routerLinkActiveOptions: { exact: false },
         subItems: [
           {
-            label: 'Point of sales',
+            label: 'dashboard.fragments_sidebar.sales_pos',
             route: '/dashboard/sales/point-sales',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'Vouchers',
+            label: 'dashboard.fragments_sidebar.sales_vouchers',
             route: '/dashboard/sales/vouchers',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'Boxes',
+            label: 'dashboard.fragments_sidebar.sales_boxes',
             route: '/dashboard/sales/boxes',
             routerLinkActiveOptions: { exact: false },
           },
         ]
       },
       {
-        label: 'Finances',
+        label: 'dashboard.fragments_sidebar.finances',
         route: '/dashboard/finance',
         icon: 'filled-account-balance',
         iconModule: 'dashboard',
         routerLinkActiveOptions: { exact: false },
         subItems: [
           {
-            label: 'Accounts',
+            label: 'dashboard.fragments_sidebar.finances_accounts',
             route: '/dashboard/finance/accounts',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'Payment methods',
+            label: 'dashboard.fragments_sidebar.finances_payment-methods',
             route: '/dashboard/finance/methods',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'Payment conditions',
+            label: 'dashboard.fragments_sidebar.finances_payment-conditions',
             route: '/dashboard/finance/conditions',
             routerLinkActiveOptions: { exact: false },
           },
         ]
       },
       {
-        label: 'Logistic',
+        label: 'dashboard.fragments_sidebar.logistic',
         route: '/dashboard/logistic',
         icon: 'filled-stack',
         iconModule: 'dashboard',
         routerLinkActiveOptions: { exact: false },
         subItems: [
           {
-            label: 'Warehouses',
+            label: 'dashboard.fragments_sidebar.logistic_warehouses',
             route: '/dashboard/logistic/warehouses',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'Products',
+            label: 'dashboard.fragments_sidebar.logistic_products',
             route: '/dashboard/logistic/products',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'Categories',
+            label: 'dashboard.fragments_sidebar.logistic_categories',
             route: '/dashboard/logistic/categories',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'List of prices',
+            label: 'dashboard.fragments_sidebar.logistic_lop',
             route: '/dashboard/logistic/list-prices',
             routerLinkActiveOptions: { exact: false },
           },
@@ -91,49 +91,49 @@ export const SidebarItemsConstant: SidebarRouterGroupInterface[] = [
     ],
   },
   {
-    title: 'Management',
+    title: 'dashboard.fragments_sidebar.management',
     items: [
       {
-        label: 'Security',
+        label: 'dashboard.fragments_sidebar.security',
         route: '/dashboard/security',
         icon: 'filled-security',
         iconModule: 'dashboard',
         subItems: [
           {
-            label: 'Users',
+            label: 'dashboard.fragments_sidebar.security_users',
             route: '/dashboard/security/users',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'Roles',
+            label: 'dashboard.fragments_sidebar.security_roles',
             route: '/dashboard/security/roles',
             routerLinkActiveOptions: { exact: false },
           },
         ]
       },
       {
-        label: 'Organization',
+        label: 'dashboard.fragments_sidebar.organization',
         route: '/dashboard/organization',
         icon: 'corporation',
         iconModule: 'dashboard',
         subItems: [
           {
-            label: 'Electronic series',
+            label: 'dashboard.fragments_sidebar.organization_electronic-series',
             route: '/dashboard/organization/series',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'Brances',
+            label: 'dashboard.fragments_sidebar.organization_branches',
             route: '/dashboard/organization/branches',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'User profile',
+            label: 'dashboard.fragments_sidebar.organization_user-profile',
             route: '/dashboard/organization/user-profile',
             routerLinkActiveOptions: { exact: false },
           },
           {
-            label: 'Organization profile',
+            label: 'dashboard.fragments_sidebar.organization_organization-profile',
             route: '/dashboard/organization/organization-profile',
             routerLinkActiveOptions: { exact: false },
           },

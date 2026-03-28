@@ -7,6 +7,7 @@ import { EventType, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { SidebarRouterItemInterface } from '../interfaces/sidebar-router.interface';
 import { CommonModule } from '@angular/common';
+import { TranslateService } from '@ui/shared/services/translate.service';
 
 @Component({
   selector: 'f-dashboard-sidebar-secondary',
@@ -24,6 +25,7 @@ import { CommonModule } from '@angular/common';
 })
 export class FDashboardSidebarSecondary {
   public sidebarService = inject(SidebarService);
+  public translateService = inject(TranslateService)
 
   private route = inject(Router);
   private events = toSignal(this.route.events);

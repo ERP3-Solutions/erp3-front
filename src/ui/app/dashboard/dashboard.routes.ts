@@ -13,32 +13,32 @@ const router: Routes = [
       {
         path: 'home',
         loadChildren: () => import('./home/home.routes'),
-        data: { breadcrumb: 'Home' }
+        data: { breadcrumb: 'dashboard.fragments_sidebar.home' }
       },
       {
         path: 'sales',
         loadChildren: () => import('./sales/sales.routes'),
-        data: { breadcrumb: 'Sales' }
+        data: { breadcrumb: 'dashboard.fragments_sidebar.sales' }
       },
       {
         path: 'finance',
         loadChildren: () => import('./finance/finance.routes'),
-        data: { breadcrumb: 'Finance' }
+        data: { breadcrumb: 'dashboard.fragments_sidebar.finances' }
       },
       {
         path: 'logistic',
         loadChildren: () => import('./logistic/logistic.routes'),
-        data: { breadcrumb: 'Logistic' }
+        data: { breadcrumb: 'dashboard.fragments_sidebar.logistic' }
       },
       {
         path: 'organization',
         loadChildren: () => import('./organization/organization.routes'),
-        data: { breadcrumb: 'Organization' }
+        data: { breadcrumb: 'dashboard.fragments_sidebar.organization' }
       },
       {
         path: 'security',
         loadChildren: () => import('./security/security.routes'),
-        data: { breadcrumb: 'Security' }
+        data: { breadcrumb: 'dashboard.fragments_sidebar.security' }
       }
     ]
   },

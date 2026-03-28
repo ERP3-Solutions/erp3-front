@@ -1,0 +1,28 @@
+{
+  "fragments_sidebar": {
+    "dashboard": "Dashboard",
+    "management": "Management",
+    "home": "Home",
+    "sales": "Sales",
+    "sales_pos": "Point of sales",
+    "sales_vouchers": "Vouchers",
+    "sales_boxes": "Boxes",
+    "finances": "Finances",
+    "finances_accounts": "Accounts",
+    "finances_payment-methods": "Payment methods",
+    "finances_payment-conditions": "Payment conditions",
+    "logistic": "Logistic",
+    "logistic_warehouses": "Warehouses",
+    "logistic_products": "Products",
+    "logistic_categories": "Categories",
+    "logistic_lop": "List of prices",
+    "security": "Security",
+    "security_roles": "Roles",
+    "security_users": "Users",
+    "organization": "Organization",
+    "organization_electronic-series": "Electronic series",
+    "organization_branches": "Branches",
+    "organization_user-profile": "User profile",
+    "organization_organization-profile": "Organization profile"
+  }
+}

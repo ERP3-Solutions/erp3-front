@@ -13,12 +13,12 @@ const router: Routes = [
       {
         path: 'users',
         loadComponent: () => import('./screens/users/users.screen').then(l => l.SSecurityUsers),
-        data: { breadcrumb: 'Users' }
+        data: { breadcrumb: 'dashboard.fragments_sidebar.security_users' }
       },
       {
         path: 'roles',
         loadComponent: () => import('./screens/roles/roles.screen').then(l => l.SSecurityRoles),
-        data: { breadcrumb: 'Roles' }
+        data: { breadcrumb: 'dashboard.fragments_sidebar.security_roles' }
       },
     ]
   },
