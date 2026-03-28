@@ -105,4 +105,31 @@
   --color-success-on-success: var(--success-on-success);
   --color-success-success-container: var(--success-success-container);
   --color-success-on-success-container: var(--success-on-success-container);
+
+  --animate-notion-fade-in: notion-fade-in 0.15s ease-in;
+  --animate-notion-fade-out: notion-fade-out 0.15s ease-out;
+
+  @keyframes notion-fade-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.95) translateY(-6px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes notion-fade-out {
+    0% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: scale(0.95) translateY(-6px);
+    }
+  }
 }

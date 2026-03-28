@@ -8,10 +8,16 @@ const LS_KEY_TRANSLATIONS = 'ui.translations';
 const DEFAULT_LANG: LangType = 'es-ES';
 const FALLBACK_LANG: LangType = 'es-ES';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class TranslateService {
   private store = inject(TranslateStore);
   readonly langSignal: Signal<LangType> = computed(() => this.store.getLang());
+  readonly langPathsTranslate: [string, string][] = Object.entries({
+    "en-US": 'Ingles',
+    "es-ES": 'Español',
+  })
 
   constructor() {
     const savedLang = this._readLangFromStorage();

@@ -4,7 +4,6 @@ import { ToastPositionType } from '../types/position.type';
 
 @Component({
   selector: 'c-app-toast',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './toast.component.html',
 })

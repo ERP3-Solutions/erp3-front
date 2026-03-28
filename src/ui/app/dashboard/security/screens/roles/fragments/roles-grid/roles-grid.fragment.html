@@ -10,7 +10,7 @@
     
     <button 
       #menuTrigger
-      (click)="openMenu(menuTrigger)"
+      (click)="menuService.open(menuTrigger, templateMenu)"
       class="flex items-center gap-2 px-4 py-2 bg-primary-60 hover:bg-primary-70 text-primary-on-primary rounded-lg font-medium transition-colors">
       <span class="text-lg leading-none">+</span>
       <span>Nuevo Rol</span>
@@ -114,3 +114,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #templateMenu>
+  aqui las opciones del menu
+</ng-template>

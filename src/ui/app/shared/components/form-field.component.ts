@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, ViewEncapsulation } from '@angular/core';
-import { AbstractControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CAppIcon } from './icon.component';
 
 @Component({

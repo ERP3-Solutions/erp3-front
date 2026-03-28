@@ -1,10 +1,8 @@
-/* Scrollbar elegante y discreto - Alineado con tu tema Surface */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgb(var(--surface-40)) transparent;
+  scrollbar-color: var(--surface-40) transparent;
 }
 
-/* Webkit (Chrome, Edge, Safari, etc.) */
 *::-webkit-scrollbar {
   width: 7px;
   height: 7px;
@@ -15,42 +13,15 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background: rgb(var(--surface-40));
+  background: var(--surface-20);
   border-radius: 9999px;
   transition: background 0.25s ease;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--surface-60));
+  background: var(--surface-30);
 }
 
 *::-webkit-scrollbar-thumb:active {
-  background: rgb(var(--primary-60));
+  background: var(--surface-40);
 }
-
-// *-subtle {
-//   scrollbar-width: thin;
-//   scrollbar-color: rgb(var(--surface-30)) transparent;
-// }
-
-// *-subtle::-webkit-scrollbar {
-//   width: 6px;
-//   height: 6px;
-// }
-
-// *-subtle::-webkit-scrollbar-track {
-//   background: transparent;
-// }
-
-// *-subtle::-webkit-scrollbar-thumb {
-//   background: rgb(var(--surface-35));
-//   border-radius: 9999px;
-// }
-
-// *-subtle::-webkit-scrollbar-thumb:hover {
-//   background: rgb(var(--surface-55));
-// }
-
-// *-subtle::-webkit-scrollbar-thumb:active {
-//   background: rgb(var(--primary-60));
-// }

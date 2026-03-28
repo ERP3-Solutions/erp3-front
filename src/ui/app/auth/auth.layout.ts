@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { AuthModule } from '@data/auth.module';
 import { TranslateService } from '@ui/shared/services/translate.service';
 import { AuthFacade } from './facades/auth.facade';
+import { PlansModule } from '@data/plans.module';
 
 @Component({
   selector: 'l-auth',
@@ -13,6 +14,7 @@ import { AuthFacade } from './facades/auth.facade';
     // Modulos de librerías externas
     // Modulos de capas externas
     AuthModule,
+    PlansModule
 
     // Componentes(standalone) internos
     // Componentes(standalone) externos
