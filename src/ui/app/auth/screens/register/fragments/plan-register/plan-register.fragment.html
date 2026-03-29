@@ -1,21 +1,22 @@
 <div class="flex justify-center gap-8 w-148">
   @for (plan of registerService.plans(); track plan.id) {
     <div
-      class="relative flex flex-col justify-between rounded-2xl border border-primary-20
-             bg-surface-10 p-6 shadow-sm hover:shadow-xl transition-all duration-300">
+      class="relative flex flex-col justify-between rounded-2xl border dark:border-primary-20
+             border-primary-80 dark:bg-surface-10 bg-surface-90 p-6 shadow-sm hover:shadow-xl 
+             transition-all duration-300">
       <div class="flex flex-col gap-2">
-        <p class="text-xs font-semibold text-primary-70 tracking-widest">
+        <p class="text-xs font-semibold dark:text-primary-70 text-primary-40 tracking-widest">
           PLAN
         </p>
-        <h3 class="text-2xl font-bold text-surface-on-surface">
+        <h3 class="text-2xl font-bold dark:text-surface-on-surface text-light-surface-on-surface">
           {{ plan.name | textFormat:'space' | textFormat:'capitalize' }}
         </h3>
 
         <div class="mt-4 flex items-end gap-1">
-          <span class="text-3xl font-extrabold text-surface-80">
+          <span class="text-3xl font-extrabold dark:text-surface-80 text-surface-30">
             ${{ plan.monthlyPrice }}
           </span>
-          <span class="text-sm text-surface-60 mb-1">
+          <span class="text-sm dark:text-surface-60 text-surface-40 mb-1">
             /month
           </span>
         </div>
@@ -24,8 +25,8 @@
 
       <div class="mt-6 flex flex-col gap-3">
         @for (feature of plan.features; track feature.code) {
-          <div class="flex items-center gap-3 text-sm text-primary-70">
-            <div class="w-1.5 h-1.5 rounded-full bg-primary-80"></div>
+          <div class="flex items-center gap-3 text-sm dark:text-primary-70 text-primary-30">
+            <div class="w-1.5 h-1.5 rounded-full dark:bg-primary-80 bg-primary-20"></div>
             <span>
               {{ feature.code | textFormat:'space' | textFormat:'capitalize' }}
               @if (feature.max !== null) {
@@ -42,11 +43,9 @@
 
       <div class="mt-8">
         <c-app-button
-          color="primary"
+          color="accent"
           typeButton="flat"
-          (clickButton)="selectPlan(plan)"
-          class="w-full rounded-xl bg-primary-600 text-white py-3 font-semibold
-                 hover:bg-primary-700 transition-all duration-200">
+          (clickButton)="selectPlan(plan)">
           Select
         </c-app-button>
       </div>

@@ -19,12 +19,21 @@ $surface-erp-contrast: (
   on-surface-container: #282a2b,
 );
 
+$light-surface-erp-contrast: (
+  light-on-surface: #282a2b,
+  light-surface-container: #48494a,
+  light-on-surface-container: #ffffff,
+);
+
 @mixin export-surface-vars($prefix: "surface") {
   :root {
     @each $k, $v in $surface-erp-palette {
       --#{$prefix}-#{$k}: #{$v};
     }
     @each $ck, $cv in $surface-erp-contrast {
+      --#{$prefix}-#{$ck}: #{$cv};
+    }
+    @each $ck, $cv in $light-surface-erp-contrast {
       --#{$prefix}-#{$ck}: #{$cv};
     }
   }

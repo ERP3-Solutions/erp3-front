@@ -1,10 +1,10 @@
-<div class="flex flex-col h-full bg-surface-0">
-  <div class="flex items-center justify-between px-6 py-4 border-b border-surface-20 bg-surface-5">
+<div class="flex flex-col h-full dark:bg-surface-0 bg-surface-100">
+  <div class="flex items-center justify-between px-6 py-4 border-b dark:border-surface-20 border-surface-90 dark:bg-surface-5 bg-surface-90">
     <div>
-      <h1 class="text-xl font-semibold text-surface-90">
+      <h1 class="text-xl font-semibold dark:text-surface-90 text-surface-20">
         {{ translateService.tSignal('security.screens.roles.title')() }}
       </h1>
-      <p class="text-surface-60 text-sm">
+      <p class="dark:text-surface-60 text-surface-40 text-sm">
         {{ translateService.tSignal(`security.screens.roles.${roles().length === 1 ? 'subtitle1' : 'subtitle2'}`, { length: roles().length.toString()})() }}
       </p>
     </div>
@@ -17,7 +17,7 @@
           subTypeIcon="square"
           iconModule="dashboard"
           icon="outlined-grid"
-          classIcon="w-6 h-6 fill-primary-on-primary"
+          classIcon="w-6 h-6 dark:fill-primary-on-primary fill-primary-20"
           (clickButton)="typeView.set(ETypeView.CARD)"
           [isActive]="typeView() === ETypeView.CARD"
         ></c-app-button>
@@ -27,7 +27,7 @@
           subTypeIcon="square"
           iconModule="dashboard"
           icon="outlined-list"
-          classIcon="w-6 h-6 fill-primary-on-primary"
+          classIcon="w-6 h-6 dark:fill-primary-on-primary fill-primary-20"
           (clickButton)="typeView.set(ETypeView.GRID)"
           [isActive]="typeView() === ETypeView.GRID"
         ></c-app-button>
@@ -38,7 +38,7 @@
         typeButton="flat"
         iconModule="dashboard"
         icon="add"
-        classIcon="w-6 h-6 fill-primary-on-primary"
+        classIcon="w-6 h-6 dark:fill-primary-on-primary fill-light-primary-on-primary"
         classButton="gap-1"
       >
         {{ translateService.tSignal('security.screens.roles.new-role')() }}
@@ -48,37 +48,47 @@
   </div>
   
   <div class="flex-1 min-h-0 overflow-auto">
-    @if (roles().length > 0) {
-      <div class="flex-1 h-0">
-        @if (typeView() === ETypeView.CARD) {
-          <f-security-roles-cards 
-            [roles]="roles()"
+    @if (!rolesService.loadingRoles()) {
+      @if (roles().length > 0) {
+        <div class="flex-1 h-0">
+          @if (typeView() === ETypeView.CARD) {
+            <f-security-roles-cards 
+              [roles]="roles()"
+            />
+          } @else {
+            <f-security-roles-grid 
+              [roles]="roles()"
+            />
+          }
+        </div>
+      } @else {
+        <div class="flex flex-col h-full items-center justify-center py-20 text-center">
+          <c-app-icon 
+            svgIcon="logo-noir"
+            svgModule="shared"
+            className="w-16 h-16"
           />
-        } @else {
-          <f-security-roles-grid 
-            [roles]="roles()"
-          />
-        }
-      </div>
+          <h3 class="text-xl font-medium dark:text-surface-80 text-surface-30 mb-3">
+            {{ translateService.tSignal('security.screens.roles.empty_title')() }}
+          </h3>
+          <p class="text-sm dark:text-surface-60 text-surface-40 max-w-sm">
+            {{ translateService.tSignal('security.screens.roles.empty_subtitle')() }}
+          </p>
+  
+        </div>
+      }
     } @else {
-      <div class="flex flex-col h-full items-center justify-center py-20 text-center">
+      <div class="flex h-full items-center justify-center">
         <c-app-icon 
-          svgIcon="logo-noir"
+          className="w-12 h-12 dark:fill-surface-40 fill-surface-60 animate-spin"
+          svgIcon="outlined-progress-activity"
           svgModule="shared"
-          className="w-16 h-16"
         />
-        <h3 class="text-xl font-medium text-surface-80 mb-3">
-          {{ translateService.tSignal('security.screens.roles.empty_title')() }}
-        </h3>
-        <p class="text-surface-60 max-w-sm text-sm">
-          {{ translateService.tSignal('security.screens.roles.empty_subtitle')() }}
-        </p>
-
       </div>
     }
   </div>
 
-  <div class="flex justify-between items-center min-h-0 px-6 py-3 border-t border-surface-20 bg-surface-5 text-xs text-surface-50">
+  <div class="flex justify-between items-center min-h-0 px-6 py-3 border-t dark:border-surface-20 border-surface-80 dark:bg-surface-5 bg-surface-90 text-xs dark:text-surface-50 text-surface-40">
     <div>{{ translateService.tSignal(`security.screens.roles.${roles().length === 1 ? 'footer1' : 'footer2'}`, { length: roles().length.toString()})() }}</div>
     <div class="flex gap-4">
     </div>

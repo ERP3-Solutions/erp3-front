@@ -18,12 +18,21 @@ $primary-erp-contrast: (
   on-primary-container: #282a2b,
 );
 
+$light-primary-erp-contrast: (
+  light-on-primary: #c6c6c6,
+  light-primary-container: #d6d5d5,
+  light-on-primary-container: #e4e4e4,
+);
+
 @mixin export-primary-vars($prefix: "primary") {
   :root {
     @each $k, $v in $primary-erp-palette {
       --#{$prefix}-#{$k}: #{$v};
     }
     @each $ck, $cv in $primary-erp-contrast {
+      --#{$prefix}-#{$ck}: #{$cv};
+    }
+    @each $ck, $cv in $light-primary-erp-contrast {
       --#{$prefix}-#{$ck}: #{$cv};
     }
   }

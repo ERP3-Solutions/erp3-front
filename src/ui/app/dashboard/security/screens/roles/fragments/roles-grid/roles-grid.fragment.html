@@ -1,36 +1,36 @@
-<table class="w-full min-w-full divide-y divide-surface-20">
-  <thead class="bg-surface-10 sticky top-0 z-10">
+<table class="w-full min-w-full divide-y dark:divide-surface-20 divide-surface-30">
+  <thead class="dark:bg-surface-10 bg-surface-80 sticky top-0 z-10">
     <tr>
-      <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">
+      <th class="px-6 py-4 text-left text-sm font-medium dark:text-surface-70 text-surface-40">
         {{ translateService.tSignal('security.screens.roles.grid-columns.name')() }}
       </th>
-      <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">
+      <th class="px-6 py-4 text-left text-sm font-medium dark:text-surface-70 text-surface-40">
         {{ translateService.tSignal('security.screens.roles.grid-columns.description')() }}
       </th>
-      <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">
+      <th class="px-6 py-4 text-left text-sm font-medium dark:text-surface-70 text-surface-40">
         {{ translateService.tSignal('security.screens.roles.grid-columns.permissions')() }}
       </th>
-      <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">
+      <th class="px-6 py-4 text-left text-sm font-medium dark:text-surface-70 text-surface-40">
         {{ translateService.tSignal('security.screens.roles.grid-columns.created')() }}
       </th>
-      <th class="px-6 py-4 text-left text-sm font-medium text-surface-70">
+      <th class="px-6 py-4 text-left text-sm font-medium dark:text-surface-70 text-surface-40">
         {{ translateService.tSignal('security.screens.roles.grid-columns.modified')() }}
       </th>
-      <th class="px-6 py-4 w-24 text-center text-sm font-medium text-surface-70">
+      <th class="px-6 py-4 w-24 text-center text-sm font-medium dark:text-surface-70 text-surface-40">
         {{ translateService.tSignal('security.screens.roles.grid-columns.actions')() }}
       </th>
     </tr>
   </thead>
   
-  <tbody class="divide-y divide-surface-20 bg-surface-0">
+  <tbody class="divide-y dark:divide-surface-20 divide-surface-80 dark:bg-surface-0 bg-surface-100">
     @for (role of roles(); track role.id) {
-      <tr class="hover:bg-surface-5 transition-colors">
+      <tr class="dark:hover:bg-surface-5 hover:bg-surface-90/50 transition-colors">
         <td class="px-6 py-4">
-          <p class="font-medium text-sm text-surface-on-surface">{{ role.name }}</p>
+          <p class="font-medium text-sm dark:text-surface-on-surface text-light-surface-on-surface">{{ role.name }}</p>
         </td>
 
         <td class="px-6 py-4">
-          <p class="text-surface-70 line-clamp-2 text-sm">
+          <p class="dark:text-surface-70 text-surface-30 line-clamp-2 text-sm">
             {{ role.description || '-' }}
           </p>
         </td>
@@ -38,12 +38,12 @@
         <td class="px-6 py-4">
           <div class="flex flex-wrap gap-1">
             @for (perm of role.permissions | slice:0:3; track perm.code) {
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-10 text-primary-70">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium dark:bg-primary-10 bg-primary-90 dark:text-primary-70 text-primary-30">
                 {{ perm.name }}
               </span>
             }
             @if (role.permissions.length > 3) {
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-20 text-surface-70">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium dark:bg-surface-20 bg-surface-80 dark:text-surface-70 text-surface-30">
                 +{{ role.permissions.length - 3 }}
               </span>
             }
@@ -68,7 +68,7 @@
               icon="outlined-pencil"
               iconModule="dashboard"
               (clickButton)="onEditRole(role)"
-              classIcon="w-6 h-6 fill-primary-on-primary"
+              classIcon="w-6 h-6 dark:fill-primary-on-primary fill-primary-40"
             />
             <c-app-button 
               typeButton="icon"
@@ -76,7 +76,7 @@
               icon="outlined-trash"
               iconModule="dashboard"
               (clickButton)="onDeleteRole(role)"
-              classIcon="w-6 h-6 fill-primary-on-primary"
+              classIcon="w-6 h-6 dark:fill-primary-on-primary fill-primary-40"
             />
           </div>
         </td>

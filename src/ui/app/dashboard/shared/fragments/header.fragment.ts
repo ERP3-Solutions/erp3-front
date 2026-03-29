@@ -8,6 +8,7 @@ import { TranslateService } from '@ui/shared/services/translate.service';
 import { MenuService } from '@ui/shared/services/menu.service';
 import { LangType } from '@ui/shared/types/lang.type';
 import { CommonModule } from '@angular/common';
+import { ThemeService } from '@ui/shared/services/theme.service';
 
 @Component({
   selector: 'f-dashboard-header',
@@ -19,7 +20,6 @@ import { CommonModule } from '@angular/common';
     // Modulos de capas externas
     // Componentes(standalone) internos
     CAppButton,
-    CAppIcon
 ],
   templateUrl: './header.fragment.html',
 })
@@ -28,6 +28,7 @@ export class FDashboardHeader {
   public sidebarService = inject(SidebarService);
   public breadCrumbService = inject(BreadcrumbService);
   public translateService = inject(TranslateService);
+  public themeService = inject(ThemeService);
 
   changeTranslate(lang: string) {
     if (lang as LangType) {

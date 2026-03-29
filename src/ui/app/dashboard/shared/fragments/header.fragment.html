@@ -1,10 +1,10 @@
-<header class="flex items-center justify-between p-3 px-6 w-full bg-surface-0 border-surface-20 border-b">
+<header class="flex items-center justify-between p-3 px-6 w-full dark:bg-surface-0 dark:border-surface-20 bg-surface-100 border-surface-80 border-b">
   <div class="flex items-center gap-3">
     <c-app-button 
       type="button"
       typeButton="icon"
       (clickButton)="sidebarService.toggleOpen()"
-      classIcon="w-6 h-6 fill-primary-50"
+      classIcon="w-6 h-6 dark:fill-primary-50 fill-primary-40"
       classButton="p-2"
       icon="menu"
       iconModule="dashboard"
@@ -14,15 +14,15 @@
       <ol class="flex items-center gap-2 text-sm">
         @for (crumb of breadCrumbService.breadCrumbs(); track $index; let last = $last) {
           <li class="flex items-center gap-2">
-            @if ($index > 0) {<span class="text-surface-40">›</span>}
+            @if ($index > 0) {<span class="dark:text-surface-40 text-surface-50">›</span>}
             
             @if (!last) {
               <a [routerLink]="crumb.url"
-                  class="text-surface-60 hover:text-primary-70 font-medium transition-colors">
+                  class="dark:text-surface-60 text-surface-40 dark:hover:text-primary-70 hover:text-primary-10 font-medium transition-colors">
                 {{ translateService.tSignal(crumb.label)() }}
               </a>
             } @else {
-              <span class="text-surface-90 font-semibold">
+              <span class="dark:text-surface-90 text-surface-5 font-semibold">
                 {{ translateService.tSignal(crumb.label)() }}
               </span>
             }
@@ -38,7 +38,7 @@
       typeButton="icon"
       icon="fill-support"
       iconModule="dashboard"
-      classIcon="w-6 h-6 fill-primary-50"
+      classIcon="w-6 h-6 dark:fill-primary-50 fill-primary-40"
       classButton="p-2"
     />
 
@@ -49,7 +49,7 @@
         icon="outlined-language"
         iconModule="dashboard"
         (clickButton)="menuService.open(triggerLanguage, optionsLanguage)"
-        classIcon="w-6 h-6 fill-primary-50"
+        classIcon="w-6 h-6 dark:fill-primary-50 fill-primary-40"
         classButton="p-2"
       />
     </div>
@@ -57,10 +57,11 @@
     <c-app-button 
       type="button"
       typeButton="icon"
-      icon="fill-moon"
+      [icon]="themeService.theme() === 'light' ? 'fill-moon' : 'outlined-sun'"
       iconModule="dashboard"
-      classIcon="w-6 h-6 fill-primary-50"
+      classIcon="w-6 h-6 dark:fill-primary-50 fill-primary-40"
       classButton="p-2"
+      (clickButton)="themeService.toggleTheme()"
     />
   </div>
 </header>

@@ -1,9 +1,9 @@
-<aside class="bg-surface-0 border-surface-20 border-e flex flex-col px-3 justify-between overflow-y-auto h-full">
+<aside class="dark:bg-surface-0 dark:border-surface-20 bg-surface-100 border-surface-80 border-e flex flex-col px-3 justify-between overflow-y-auto h-full">
   <div class="flex flex-col">
     <header class="py-3">
       <div class="h-10 gap-2 flex items-center justify-center overflow-hidden">
         <img src="/ui/assets/icons/svg/logo.svg" alt="logo-svg" class="max-h-8" />
-        @if (sidebarService.isOpen()) {<h1 class="text-surface-90 font-bold text-lg text-center whitespace-nowrap">ERP3</h1>}
+        @if (sidebarService.isOpen()) {<h1 class="dark:text-surface-90 text-surface-5 font-bold text-lg text-center whitespace-nowrap">ERP3</h1>}
       </div>
     </header>
     <div class="flex flex-col gap-3">
@@ -24,7 +24,7 @@
         }
       </c-dashboard-sidebar-group>
       @if ($index < sidebarConstant.length - 1) {
-        <hr class="border-surface-20 border-e">
+        <hr class="dark:border-surface-20 border-surface-70 border-e">
       }
     }
     </div>

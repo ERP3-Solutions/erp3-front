@@ -16,7 +16,7 @@ import { CAppIcon } from './icon.component';
 })
 export class CAppButton {
   public classButton = input<string>('')
-  public color = input<'accent' | 'success' | 'danger'>('accent')
+  public color = input<'accent' | 'success' | 'danger' | 'primary'>('accent')
   public type = input<'button' | 'submit'>('button')
   public typeButton = input<'flat' | 'stroked' | 'raised' | 'icon' | 'icon-square'>()
   public subTypeIcon = input<'square' | 'rounded'>('rounded')
@@ -38,19 +38,19 @@ export class CAppButton {
 
       typeButton === 'flat' &&
       (color === 'accent'
-        ? 'bg-primary-20 hover:bg-primary-30 active:bg-primary-20 text-primary-on-primary'
+        ? 'dark:bg-primary-20 bg-primary-10 dark:hover:bg-primary-30 hover:bg-primary-20 dark:active:bg-primary-20 active:bg-primary-30 dark:text-primary-on-primary text-light-primary-on-primary'
         : color === 'success'
           ? 'bg-success-20 hover:bg-success-30 active:bg-success-20 text-success-on-success'
           : 'bg-error-20 hover:bg-error-30 active:bg-error-20 text-error-on-error'),
 
       typeButton === 'stroked' &&
-      'border-2 border-surface-30 hover:border-surface-40 active:border-surface-30 text-surface-on-surface',
+      'border-2 dark:border-surface-30 border-surface-60 dark:hover:border-surface-40 hover:border-surface-40 dark:active:border-surface-30 active:border-surface-30 dark:text-surface-on-surface text-light-surface-on-surface',
 
       (typeButton === 'flat' || typeButton === 'stroked') &&
       'rounded p-2',
 
       typeButton === 'icon' &&
-      'hover:bg-primary-on-primary-container active:bg-primary-primary-container p-1',
+      'dark:hover:bg-primary-on-primary-container hover:bg-light-primary-on-primary-container dark:active:bg-primary-primary-container active:bg-light-primary-primary-container p-1',
 
       typeButton === 'icon' && subTypeIcon === 'square' &&
       'rounded',
@@ -59,7 +59,7 @@ export class CAppButton {
       'rounded-full',
 
       this.isActive() &&
-      'bg-primary-primary-container hover:bg-primary-primary-container',
+      'dark:bg-primary-primary-container dark:hover:bg-primary-primary-container bg-light-primary-primary-container hover:bg-light-primary-primary-container',
     ];
 
     return classes.filter(Boolean).join(' ');

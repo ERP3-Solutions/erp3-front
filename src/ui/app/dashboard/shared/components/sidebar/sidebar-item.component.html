@@ -3,8 +3,8 @@
   [routerLinkActiveOptions]="routerLinkActiveOptions()"
   [queryParams]="queryParams()"
   queryParamsHandling="merge"
-  routerLinkActive="bg-primary-on-primary-container active"
-  class="flex items-center py-2 pe-3 ps-3 w-full transition-colors hover:bg-primary-on-primary-container active:bg-primary-primary-container group relative overflow-hidden"
+  routerLinkActive="dark:bg-primary-on-primary-container bg-light-primary-on-primary-container active"
+  class="flex items-center py-2 pe-3 ps-3 w-full transition-colors dark:hover:bg-primary-on-primary-container hover:bg-light-primary-on-primary-container dark:active:bg-primary-primary-container active:bg-light-primary-primary-container group relative overflow-hidden"
   [ngClass]="{
     'gap-3': open(),
   }"
@@ -13,15 +13,15 @@
   [tooltipText]="label()"
   dAppTooltip
 >
-  <span class="h-full w-0.5 bg-transparent absolute left-0 group-hover:bg-primary-70 group-[.active]:bg-primary-70 transition-colors">&nbsp;</span>
+  <span class="h-full w-0.5 bg-transparent absolute left-0 dark:group-hover:bg-primary-70 group-hover:bg-primary-60 dark:group-[.active]:bg-primary-70 group-[.active]:bg-primary-60 transition-colors">&nbsp;</span>
   @if (icon() && iconModule()) {
     <c-app-icon
-      className="fill-primary-60 group-[.active]:fill-primary-70 group-hover:fill-primary-70 h-6 w-6"
+      className="dark:fill-primary-60 fill-primary-40 dark:group-[.active]:fill-primary-70 group-[.active]:fill-primary-30 dark:group-hover:fill-primary-70 group-hover:fill-primary-30 h-6 w-6 transition-colors"
       [svgIcon]="icon()!"
       [svgModule]="iconModule()!"
     />
   }
   @if (open()) {
-    <p class="text-primary-60 group-[.active]:text-primary-70 group-hover:text-primary-70 text-sm transition-colors whitespace-nowrap">{{ label() }}</p>
+    <p class="dark:text-primary-60 text-primary-40 dark:group-[.active]:text-primary-70 group-[.active]:text-primary-30 dark:group-hover:text-primary-70 group-hover:text-primary-30 text-sm transition-colors whitespace-nowrap">{{ label() }}</p>
   }
 </a>

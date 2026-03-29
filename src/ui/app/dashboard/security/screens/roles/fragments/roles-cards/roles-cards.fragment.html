@@ -1,15 +1,14 @@
 <div class="p-6">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
     @for (role of roles(); track role.id) {
-      <div class="group relative bg-surface-0 border border-surface-20 rounded overflow-hidden hover:border-primary-30 hover:shadow-2xl transition-all duration-300 flex flex-col h-full">
-        
-        <div class="p-4 border-b border-surface-20 bg-surface-5">
+      <div class="group relative dark:bg-surface-0 bg-surface-100 border dark:border-surface-20 border-surface-80 rounded overflow-hidden dark:hover:border-primary-30 hover:border-primary-70 hover:shadow-2xl transition-all duration-300 flex flex-col h-full">
+        <div class="p-4 border-b dark:border-surface-20 border-surface-80 dark:bg-surface-5 bg-surface-90">
           <div class="flex items-start justify-between gap-4">
             <div class="flex-1 min-w-0">
-              <h3 class="font-semibold text-surface-90 text-xl leading-tight line-clamp-2 pr-10">
+              <h3 class="font-semibold dark:text-surface-90 text-surface-30 text-xl leading-tight line-clamp-2 pr-10">
                 {{ role.name }}
               </h3>
-              <p class="text-surface-50 text-sm font-mono mt-1 truncate">
+              <p class="dark:text-surface-50 text-surface-40 text-sm font-mono mt-1 truncate">
                 ID: {{ role.id }}
               </p>
             </div>
@@ -21,7 +20,7 @@
                 icon="outlined-pencil"
                 iconModule="dashboard"
                 (clickButton)="onEditRole(role)"
-                classIcon="w-6 h-6 fill-primary-on-primary"
+                classIcon="w-6 h-6 dark:fill-primary-on-primary fill-light-primary-on-primary"
               />
               <c-app-button 
                 typeButton="icon"
@@ -29,7 +28,7 @@
                 icon="outlined-trash"
                 iconModule="dashboard"
                 (clickButton)="onDeleteRole(role)"
-                classIcon="w-6 h-6 fill-primary-on-primary"
+                classIcon="w-6 h-6 dark:fill-primary-on-primary fill-light-primary-on-primary"
               />
             </div>
           </div>
@@ -39,7 +38,7 @@
         <div class="flex-1 p-4 flex flex-col">
           <!-- Descripción -->
           <div class="mb-4">
-            <p class="text-surface-70 text-[15px] leading-relaxed line-clamp-4">
+            <p class="dark:text-surface-70 text-surface-30 text-[15px] leading-relaxed line-clamp-4">
               {{ role.description || 'Este rol no tiene descripción asignada.' }}
             </p>
           </div>
@@ -47,43 +46,43 @@
           <!-- Permisos -->
           <div class="mt-auto">
             <div class="flex items-center justify-between mb-3">
-              <p class="text-xs font-medium text-surface-60 uppercase tracking-widest">Permisos</p>
-              <span class="text-xs bg-surface-10 text-surface-70 px-2.5 py-0.5 rounded-full">
+              <p class="text-xs font-medium dark:text-surface-60 text-surface-40 uppercase tracking-widest">Permisos</p>
+              <span class="text-xs dark:bg-surface-10 bg-surface-90 dark:text-surface-70 text-surface-30 px-2.5 py-0.5 rounded-full">
                 {{ role.permissions.length }}
               </span>
             </div>
             
             <div class="flex flex-wrap gap-2">
               @for (perm of role.permissions | slice:0:5; track perm.code) {
-                <span class="text-xs px-3 py-1 bg-primary-10 text-primary-70 rounded-2xl border border-primary-20 font-medium">
+                <span class="text-xs px-3 py-1 dark:bg-primary-10 bg-primary-90 dark:text-primary-70 text-primary-30 rounded-2xl border dark:border-primary-20 border-primary-80 font-medium">
                   {{ perm.name }}
                 </span>
               }
               @if (role.permissions.length > 5) {
-                <span class="text-xs px-3 py-1 bg-surface-20 text-surface-70 rounded-2xl font-medium">
+                <span class="text-xs px-3 py-1 dark:bg-surface-20 bg-surface-80 dark:text-surface-70 text-surface-30 rounded-2xl font-medium">
                   +{{ role.permissions.length - 5 }}
                 </span>
               }
               @if (role.permissions.length === 0) {
-                <span class="text-sm text-surface-50 italic">Sin permisos</span>
+                <span class="text-sm dark:text-surface-50 text-surface-40 italic">Sin permisos</span>
               }
             </div>
           </div>
         </div>
 
         <!-- Footer con información de auditoría -->
-        <div class="border-t border-surface-20 bg-surface-5 p-4 text-xs">
-          <div class="flex justify-between text-surface-60">
+        <div class="border-t dark:border-surface-20 border-surface-80 dark:bg-surface-5 bg-surface-90 p-4 text-xs">
+          <div class="flex justify-between dark:text-surface-60 text-surface-40">
             <div>
-              <span class="block text-surface-50 text-[10px]">Creado</span>
+              <span class="block dark:text-surface-50 text-surface-40 text-[10px]">Creado</span>
               {{ role.createdOnUtc | date:'dd/MM/yyyy' }}
             </div>
             <div class="text-right">
-              <span class="block text-surface-50 text-[10px]">Actualizado</span>
+              <span class="block dark:text-surface-50 text-surface-40 text-[10px]">Actualizado</span>
               {{ role.updateOnUtc | date:'dd/MM/yyyy' }}
             </div>
           </div>
-          <div class="text-[10px] text-surface-50 mt-2 flex justify-between gap-4">
+          <div class="text-[10px] dark:text-surface-50 text-surface-40 mt-2 flex justify-between gap-4">
             <span class="truncate">{{ role.logUserCreated }}</span>
             <span class="truncate">{{ role.logUserUpdated }}</span>
           </div>

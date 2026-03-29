@@ -19,6 +19,10 @@
   --color-primary-on-primary: var(--primary-on-primary);
   --color-primary-primary-container: var(--primary-primary-container);
   --color-primary-on-primary-container: var(--primary-on-primary-container);
+  
+  --color-light-primary-on-primary: var(--primary-light-on-primary);
+  --color-light-primary-primary-container: var(--primary-light-primary-container);
+  --color-light-primary-on-primary-container: var(--primary-light-on-primary-container);
 
   /* SECONDARY */
   --color-secondary-0: var(--secondary-0);
@@ -37,6 +41,10 @@
   --color-secondary-secondary-container: var(--secondary-secondary-container);
   --color-secondary-on-secondary-container: var(--secondary-on-secondary-container);
 
+  --color-light-secondary-on-secondary: var(--secondary-light-on-secondary);
+  --color-light-secondary-secondary-container: var(--secondary-light-secondary-container);
+  --color-light-secondary-on-secondary-container: var(--secondary-light-on-secondary-container);
+
   /* TERTIARY */
   --color-tertiary-0: var(--tertiary-0);
   --color-tertiary-10: var(--tertiary-10);
@@ -53,6 +61,10 @@
   --color-tertiary-on-tertiary: var(--tertiary-on-tertiary);
   --color-tertiary-tertiary-container: var(--tertiary-tertiary-container);
   --color-tertiary-on-tertiary-container: var(--tertiary-on-tertiary-container);
+
+  --color-light-tertiary-on-tertiary: var(--tertiary-light-on-tertiary);
+  --color-light-tertiary-tertiary-container: var(--tertiary-light-tertiary-container);
+  --color-light-tertiary-on-tertiary-container: var(--tertiary-light-on-tertiary-container);
 
   /* SURFACE */
   --color-surface-0: var(--surface-0);
@@ -71,6 +83,10 @@
   --color-surface-on-surface: var(--surface-on-surface);
   --color-surface-surface-container: var(--surface-surface-container);
   --color-surface-on-surface-container: var(--surface-on-surface-container);
+
+  --color-light-surface-on-surface: var(--surface-light-on-surface);
+  --color-light-surface-surface-container: var(--surface-light-surface-container);
+  --color-light-surface-on-surface-container: var(--surface-light-on-surface-container);
 
   /* ERROR */
   --color-error-0: var(--error-0);

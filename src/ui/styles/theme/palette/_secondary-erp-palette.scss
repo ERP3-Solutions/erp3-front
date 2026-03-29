@@ -18,12 +18,21 @@ $secondary-erp-contrast: (
   on-secondary-container: #08091d,
 );
 
+$light-secondary-erp-contrast: (
+  light-on-secondary: #08091d,
+  light-secondary-container: #47475e,
+  light-on-secondary-container: #ffffff,
+);
+
 @mixin export-secondary-vars($prefix: "secondary") {
   :root {
     @each $k, $v in $secondary-erp-palette {
       --#{$prefix}-#{$k}: #{$v};
     }
     @each $ck, $cv in $secondary-erp-contrast {
+      --#{$prefix}-#{$ck}: #{$cv};
+    }
+    @each $ck, $cv in $light-secondary-erp-contrast {
       --#{$prefix}-#{$ck}: #{$cv};
     }
   }

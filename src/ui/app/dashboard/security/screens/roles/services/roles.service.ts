@@ -6,10 +6,17 @@ import { SecurityFacade } from '@ui/dashboard/security/facades/security.facade';
 export class RolesService {
   private readonly facade = inject(SecurityFacade);
 
+  public loadingRoles = signal<boolean>(false);
   public roles = signal<IRoleEntity[]>([])
 
   public async obtainAllRoles() {
-    const roles = await this.facade.obtainAllRoles();
-    this.roles.set(roles);
+    this.loadingRoles.set(true);
+    try {
+      const roles = await this.facade.obtainAllRoles();
+      this.roles.set(roles);
+    } catch(e) {
+      console.log(e);
+    }
+    this.loadingRoles.set(false);
   }
 }

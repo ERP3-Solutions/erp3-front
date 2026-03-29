@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-3 w-96">
   @for (formGroup of seriesForms.controls; track $index) {
     <div class="flex items-start gap-3">
-      <p class="text-xs text-primary-80 min-w-24 pt-3">
+      <p class="text-xs dark:text-primary-80 text-primary-20 min-w-24 pt-3">
         {{ translate.tSignal(PathTranslatesTypeDocument[formGroup.value.typeDocument])() }}
       </p>
       <c-app-form-field 

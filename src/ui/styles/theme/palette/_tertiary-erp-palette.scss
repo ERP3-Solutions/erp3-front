@@ -18,12 +18,21 @@ $tertiary-erp-contrast: (
   on-tertiary-container: #08091d,
 );
 
+$light-tertiary-erp-contrast: (
+  light-on-tertiary: #08091d,
+  light-tertiary-container: #47475e,
+  light-on-tertiary-container: #ffffff,
+);
+
 @mixin export-tertiary-vars($prefix: "tertiary") {
   :root {
     @each $k, $v in $tertiary-erp-palette {
       --#{$prefix}-#{$k}: #{$v};
     }
     @each $ck, $cv in $tertiary-erp-contrast {
+      --#{$prefix}-#{$ck}: #{$cv};
+    }
+    @each $ck, $cv in $light-tertiary-erp-contrast {
       --#{$prefix}-#{$ck}: #{$cv};
     }
   }
