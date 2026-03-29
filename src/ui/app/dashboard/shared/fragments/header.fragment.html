@@ -1,53 +1,67 @@
-<header class="flex items-center p-3 px-6 w-full bg-surface-0 border-surface-20 border-b">
-  <c-app-button 
-    classButton="p-2"
-    type="button"
-    typeButton="icon"
-    (clickButton)="sidebarService.toggleOpen()"
-  >
-    <c-app-icon 
-      className="w-6 h-6 fill-primary-50"
-      svgIcon="menu"
-      svgModule="dashboard"
+<header class="flex items-center justify-between p-3 px-6 w-full bg-surface-0 border-surface-20 border-b">
+  <div class="flex items-center gap-3">
+    <c-app-button 
+      type="button"
+      typeButton="icon"
+      (clickButton)="sidebarService.toggleOpen()"
+      classIcon="w-6 h-6 fill-primary-50"
+      classButton="p-2"
+      icon="menu"
+      iconModule="dashboard"
     />
-  </c-app-button>
 
-  <nav aria-label="Breadcrumb">
-    <ol class="flex items-center gap-2 text-sm">
-      @for (crumb of breadCrumbService.breadCrumbs(); track $index; let last = $last) {
-        <li class="flex items-center gap-2">
-          <span class="text-surface-40">›</span>
-          
-          @if (!last) {
-            <a [routerLink]="crumb.url"
-                class="text-surface-60 hover:text-primary-60 font-medium transition-colors">
-              {{ translateService.tSignal(crumb.label)() }}
-            </a>
-          } @else {
-            <span class="text-surface-90 font-semibold">
-              {{ translateService.tSignal(crumb.label)() }}
-            </span>
-          }
-        </li>
-      }
-    </ol>
-  </nav>
+    <nav aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2 text-sm">
+        @for (crumb of breadCrumbService.breadCrumbs(); track $index; let last = $last) {
+          <li class="flex items-center gap-2">
+            @if ($index > 0) {<span class="text-surface-40">›</span>}
+            
+            @if (!last) {
+              <a [routerLink]="crumb.url"
+                  class="text-surface-60 hover:text-primary-70 font-medium transition-colors">
+                {{ translateService.tSignal(crumb.label)() }}
+              </a>
+            } @else {
+              <span class="text-surface-90 font-semibold">
+                {{ translateService.tSignal(crumb.label)() }}
+              </span>
+            }
+          </li>
+        }
+      </ol>
+    </nav>
+  </div>
 
-  <div class="ms-auto">
+  <div class="flex items-center gap-1">
+    <c-app-button 
+      type="button"
+      typeButton="icon"
+      icon="fill-support"
+      iconModule="dashboard"
+      classIcon="w-6 h-6 fill-primary-50"
+      classButton="p-2"
+    />
+
     <div #triggerLanguage>
       <c-app-button 
-        classButton="p-2"
         type="button"
         typeButton="icon"
+        icon="outlined-language"
+        iconModule="dashboard"
         (clickButton)="menuService.open(triggerLanguage, optionsLanguage)"
-      >
-        <c-app-icon 
-          className="w-6 h-6 fill-primary-50"
-          svgIcon="outlined-language"
-          svgModule="dashboard"
-        />
-      </c-app-button>
+        classIcon="w-6 h-6 fill-primary-50"
+        classButton="p-2"
+      />
     </div>
+
+    <c-app-button 
+      type="button"
+      typeButton="icon"
+      icon="fill-moon"
+      iconModule="dashboard"
+      classIcon="w-6 h-6 fill-primary-50"
+      classButton="p-2"
+    />
   </div>
 </header>
 

@@ -1,6 +1,7 @@
 import { DatePipe, SlicePipe } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { IRoleEntity } from '@core/roles/domain/entity/role.entity';
+import { CAppButton } from '@ui/shared/components/button.component';
 
 @Component({
   selector: 'f-security-roles-cards',
@@ -12,6 +13,7 @@ import { IRoleEntity } from '@core/roles/domain/entity/role.entity';
     // Modulos de librerías externas
     // Modulos de capas externas
     // Componentes(standalone) internos
+    CAppButton,
     // Componentes(standalone) externos
   ],
   templateUrl: './roles-cards.fragment.html',

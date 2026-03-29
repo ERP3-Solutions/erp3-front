@@ -1,11 +1,86 @@
-<div class="">
-  @if (typeView() === ETypeView.CARD) {
-  <f-security-roles-cards 
-    [roles]="rolesService.roles()"
-  />
-} @else {
-  <f-security-roles-grid 
-    [roles]="rolesService.roles()"
-  />
-}
+<div class="flex flex-col h-full bg-surface-0">
+  <div class="flex items-center justify-between px-6 py-4 border-b border-surface-20 bg-surface-5">
+    <div>
+      <h1 class="text-xl font-semibold text-surface-90">
+        {{ translateService.tSignal('security.screens.roles.title')() }}
+      </h1>
+      <p class="text-surface-60 text-sm">
+        {{ translateService.tSignal(`security.screens.roles.${roles().length === 1 ? 'subtitle1' : 'subtitle2'}`, { length: roles().length.toString()})() }}
+      </p>
+    </div>
+
+    <div class="flex gap-2">
+      <div class="flex items-center gap-1">
+        <c-app-button 
+          type="button"
+          typeButton="icon"
+          subTypeIcon="square"
+          iconModule="dashboard"
+          icon="outlined-grid"
+          classIcon="w-6 h-6 fill-primary-on-primary"
+          (clickButton)="typeView.set(ETypeView.CARD)"
+          [isActive]="typeView() === ETypeView.CARD"
+        ></c-app-button>
+        <c-app-button 
+          type="button"
+          typeButton="icon"
+          subTypeIcon="square"
+          iconModule="dashboard"
+          icon="outlined-list"
+          classIcon="w-6 h-6 fill-primary-on-primary"
+          (clickButton)="typeView.set(ETypeView.GRID)"
+          [isActive]="typeView() === ETypeView.GRID"
+        ></c-app-button>
+      </div>
+      <c-app-button 
+        type="button"
+        color="accent"
+        typeButton="flat"
+        iconModule="dashboard"
+        icon="add"
+        classIcon="w-6 h-6 fill-primary-on-primary"
+        classButton="gap-1"
+      >
+        {{ translateService.tSignal('security.screens.roles.new-role')() }}
+      </c-app-button>
+    </div>
+    
+  </div>
+  
+  <div class="flex-1 min-h-0 overflow-auto">
+    @if (roles().length > 0) {
+      <div class="flex-1 h-0">
+        @if (typeView() === ETypeView.CARD) {
+          <f-security-roles-cards 
+            [roles]="roles()"
+          />
+        } @else {
+          <f-security-roles-grid 
+            [roles]="roles()"
+          />
+        }
+      </div>
+    } @else {
+      <div class="flex flex-col h-full items-center justify-center py-20 text-center">
+        <c-app-icon 
+          svgIcon="logo-noir"
+          svgModule="shared"
+          className="w-16 h-16"
+        />
+        <h3 class="text-xl font-medium text-surface-80 mb-3">
+          {{ translateService.tSignal('security.screens.roles.empty_title')() }}
+        </h3>
+        <p class="text-surface-60 max-w-sm text-sm">
+          {{ translateService.tSignal('security.screens.roles.empty_subtitle')() }}
+        </p>
+
+      </div>
+    }
+  </div>
+
+  <div class="flex justify-between items-center min-h-0 px-6 py-3 border-t border-surface-20 bg-surface-5 text-xs text-surface-50">
+    <div>{{ translateService.tSignal(`security.screens.roles.${roles().length === 1 ? 'footer1' : 'footer2'}`, { length: roles().length.toString()})() }}</div>
+    <div class="flex gap-4">
+    </div>
+  </div>
 </div>

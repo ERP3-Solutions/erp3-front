@@ -1,0 +1,20 @@
+{
+  "screens": {
+    "roles": {
+      "title": "Roles",
+      "subtitle1": "{{ length }} registered role",
+      "subtitle2": "{{ length }} registered roles",
+      "footer1": "Showing {{ length }} role",
+      "footer2": "Showing {{ length }} roles",
+      "new-role": "New role",
+      "grid-columns": {
+        "name": "Name",
+        "description": "Description",
+        "permissions": "Permissions",
+        "created": "Created",
+        "modified": "Modified",
+        "actions": "Actions"
+      }
+    }
+  }
+}

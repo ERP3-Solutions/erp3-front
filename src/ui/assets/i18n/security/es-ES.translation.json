@@ -1,0 +1,22 @@
+{
+  "screens": {
+    "roles": {
+      "title": "Roles",
+      "subtitle1": "{{ length }} rol registrado",
+      "subtitle2": "{{ length }} roles registrados",
+      "footer1": "Mostrando {{ length }} rol",
+      "footer2": "Mostrando {{ length }} roles",
+      "new-role": "Nuevo rol",
+      "grid-columns": {
+        "name": "Nombre",
+        "description": "Descripcion",
+        "permissions": "Permisos",
+        "created": "Creado",
+        "modified": "Actualizado",
+        "actions": "Acciones"
+      },
+      "empty_title": "No se encontró ningún rol",
+      "empty_subtitle": "Crea roles para organizar los permisos de tus usuarios o modifica los filtros de tu búsqueda."
+    }
+  }
+}

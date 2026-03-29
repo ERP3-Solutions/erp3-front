@@ -1,12 +1,7 @@
 <button 
   [type]="type()"
   [class]="`flex justify-center items-center transition-colors cursor-pointer w-full uppercase text-sm font-medium ${classButton()}`"
-  [ngClass]="{
-    'bg-primary-20 hover:bg-primary-30 active:bg-primary-20 text-primary-on-primary': typeButton() === 'flat',
-    'border-2 border-surface-30 hover:border-surface-40 active:border-surface-30 text-surface-on-surface': typeButton() === 'stroked',
-    'rounded p-2': typeButton() === 'stroked' || typeButton() === 'flat',
-    'hover:bg-primary-on-primary-container active:bg-primary-primary-container rounded-full p-1': typeButton() === 'icon',
-  }"
+  [ngClass]="buttonClassDynamic()"
   (click)="clickButton.emit()"
   [disabled]="disabled()"
 >
